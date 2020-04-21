@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cx.business.mapper.SalesBackOrderMapper">
+
+    <resultMap id="salesBackOrder" type="com.cx.business.beans.SalesBackOrder">
+        <id property="sboId" column="sbo_id"></id>
+        <result property="customerId" column="customer_id"></result>
+        <result property="sboNumber" column="sbo_number"></result>
+        <result property="orderTime" column="order_time"></result>
+        <result property="totalMoney" column="total_money"></result>
+        <result property="payType" column="pay_type"></result>
+        <result property="userId" column="user_id"></result>
+        <result property="sboStatus" column="sbo_status"></result>
+        <result property="sboReason" column="sbo_reason"></result>
+        <association property="customer" column="customer_id" javaType="com.cx.business.beans.Customer" select="com.cx.business.mapper.CustomerMapper.selectById"></association>
+        <association property="user" column="user_id" javaType="com.cx.sys.beans.User" select="com.cx.sys.mapper.UserMapper.selectById"></association>
+    </resultMap>
+
+
+    <select id="selectSalesBackOrderList" resultMap="salesBackOrder" >
+        select * from business_salesBack_order;
+    </select>
+
+</mapper>

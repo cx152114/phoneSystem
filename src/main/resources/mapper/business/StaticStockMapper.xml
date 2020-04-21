@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cx.business.mapper.StaticStockMapper">
+
+    <resultMap id="static" type="com.cx.business.beans.vo.StaticStock">
+        <result property="phoneId" column="phoneId" ></result>
+        <result property="number" column="number"></result>
+        <association property="phoneInfo" column="phoneId" javaType="com.cx.business.beans.PhoneInfo" select="com.cx.business.mapper.PhoneInfoMapper.selectById"></association>
+    </resultMap>
+
+
+    <select id="selectTargetSalesList" resultMap="static">
+        SELECT
+        s.phone_id as phoneId,
+        number
+        FROM
+        (
+        SELECT
+        d.phone_id,
+        phone_name,
+        count(*) AS number
+        FROM
+        business_sales_detail d,
+        (
+        SELECT
+        order_id
+        FROM
+        business_sales_order
+        WHERE
+        DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;= date(order_time)
+        ) s,
+        business_phoneinfo p
+        WHERE
+        d.order_id = s.order_id
+        AND d.phone_id = p.phone_id
+        GROUP BY
+        d.phone_id
+        ) s
+        ORDER BY
+        number DESC
+        LIMIT 20;
+    </select>
+
+
+    <select id="selectTargetStockList" resultMap="static">
+        SELECT
+        s.phone_id AS phoneId,
+        number
+        FROM
+        (
+        SELECT
+        d.phone_id,
+        phone_name,
+        count(*) AS number
+        FROM
+        business_sorder_detail d,
+        (
+        SELECT
+        *
+        FROM
+        business_stock_order
+        WHERE
+        DATE_SUB(CURDATE(), INTERVAL 30 DAY) &lt;= date(order_time)
+        ) o,
+        business_phoneinfo p
+        WHERE
+        d.sto_id = o.sto_id
+        AND d.phone_id = p.phone_id
+        GROUP BY
+        d.phone_id
+        ) s
+        ORDER BY
+        number DESC
+        LIMIT 20;
+    </select>
+
+
+
+
+
+</mapper>

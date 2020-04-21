@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cx.business.mapper.PhoneInfoMapper">
+
+    <resultMap id="phoneInfo" type="com.cx.business.beans.PhoneInfo">
+        <id property="phoneId" column="phone_id"></id>
+        <result property="phoneName" column="phone_name"></result>
+        <result property="phoneType" column="phone_type"></result>
+        <result property="phoneRam" column="phone_RAM"></result>
+        <result property="phoneStorage" column="phone_storage"></result>
+        <result property="phoneNetwork" column="phone_network"></result>
+        <result property="phoneImage" column="phone_image"></result>
+        <result property="phoneState" column="phone_state"></result>
+        <result property="phoneRemark" column="phone_remark"></result>
+        <association property="supplier" column="supplier_id" javaType="com.cx.business.beans.Supplier" select="com.cx.business.mapper.SupplierMapper.selectById"></association>
+
+    </resultMap>
+
+
+    <select id="selectPhoneInfo" resultMap="phoneInfo" parameterType="com.cx.business.beans.PhoneInfo">
+        select * from business_phoneInfo
+        <trim prefix="where" suffixOverrides="and">
+            <if test="phoneId!=null">
+                phone_id=#{phoneId} and
+            </if>
+            <if test="phoneName!=null and phoneName!=&quot;&quot;">
+                phone_name like #{phoneName} and
+            </if>
+            <if test="phoneType!=null and phoneType!=&quot;&quot;">
+                phone_type=#{phoneType} and
+            </if>
+            <if test="phoneColor!=null and phoneColor!=&quot;&quot;">
+                phone_color=#{phoneColor} and
+            </if>
+            <if test="phoneRam!=null and phoneRam!=&quot;&quot;">
+                phone_RAM=#{phoneRam} and
+            </if>
+            <if test="phoneStorage!=null and phoneStorage!=&quot;&quot;">
+                phone_storage=#{phoneStorage} and
+            </if>
+            <if test="phoneNetwork!=null and phoneNetwork!=&quot;&quot;">
+                phone_network=#{phoneNetwork} and
+            </if>
+            <if test="phoneState!=null">
+                phone_state=#{phoneState}
+            </if>
+        </trim>
+<!--        <if test="phoneId!=null">-->
+<!--            and phone_id=#{phoneId}-->
+<!--        </if>-->
+<!--        <if test="phoneName!=null and phoneName!=&quot;&quot;">-->
+<!--            and phone_name like #{phoneName}-->
+<!--        </if>-->
+<!--        <if test="phoneType!=null and phoneType!=&quot;&quot;">-->
+<!--            and phone_type=#{phoneType}-->
+<!--        </if>-->
+<!--        <if test="phoneColor!=null and phoneColor!=&quot;&quot;">-->
+<!--            and phone_color=#{phoneColor}-->
+<!--        </if>-->
+<!--        <if test="phoneRam!=null and phoneRam!=&quot;&quot;">-->
+<!--            and phone_RAM=#{phoneRam}-->
+<!--        </if>-->
+<!--        <if test="phoneStorage!=null and phoneStorage!=&quot;&quot;">-->
+<!--            and phone_storage=#{phoneStorage}-->
+<!--        </if>-->
+<!--        <if test="phoneNetwork!=null and phoneNetwork!=&quot;&quot;">-->
+<!--            and phone_network=#{phoneNetwork}-->
+<!--        </if>-->
+<!--        <if test="phoneState!=null and phoneState!=&quot;&quot;">-->
+<!--            and phone_state=#{phoneState}-->
+<!--        </if>-->
+    </select>
+
+
+
+
+</mapper>

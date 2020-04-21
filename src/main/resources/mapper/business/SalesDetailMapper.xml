@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cx.business.mapper.SalesDetailMapper">
+
+    <resultMap id="salesOrderDetail" type="com.cx.business.beans.SalesDetail">
+        <id property="sorId" column="sor_id"></id>
+        <result property="orderId" column="order_id"></result>
+        <result property="phoneId" column="phone_id"></result>
+        <result property="phoneNumber" column="phone_number"></result>
+        <result property="unitPrice" column="unit_price"></result>
+        <association property="phoneInfo" column="phone_id" javaType="com.cx.business.beans.PhoneInfo" select="com.cx.business.mapper.PhoneInfoMapper.selectById"></association>
+    </resultMap>
+
+
+    <select id="selectTargetSalesDetailByOrderId" resultMap="salesOrderDetail" parameterType="Integer">
+            SELECT
+                order_id,
+                phone_id,
+                count(*) AS productNumber,
+                unit_price
+            FROM
+                business_sales_detail
+            WHERE
+                order_id = #{orderId}
+            GROUP BY
+                phone_id;
+    </select>
+
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cx.business.mapper.ProductDamageOrderMapper">
+
+    <resultMap id="productDamageOrder" type="com.cx.business.beans.ProductDamageOrder">
+        <id property="pdoId" column="pdo_id"></id>
+        <result property="pdoTime" column="pdo_time"></result>
+        <result property="pdoNumber" column="pdo_number"></result>
+        <result property="totalMoney" column="total_money"></result>
+        <result property="pdoRemark" column="pdo_remark"></result>
+        <association property="warehouse" column="warehouse_id" javaType="com.cx.business.beans.Warehouse" select="com.cx.business.mapper.WarehouseMapper.selectById"></association>
+        <association property="user" column="user_id" javaType="com.cx.sys.beans.User" select="com.cx.sys.mapper.UserMapper.selectById"></association>
+    </resultMap>
+
+
+
+
+    <select id="selectProductDamageOrderList" resultMap="productDamageOrder">
+        select * from business_productDamage_order;
+    </select>
+
+</mapper>

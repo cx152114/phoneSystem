@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cx.business.mapper.InventoryMapper">
+
+    <resultMap id="phoneInfo_warehouse_inventory" type="com.cx.business.beans.Inventory">
+        <id property="inventoryId" column="inventory_id"></id>
+        <result property="firstStockTime" column="first_stock_time"></result>
+        <result property="lastStockTime" column="last_stock_time"></result>
+        <result property="productNumber" column="product_number"></result>
+        <result property="remark" column="remark"></result>
+        <association property="phoneInfo" column="phone_id" javaType="com.cx.business.beans.PhoneInfo" select="com.cx.business.mapper.PhoneInfoMapper.selectById" >
+        </association>
+        <association property="warehouse" column="warehouse_id" javaType="com.cx.business.beans.Warehouse"  select="com.cx.business.mapper.WarehouseMapper.selectById">
+        </association>
+    </resultMap>
+    
+    
+    <select id="selectTargetList" resultMap="phoneInfo_warehouse_inventory">
+        select * from business_inventory
+    </select>
+
+
+
+
+</mapper>

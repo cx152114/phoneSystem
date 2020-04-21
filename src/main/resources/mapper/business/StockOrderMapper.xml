@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cx.business.mapper.StockOrderMapper">
+
+    <!--  查询所有进货单信息  -->
+    <resultMap id="proInfo" type="com.cx.business.beans.StockOrder">
+        <id property="stoId" column="sto_id"></id>
+        <id property="warehouseId" column="warehouse_id"></id>
+        <result property="stoNumber" column="sto_number"></result>
+        <result property="orderTime" column="order_time"></result>
+        <result property="totalMoney" column="total_money"></result>
+        <result property="payType" column="pay_type"></result>
+        <result property="employeeId" column="employee_id"></result>
+        <result property="stoStatus" column="sto_status"></result>
+        <result property="stoRemark" column="sto_remark"></result>
+
+        <association property="user" column="user_id" javaType="com.cx.sys.beans.User" select="com.cx.sys.mapper.UserMapper.selectById"></association>
+    </resultMap>
+
+
+
+
+    <select id="selectStockOrderList" resultMap="proInfo">
+        select * from business_stock_order
+    </select>
+
+</mapper>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cx.business.mapper.SerialNumberMapper">
+
+    <resultMap id="preturnPhones" type="com.cx.business.beans.SerialNumber">
+        <id property="id" column="id"></id>
+        <result property="sn" column="SN"></result>
+        <result property="status" column="status"></result>
+        <result property="warehouseId" column="warehouse_id"></result>
+        <association property="phoneInfo" column="phone_id" javaType="com.cx.business.beans.PhoneInfo" select="com.cx.business.mapper.PhoneInfoMapper.selectById"></association>
+        <association property="sorderDetail" column="stod_id" javaType="com.cx.business.beans.SorderDetail" select="com.cx.business.mapper.SorderDetailMapper.selectById"></association>
+    </resultMap>
+
+
+
+    <resultMap id="preturnPhoneList" type="com.cx.business.beans.SerialNumber">
+        <id property="id" column="id"></id>
+        <result property="sn" column="SN"></result>
+        <result property="status" column="status"></result>
+        <association property="phoneInfo" column="phone_id" javaType="com.cx.business.beans.PhoneInfo" select="com.cx.business.mapper.PhoneInfoMapper.selectById"></association>
+        <association property="sorderDetail" column="stod_id" javaType="com.cx.business.beans.SorderDetail" select="com.cx.business.mapper.SorderDetailMapper.selectById"></association>
+        <association property="warehouse" column="warehouse_id" javaType="com.cx.business.beans.Warehouse" select="com.cx.business.mapper.WarehouseMapper.selectById"></association>
+    </resultMap>
+
+
+    <resultMap id="salesPhoneList" type="com.cx.business.beans.SerialNumber">
+        <id property="id" column="id"></id>
+        <result property="sn" column="SN"></result>
+        <result property="status" column="status"></result>
+        <association property="phoneInfo" column="phone_id" javaType="com.cx.business.beans.PhoneInfo" select="com.cx.business.mapper.PhoneInfoMapper.selectById"></association>
+        <association property="salesDetail" column="sor_id" javaType="com.cx.business.beans.SalesDetail" select="com.cx.business.mapper.SalesDetailMapper.selectById"></association>
+    </resultMap>
+
+    <resultMap id="canMovementPhones" type="com.cx.business.beans.SerialNumber">
+        <id property="id" column="id"></id>
+        <result property="sn" column="SN"></result>
+        <result property="status" column="status"></result>
+        <association property="phoneInfo" column="phone_id" javaType="com.cx.business.beans.PhoneInfo" select="com.cx.business.mapper.PhoneInfoMapper.selectById"></association>
+        <association property="sorderDetail" column="stod_id" javaType="com.cx.business.beans.SorderDetail" select="com.cx.business.mapper.SorderDetailMapper.selectById"></association>
+    </resultMap>
+
+
+
+
+    <select id="selectTargetPhoneInfo" resultMap="preturnPhones" parameterType="Integer">
+--         SELECT
+--             n.id,
+--             n.SN,
+--             d.stod_id,
+--             d.unit_price,
+--             p.*
+--         FROM
+--             business_phoneinfo p,
+--             business_serial_number n,
+--             business_sorder_detail d
+--         WHERE
+--             d.id = n.id
+--         AND p.phone_id = d.phone_id
+--         and n.status in(0,3);
+        SELECT
+                n.id,
+                n.SN,
+                d.stod_id,
+                d.unit_price,
+                p.*,
+                s.warehouse_id
+        FROM
+                business_phoneinfo p,
+                business_serial_number n,
+                business_sorder_detail d,
+                business_stock_order s
+        WHERE
+                d.id = n.id
+        AND p.phone_id = d.phone_id
+        AND s.sto_id=d.sto_id
+        and n.status in(0,3)
+        and s.warehouse_id=#{warehouseId}
+        and p.supplier_id=#{supplierId};
+    </select>
+
+
+
+    <select id="selectCanSalePhoneInfo" resultMap="preturnPhoneList" parameterType="Integer">
+        SELECT
+                n.id,
+                n.SN,
+                n.warehouse_id,
+                d.stod_id,
+                d.unit_price,
+                p.*
+        FROM
+                business_phoneinfo p,
+                business_serial_number n,
+                business_sorder_detail d
+        WHERE
+                d.id = n.id
+        AND p.phone_id = d.phone_id
+        and n.status =0;
+    </select>
+
+
+    <select id="selectSalesPhoneInfo" resultMap="salesPhoneList" parameterType="Integer">
+--         SELECT
+--                 n.id,
+--                 n.SN,
+--                 d.sor_id,
+--                 d.unit_price,
+--                 p.*
+--         FROM
+--                 business_phoneinfo p,
+--                 business_serial_number n,
+--                 business_sales_detail d
+--         WHERE
+--                 d.id = n.id
+--         AND p.phone_id = d.phone_id
+--         and n.status =2;
+            SELECT
+                n.id,
+                n.SN,
+                d.sor_id,
+                d.unit_price,
+                p.*
+            FROM
+                business_phoneinfo p,
+                business_serial_number n,
+                business_sales_detail d,
+                business_sales_order s
+            WHERE
+                d.id = n.id
+            AND p.phone_id = d.phone_id
+            AND s.order_id=d.order_id
+            and n.status =2
+            and s.customer_id=#{customerId};
+    </select>
+
+
+    <select id="selectCanMovementPhoneInfo" resultMap="canMovementPhones" parameterType="Integer">
+        SELECT
+            n.id,
+            n.SN,
+            d.stod_id,
+            d.unit_price,
+            p.*
+        FROM
+            business_phoneinfo p,
+            business_serial_number n,
+            business_sorder_detail d
+        WHERE
+                        d.id = n.id
+        AND p.phone_id = d.phone_id
+        and n.status in(0,3)
+        and n.warehouse_id=#{warehouseId}
+    </select>
+
+</mapper>

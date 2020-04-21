@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context.xsd
+			http://www.springframework.org/schema/aop
+			http://www.springframework.org/schema/aop/spring-aop.xsd
+			http://www.springframework.org/schema/tx
+			http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+
+    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
+
+
+    <!--    开启spring注解扫描-->
+    <context:component-scan base-package="com.cx">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+
+    <!-- spring整合mybatis   -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${mysql.driver}"></property>
+        <property name="url" value="${mysql.url}"></property>
+        <property name="username" value="${mysql.username}"></property>
+        <property name="password" value="${mysql.password}"></property>
+        <property name="maxActive" value="${maxActive}"></property>
+        <property name="initialSize" value="${initialSize}"></property>
+        <property name="maxWait" value="${maxWait}"></property>
+        <property name="minIdle" value="${minIdle}"></property>
+    </bean>
+
+    <!--    配置SqlSessionFactory工厂对象-->
+    <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="mapperLocations" value="classpath*:mapper/*/*.xml"></property>
+        <!-- 分页插件配置 -->
+        <property name="plugins">
+            <array>
+                <!--PaginationInterceptor 拦截器-->
+                <bean class="com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor"/>
+            </array>
+        </property>
+
+
+    </bean>
+
+
+
+    <!--配置Mapper接口的扫描器-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--配置mapper接口所在的包-->
+        <property name="basePackage" value="com.cx.business.mapper,com.cx.sys.mapper"/>
+        <!--注入会话工厂-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+
+    <!--  配置spring框架的声明式事务管理  -->
+    <!--    配置事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <tx:annotation-driven proxy-target-class="true"/>
+
+    <!-- 配置事务通知   -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="save*" propagation="REQUIRED" />
+            <tx:method name="insert*" propagation="REQUIRED" />
+            <tx:method name="add*" propagation="REQUIRED" />
+            <tx:method name="update*" propagation="REQUIRED" />
+            <tx:method name="delete*" propagation="REQUIRED" />
+            <tx:method name="remove*" propagation="REQUIRED" />
+            <tx:method name="accept*" propagation="REQUIRED" />
+            <tx:method name="reject*" propagation="REQUIRED" />
+            <tx:method name="execute*" propagation="REQUIRED" />
+            <tx:method name="del*" propagation="REQUIRED" />
+            <tx:method name="recover*" propagation="REQUIRED" />
+            <tx:method name="sync*" propagation="REQUIRED" />
+            <tx:method name="*" read-only="true" />
+        </tx:attributes>
+    </tx:advice>
+
+    <!--  配置AOP增强  -->
+    <aop:config>
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.cx.*.service.impl.*ServiceImpl.*(..))"></aop:advisor>
+    </aop:config>
+
+
+    <!-- aop注解生效 -->
+    <aop:aspectj-autoproxy/>
+
+    <import resource="classpath:application-shiro.xml" />
+</beans>

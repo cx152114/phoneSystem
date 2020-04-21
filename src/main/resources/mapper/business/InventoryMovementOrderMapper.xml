@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cx.business.mapper.InventoryMovementOrderMapper">
+
+    <resultMap id="inventoryMovementOrder" type="com.cx.business.beans.InventoryMovementOrder">
+        <id property="bimorderId" column="bimOrder_id"></id>
+<!--        <result property="salesNumber" column="warehouse_outid"></result>-->
+<!--        <result property="orderTime" column="warehouse_inid"></result>-->
+        <result property="movementTime" column="movement_time"></result>
+        <result property="bimoNumber" column="bimo_number"></result>
+        <result property="bimoReason" column="bimo_reason"></result>
+        <association property="user" column="user_id" javaType="com.cx.sys.beans.User" select="com.cx.sys.mapper.UserMapper.selectById"></association>
+        <association property="outWarehouse" column="warehouse_outid" javaType="com.cx.business.beans.Warehouse" select="com.cx.business.mapper.WarehouseMapper.selectById"></association>
+        <association property="inWarehouse" column="warehouse_inid" javaType="com.cx.business.beans.Warehouse" select="com.cx.business.mapper.WarehouseMapper.selectById"></association>
+    </resultMap>
+
+
+    <select id="selectInventoryMovementOrderList" resultMap="inventoryMovementOrder">
+        select * from business_inventory_movement_order
+    </select>
+
+</mapper>
