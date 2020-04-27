@@ -282,6 +282,7 @@
 
     function resetForm(data) {
         $(data)[0].reset();
+        refreshTable();
     }
 
     // 初始化表格数据
@@ -333,6 +334,7 @@
 
     // 查询
     $('#btn-search').bind('click', function () {
+        dataTable.bootstrapTable('removeAll');
         refreshTable();
     });
 

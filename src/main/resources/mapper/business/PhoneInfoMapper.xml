@@ -24,13 +24,13 @@
                 phone_id=#{phoneId} and
             </if>
             <if test="phoneName!=null and phoneName!=&quot;&quot;">
-                phone_name like #{phoneName} and
+                phone_name like "%"#{phoneName,jdbcType=VARCHAR}"%"  and
             </if>
             <if test="phoneType!=null and phoneType!=&quot;&quot;">
                 phone_type=#{phoneType} and
             </if>
             <if test="phoneColor!=null and phoneColor!=&quot;&quot;">
-                phone_color=#{phoneColor} and
+                phone_color like "%"#{phoneColor,jdbcType=VARCHAR}"%" and
             </if>
             <if test="phoneRam!=null and phoneRam!=&quot;&quot;">
                 phone_RAM=#{phoneRam} and
@@ -41,9 +41,13 @@
             <if test="phoneNetwork!=null and phoneNetwork!=&quot;&quot;">
                 phone_network=#{phoneNetwork} and
             </if>
+            <if test="supplierId!=null and supplierId!=&quot;&quot;">
+                supplier_id=#{supplierId} and
+            </if>
             <if test="phoneState!=null">
                 phone_state=#{phoneState}
             </if>
+
         </trim>
 <!--        <if test="phoneId!=null">-->
 <!--            and phone_id=#{phoneId}-->

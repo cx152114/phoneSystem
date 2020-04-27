@@ -128,9 +128,6 @@
                                  <label style="width: 60px">供货商：</label>
                                  <select id="supplierId2" name="supplierId">
                                      <option value="">所有</option>
-                                     <option value="0">腾讯</option>
-                                     <option value="1">天猫</option>
-                                     <option value="2">京东</option>
                                  </select>
                              </li>
                              <li>
@@ -257,10 +254,7 @@
                                          </select>
                                      </div>
                                  </div>
-
                              </div>
-
-
                              <div>
                                  <div class="form-group" style="float:left;width: 50%;">
                                      <label class="col-sm-4 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">储存容量：</label>
@@ -440,11 +434,6 @@
                                         <button type="button"  class="btn btn-default" data-dismiss="modal">取消</button>
                                     </form>
                                 </div>
-
-
-
-
-
                             </div>
                         </div>
                         <small class="font-bold"></small>
@@ -516,6 +505,7 @@
      <script>
          function resetForm(data) {
              $(data)[0].reset();
+             refreshTable();
          }
 
          // 初始化表格数据
@@ -526,7 +516,8 @@
              uniqueId: "phoneId",                 //  每一行的唯一标识，一般为主键列
              cache: false,                       //  设置为 false 禁用 AJAX 数据缓存， 默认为true
              pagination: true,                   //  是否显示分页
-             sidePagination: "server",           //  分页方式：client客户端分页，server服务端分页
+             //sidePagination: "server",           //  分页方式：client客户端分页，server服务端分页
+             sidePagination: "client",           //  分页方式：client客户端分页，server服务端分页
              pageSize: 5,                       //  每页的记录行数
              showPaginationSwitch:true,
              pageList:"[5,10,25,50,100,all]",
@@ -609,23 +600,12 @@
 
          // 查询
          $('#btn-search').bind('click', function () {
+             dataTable.bootstrapTable('removeAll');
              refreshTable();
          });
 
-
-         // $("btn-search").click(function(){
-         //     refreshTable();
-         // });
-
-
-
          // 刷新表格
          function refreshTable() {
-             // dataTable.bootstrapTable('refresh', {
-             //     url: "/business/phoneInfo/findAllPhoneInfo",
-             //     pageSize: 5  ,
-             //     pageNumber: 1
-             // });
              dataTable.bootstrapTable('refresh');
          }
 
@@ -742,9 +722,6 @@
              $('#alterSupplierModal').on('hidden.bs.modal', function () {
                  //$('#editUserForm').data('bootstrapValidator').resetForm(true);
              });
-
-
-
          });
 
 
@@ -759,6 +736,7 @@
                          $.each(supplierList,function(i,item){
 
                              $("#supplierId1").append("<option value='"+item.supplierId+"'>"+item.supplierName+"</option>");
+                             $("#supplierId2").append("<option value='"+item.supplierId+"'>"+item.supplierName+"</option>");
                              $("#supplierId").append("<option value='"+item.supplierId+"'>"+item.supplierName+"</option>");
                              i++;
                          });

@@ -45,14 +45,11 @@ public class PhoneInfoController {
         //1.构造查询条件构造器
         QueryWrapper queryWrapper = new QueryWrapper();
 
-
-
         if (!StringUtils.isEmpty(phoneType)) {
             queryWrapper.eq("phone_type", phoneType);
         }
         if (!StringUtils.isEmpty(phoneColor)) {
-            System.out.println(phoneColor);
-            queryWrapper.eq("phone_color", phoneColor);
+            queryWrapper.like("phone_color", phoneColor);
         }
         if (!StringUtils.isEmpty(phoneRam)) {
             queryWrapper.eq("phone_RAM", phoneRam);
@@ -77,23 +74,19 @@ public class PhoneInfoController {
             queryWrapper.like("phone_name",phoneName);
         }
 
-        phoneInfoService.list(queryWrapper);
+        List<PhoneInfo>list=phoneInfoService.listPhoneInfo(phoneInfo);
 
         //2.分页查询
         phoneInfoService.page(page, queryWrapper);
         page.setRecords(phoneInfoService.listPhoneInfo(phoneInfo));
+
         //3.返回分页数据
         return R.ok(page);
+        //return R.ok().put("rows",list);
     }
 
 
-    @RequestMapping(value = "/findAllPhoneInfo",method = RequestMethod.GET)
-    public ModelAndView findAllPhoneInfo(ModelAndView modelAndView){
-        List<PhoneInfo> phoneList =phoneInfoService.list();
-        modelAndView.addObject("phoneList",phoneList);
-        modelAndView.setViewName("/business/product-list");
-        return modelAndView;
-    }
+
 
 
 
