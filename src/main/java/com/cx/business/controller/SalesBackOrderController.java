@@ -44,14 +44,32 @@ public class SalesBackOrderController {
     @Autowired
     private ISalesBackDetailService salesBackDetailService;
 
-    @RequestMapping(value = "/findAllSalesBackOrder",method = RequestMethod.GET)
-    public ModelAndView findAllSalesBackOrder(ModelAndView modelAndView){
+
+    /**
+     * 跳转到销售退货订单管理页面
+     * @return
+     */
+    @GetMapping
+    private String salesBackOrderList(){
+        return "/business/sale_back_order_list";
+    }
+
+    @RequestMapping(value = "/findAllSalesBackOrder",method = RequestMethod.POST)
+    @ResponseBody
+    public R findAllSalesBackOrder(){
         QueryWrapper<SalesBackOrder> queryWrapper=new QueryWrapper();
         List<SalesBackOrder> salesBackOrderList=salesBackOrderService.listSalesBackOrderInfo(queryWrapper);
-        modelAndView.addObject("salesBackOrderList",salesBackOrderList);
-        modelAndView.setViewName("/business/sale_back_order_list");
-        return modelAndView;
+        return R.ok().put("rows",salesBackOrderList);
     }
+
+//    @RequestMapping(value = "/findAllSalesBackOrder",method = RequestMethod.GET)
+//    public ModelAndView findAllSalesBackOrder(ModelAndView modelAndView){
+//        QueryWrapper<SalesBackOrder> queryWrapper=new QueryWrapper();
+//        List<SalesBackOrder> salesBackOrderList=salesBackOrderService.listSalesBackOrderInfo(queryWrapper);
+//        modelAndView.addObject("salesBackOrderList",salesBackOrderList);
+//        modelAndView.setViewName("/business/sale_back_order_list");
+//        return modelAndView;
+//    }
 
 
     @RequestMapping(value = "/getSalesBackOrderBySboId",method = RequestMethod.POST)

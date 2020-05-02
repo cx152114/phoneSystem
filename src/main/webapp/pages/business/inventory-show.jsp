@@ -169,42 +169,6 @@
                                data-page-list="[5,10,25,50,100,all]"
                                data-side-pagination="client">
                             <hr>
-                            <thead>
-                            <tr>
-                                <th data-field="state" data-checkbox="true">#</th>
-                                <th data-field="phoneId" >商品编号</th>
-                                <th data-field="phoneName">商品名称</th>
-                                <th data-field="warehouseId" data-visible="false">仓库编号</th>
-                                <th data-field="warehouseName">仓库名称</th>
-                                <th data-field="productNumber">库存数量</th>
-                                <th data-field="phoneColor">颜色</th>
-                                <th data-field="phoneRam">运行内存</th>
-                                <th data-field="phoneStorage">内存容量</th>
-                                <th data-field="phoneNetwork">网络类型</th>
-                                <th data-field="firstStockTime">第一次入库时间</th>
-                                <th data-field="lastStockTime">最近一次库存变更</th>
-                                <th data-field="remark">备注</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${inventoryList}" var="inventory">
-                                <tr>
-                                    <td style="text-align: center;vertical-align: middle"></td>
-                                    <td style="vertical-align: middle;display: none" >${inventory.phoneInfo.phoneId}</td>
-                                    <td style="vertical-align: middle">${inventory.phoneInfo.phoneName}</td>
-                                    <td style="vertical-align: middle;display: none">${inventory.warehouse.warehouseId}</td>
-                                    <td style="vertical-align: middle">${inventory.warehouse.warehouseName}</td>
-                                    <td style="vertical-align: middle">${inventory.productNumber}</td>
-                                    <td style="vertical-align: middle">${inventory.phoneInfo.phoneColor}</td>
-                                    <td style="vertical-align: middle">${inventory.phoneInfo.phoneRam}</td>
-                                    <td style="vertical-align: middle">${inventory.phoneInfo.phoneStorage}</td>
-                                    <td style="vertical-align: middle">${inventory.phoneInfo.phoneNetwork}</td>
-                                    <td style="vertical-align: middle">${inventory.firstStockTimeStr}</td>
-                                    <td style="vertical-align: middle">${inventory.lastStockTimeStr}</td>
-                                    <td style="vertical-align: middle">${inventory.remark}</td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
                         </table>
                     </div>
 
@@ -232,10 +196,113 @@
 <script type="text/javascript">
 
 
-
  function resetForm(data) {
      $(data)[0].reset();
+     refreshTable();
  }
+
+ // 初始化表格数据
+ var dataTable = $('#inventoryShow').bootstrapTable({
+     url: "/business/inventory/findAllInventory",                      //  请求后台的URL
+     method: "post",                      //  请求方式
+     contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+     uniqueId: "orderId",                 //  每一行的唯一标识，一般为主键列
+     cache: false,                       //  设置为 false 禁用 AJAX 数据缓存， 默认为true
+     pagination: true,                   //  是否显示分页
+     //sidePagination: "server",           //  分页方式：client客户端分页，server服务端分页
+     sidePagination: "client",           //  分页方式：client客户端分页，server服务端分页
+     pageSize: 5,                       //  每页的记录行数
+     showPaginationSwitch:true,
+     pageList:"[5,10,25,50,100,all]",
+     queryParamsType: '',
+     queryParams: function (param) {
+         return {
+             current: param.pageNumber, // 当前页 1
+             size: param.pageSize,      // 一页显示多少天 10
+             // phoneId:$("#phoneId2").val(),
+             // phoneName:$("#phoneName2").val(),
+             // supplierId:$("#supplierId2").val(),
+             // phoneType:$("#phoneType2").val(),
+             // phoneColor:$("#phoneColor2").val(),
+             // phoneRam:$("#phoneRam2").val(),
+             // phoneStorage:$("#phoneStorage2").val(),
+             // phoneNetwork:$("#phoneNetwork2").val(),
+             // phoneState:$("#phoneState2").val()
+         }
+     },
+     columns: [
+         {
+             checkbox: true
+         },{
+             field: 'phoneId',
+             title: '商品编号',
+             formatter: function(value, item, index) {
+                 return item.phoneInfo.phoneId;
+             }
+         }, {
+             field: 'phoneName',
+             title: '商品名称',
+             formatter: function(value, item, index) {
+                 return item.phoneInfo.phoneName;
+             }
+         }, {
+             field: 'warehouseId',
+             title: '仓库编号',
+             visible:false,
+             formatter: function(value, item, index) {
+                 return item.warehouse.warehouseId;
+             }
+         }, {
+             field: 'warehouseName',
+             title: '仓库名称',
+             formatter: function(value, item, index) {
+                 return item.warehouse.warehouseName;
+             }
+         }, {
+             field: 'productNumber',
+             title: '库存数量'
+         }, {
+             field: 'phoneColor',
+             title: '颜色',
+             formatter: function(value, item, index) {
+                 return item.phoneInfo.phoneColor;
+             }
+         }, {
+             field: 'phoneRam',
+             title: '运行内存',
+             formatter: function(value, item, index) {
+                 return item.phoneInfo.phoneRam;
+             }
+         }, {
+             field: 'phoneStorage',
+             title: '网络类型',
+             formatter: function(value, item, index) {
+                 return item.phoneInfo.phoneStorage;
+             }
+         }, {
+             field: 'firstStockTime',
+             title: '第一次入库时间'
+         }, {
+             field: 'lastStockTime',
+             title: '最近一次库存变更时间'
+         }, {
+             field: 'remark',
+             title: '备注'
+         }]
+ });
+
+ // 查询
+ $('#btn-search').bind('click', function () {
+     dataTable.bootstrapTable('removeAll');
+     refreshTable();
+ });
+
+ // 刷新表格
+ function refreshTable() {
+     dataTable.bootstrapTable('refresh');
+ }
+
+
 
 
 

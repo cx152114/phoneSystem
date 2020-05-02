@@ -8,6 +8,7 @@ import com.cx.business.service.IWarehouseService;
 import com.cx.common.model.R;
 import com.cx.sys.beans.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -32,13 +33,22 @@ public class WarehouseController {
     @Autowired
     private IWarehouseService warehouseService;
 
-    @RequestMapping(value = "/findAllWarehouse")
-    public ModelAndView findAllWarehouse(ModelAndView modelAndView){
-        List<Warehouse> warehouseList=warehouseService.list();
-        modelAndView.addObject("warehouseList",warehouseList);
-        modelAndView.setViewName("/business/warehouse-list");
-        return modelAndView;
+
+    @GetMapping
+    public String warehouseManagement() {
+        return "/business/warehouse-list";
     }
+
+    @RequestMapping(value = "/findTargetWarehouse")
+    @ResponseBody
+    public R findTargetWarehouse(){
+        List<Warehouse> warehouseList=warehouseService.list();
+        return R.ok().put("rows",warehouseList);
+    }
+
+
+
+
 
     @RequestMapping(value = "/addWarehouse",method = RequestMethod.POST)
     public String addWarehouse(Warehouse warehouse){

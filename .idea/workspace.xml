@@ -385,7 +385,6 @@
       <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/mybatis-plus-extension-3.2.0.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/mybatis-plus-generator-3.2.0.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/mybatis-spring-2.0.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/mysql-connector-java-5.1.47.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/shiro-cache-1.4.1.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/shiro-config-core-1.4.1.jar" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/shiro-config-ogdl-1.4.1.jar" afterDir="false" />
@@ -792,6 +791,34 @@
       <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/service/impl/UserRoleServiceImplTest.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/service/impl/UserServiceImplTest.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/service/impl/preturnOrderServiceImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/Inventory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/PreturnDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/PreturnDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/PreturnOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/PreturnOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/SalesDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/SalesDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/SalesOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/SalesOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/SerialNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/SerialNumber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/SorderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/SorderDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/StockOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/StockOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/Supplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/Warehouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/InventoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/PreturnOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/PreturnOrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/SalesBackOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/SalesBackOrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/SalesOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/SalesOrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/StockOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/StockOrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/WarehouseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/WarehouseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/service/impl/WarehouseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/service/impl/WarehouseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/business/inventory-show.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/business/inventory-show.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/business/product-stock.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/business/product-stock.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/business/sale-order-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/business/sale-order-list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/business/sale_back_order_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/business/sale_back_order_list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/business/stock-order-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/business/stock-order-list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/business/stock_return_order_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/business/stock_return_order_list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/business/warehouse-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/business/warehouse-list.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -873,7 +900,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -986,8 +1013,8 @@
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="Tomcat_9_0_2014_phoneManagement" />
       </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <log_file checked="false" alias="Tomcat Catalina Log" path="%IDEA_RUN:CATALINA_BASE%/logs/catalina.*" />
+      <predefined_log_file id="Tomcat" />
       <predefined_log_file id="Tomcat Manager" />
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
@@ -1151,7 +1178,7 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="Finished" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
               </path>
             </expand>
             <select />
@@ -1228,7 +1255,12 @@
       <workItem from="1587781335810" duration="419000" />
       <workItem from="1587781789316" duration="1247000" />
       <workItem from="1587886924799" duration="1266000" />
-      <workItem from="1587950175270" duration="10396000" />
+      <workItem from="1587950175270" duration="11435000" />
+      <workItem from="1588038750545" duration="1276000" />
+      <workItem from="1588254498471" duration="1217000" />
+      <workItem from="1588316740428" duration="1942000" />
+      <workItem from="1588319754545" duration="25455000" />
+      <workItem from="1588382147891" duration="248000" />
     </task>
     <task id="LOCAL-00001" summary="项目备份">
       <created>1587484893322</created>
@@ -1244,7 +1276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587999845119</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="部分修改">
+      <created>1588000095086</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1588000095086</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1255,7 +1294,8 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="项目备份" />
     <MESSAGE value="完成部分条件查询" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成部分条件查询" />
+    <MESSAGE value="部分修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="部分修改" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#Console" timestamp="1587217684030">
@@ -1270,10 +1310,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="364" y="86" key="#Tomcat_Server/0.0.1536.824@0.0.1536.824" timestamp="1583925851644" />
-    <state x="227" y="68" width="1089" height="755" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1587192673076">
+    <state x="227" y="68" width="1089" height="755" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588317584811">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="227" y="68" width="1089" height="755" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1587192673076" />
+    <state x="227" y="68" width="1089" height="755" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1588317584811" />
     <state x="515" y="248" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1585366127152">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1298,34 +1338,34 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="503" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1587437384340" />
-    <state x="343" y="2" key="CommitChangelistDialog2" timestamp="1588000018921">
+    <state x="343" y="2" key="CommitChangelistDialog2" timestamp="1588000090871">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="343" y="2" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588000018921" />
+    <state x="343" y="2" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588000090871" />
     <state x="104" y="100" width="1336" height="624" key="DiffContextDialog" timestamp="1585366083736">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="104" y="100" width="1336" height="624" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1585366083736" />
-    <state x="552" y="168" key="FileChooserDialogImpl" timestamp="1587991028915">
+    <state x="552" y="168" key="FileChooserDialogImpl" timestamp="1588038841225">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="552" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587991028915" />
-    <state width="1014" height="204" key="GridCell.Tab.0.bottom" timestamp="1588000020127">
+    <state x="552" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588038841225" />
+    <state width="1014" height="185" key="GridCell.Tab.0.bottom" timestamp="1588382522091">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1014" height="204" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588000020127" />
-    <state width="1014" height="204" key="GridCell.Tab.0.center" timestamp="1588000020127">
+    <state width="1014" height="185" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588382522091" />
+    <state width="1014" height="185" key="GridCell.Tab.0.center" timestamp="1588382522090">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1014" height="204" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588000020127" />
-    <state width="1014" height="204" key="GridCell.Tab.0.left" timestamp="1588000020127">
+    <state width="1014" height="185" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588382522090" />
+    <state width="1014" height="185" key="GridCell.Tab.0.left" timestamp="1588382522089">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1014" height="204" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588000020127" />
-    <state width="1014" height="204" key="GridCell.Tab.0.right" timestamp="1588000020127">
+    <state width="1014" height="185" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588382522089" />
+    <state width="1014" height="185" key="GridCell.Tab.0.right" timestamp="1588382522090">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1014" height="204" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588000020127" />
+    <state width="1014" height="185" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588382522090" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1586617131689">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1342,14 +1382,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1586617131689" />
-    <state x="274" y="0" key="SettingsEditor" timestamp="1587482464441">
+    <state x="274" y="0" key="SettingsEditor" timestamp="1588319656729">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="274" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1587482464420" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1587485201514">
+    <state x="274" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588319656729" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1588000159937">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1587485201514" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588000159937" />
     <state x="435" y="145" width="672" height="676" key="search.everywhere.popup" timestamp="1585504510022">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

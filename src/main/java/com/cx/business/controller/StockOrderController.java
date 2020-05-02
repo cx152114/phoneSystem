@@ -48,20 +48,44 @@ public class StockOrderController {
     @Autowired
     private ISerialNumberService serialNumberService;
 
+
+    /**
+     * 跳转到采购商品页面
+     * @return
+     */
+    @GetMapping("/stockOrderList")
+    private String stockOrderList(){
+        return "/business/stock-order-list";
+    }
+
+
     /**
      * 显示所有订单
      * @param modelAndView
      * @return
      */
-    @RequestMapping(value = "/findAllStockOrder",method = RequestMethod.GET)
-
-    public ModelAndView findAllStockOrder(ModelAndView modelAndView){
+    @RequestMapping(value = "/findAllStockOrder",method = RequestMethod.POST)
+    @ResponseBody
+    public R findAllStockOrder(ModelAndView modelAndView){
         QueryWrapper queryWrapper=new QueryWrapper();
         List<StockOrder> stockOrderList=stockOrderService.listStockOrderInfo(queryWrapper);
-        modelAndView.addObject("stockOrderList",stockOrderList);
-        modelAndView.setViewName("/business/stock-order-list");
-        return modelAndView;
+        return R.ok().put("rows",stockOrderList);
     }
+
+
+    /**
+     * 显示所有订单
+     * @param modelAndView
+     * @return
+     */
+//    @RequestMapping(value = "/findAllStockOrder",method = RequestMethod.GET)
+//    public ModelAndView findAllStockOrder(ModelAndView modelAndView){
+//        QueryWrapper queryWrapper=new QueryWrapper();
+//        List<StockOrder> stockOrderList=stockOrderService.listStockOrderInfo(queryWrapper);
+//        modelAndView.addObject("stockOrderList",stockOrderList);
+//        modelAndView.setViewName("/business/stock-order-list");
+//        return modelAndView;
+//    }
 
 
 

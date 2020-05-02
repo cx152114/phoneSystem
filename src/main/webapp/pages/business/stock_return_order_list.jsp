@@ -160,39 +160,39 @@
                        data-side-pagination="client">
                     <h4><i class="fa fa-angle-right"></i> 采购退货单信息</h4>
                     <hr>
-                    <thead>
-                        <tr>
-                            <th ata-field="state" data-checkbox="true">#</th>
-                            <th data-field="proId">退货单号</th>
-                            <th data-field="proNumber">商品总数量</th>
-                            <th data-field="orderTime">订单时间</th>
-                            <th data-field="totalMoney">订单总金额</th>
-                            <th data-field="payType">支付方式</th>
-                            <th data-field="userId" data-visible="false">经手人编号</th>
-                            <th data-field="userName">经手人</th>
-                            <th data-field="proStatus">订单状态</th>
-                            <th data-field="proReason">退货原因</th>
-                            <th>操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${preturnOrderList}" var="preturnOrder">
-                        <tr style="text-align: center;vertical-align: middle">
-                            <td style="text-align: center;vertical-align: middle"></td>
-                            <td style="text-align: center;vertical-align: middle;">${preturnOrder.proId}</td>
-                            <td style="text-align: center;vertical-align: middle">${preturnOrder.proNumber}</td>
-                            <td style="text-align: center;vertical-align: middle">${preturnOrder.orderTimeStr}</td>
-                            <td style="text-align: center;vertical-align: middle">${preturnOrder.totalMoney}</td>
-                            <td style="text-align: center;vertical-align: middle">${preturnOrder.payTypeStr}</td>
-                            <td style="text-align: center;vertical-align: middle">${preturnOrder.user.userId}</td>
-                            <td style="text-align: center;vertical-align: middle">${preturnOrder.user.username}</td>
-                            <td style="text-align: center;vertical-align: middle">${preturnOrder.proStatusStr}</td>
-                            <td style="text-align: center;vertical-align: middle">${preturnOrder.proReason}</td>
-                            <td style="text-align: center;vertical-align: middle">
-                                <button type="button" class="btn btn-info btn-rounded btn-xs" onclick="getOrderDetail(this)">详情</button>
-                            </td>
-                        </tr>
-                    </c:forEach>
+<%--                    <thead>--%>
+<%--                        <tr>--%>
+<%--                            <th ata-field="state" data-checkbox="true">#</th>--%>
+<%--                            <th data-field="proId">退货单号</th>--%>
+<%--                            <th data-field="proNumber">商品总数量</th>--%>
+<%--                            <th data-field="orderTime">订单时间</th>--%>
+<%--                            <th data-field="totalMoney">订单总金额</th>--%>
+<%--                            <th data-field="payType">支付方式</th>--%>
+<%--                            <th data-field="userId" data-visible="false">经手人编号</th>--%>
+<%--                            <th data-field="userName">经手人</th>--%>
+<%--                            <th data-field="proStatus">订单状态</th>--%>
+<%--                            <th data-field="proReason">退货原因</th>--%>
+<%--                            <th>操作</th>--%>
+<%--                        </tr>--%>
+<%--                    </thead>--%>
+<%--                    <tbody>--%>
+<%--                    <c:forEach items="${preturnOrderList}" var="preturnOrder">--%>
+<%--                        <tr style="text-align: center;vertical-align: middle">--%>
+<%--                            <td style="text-align: center;vertical-align: middle"></td>--%>
+<%--                            <td style="text-align: center;vertical-align: middle;">${preturnOrder.proId}</td>--%>
+<%--                            <td style="text-align: center;vertical-align: middle">${preturnOrder.proNumber}</td>--%>
+<%--                            <td style="text-align: center;vertical-align: middle">${preturnOrder.orderTimeStr}</td>--%>
+<%--                            <td style="text-align: center;vertical-align: middle">${preturnOrder.totalMoney}</td>--%>
+<%--                            <td style="text-align: center;vertical-align: middle">${preturnOrder.payTypeStr}</td>--%>
+<%--                            <td style="text-align: center;vertical-align: middle">${preturnOrder.user.userId}</td>--%>
+<%--                            <td style="text-align: center;vertical-align: middle">${preturnOrder.user.username}</td>--%>
+<%--                            <td style="text-align: center;vertical-align: middle">${preturnOrder.proStatusStr}</td>--%>
+<%--                            <td style="text-align: center;vertical-align: middle">${preturnOrder.proReason}</td>--%>
+<%--                            <td style="text-align: center;vertical-align: middle">--%>
+<%--                                <button type="button" class="btn btn-info btn-rounded btn-xs" onclick="getOrderDetail(this)">详情</button>--%>
+<%--                            </td>--%>
+<%--                        </tr>--%>
+<%--                    </c:forEach>--%>
 
                     </tbody>
                 </table>
@@ -269,6 +269,124 @@
 
 <%--layui插件--%>
 <script src="${pageContext.request.contextPath}/lib/layer/layer.js"></script>
+
+<script type="application/javascript">
+    function resetForm(data) {
+        $(data)[0].reset();
+        refreshTable();
+    }
+
+    // 初始化表格数据
+    var dataTable = $('#preturnOrders').bootstrapTable({
+        url: "/business/preturnOrder/findAllPreturnOrder",                      //  请求后台的URL
+        method: "post",                      //  请求方式
+        contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+        uniqueId: "proId",                 //  每一行的唯一标识，一般为主键列
+        cache: false,                       //  设置为 false 禁用 AJAX 数据缓存， 默认为true
+        pagination: true,                   //  是否显示分页
+        //sidePagination: "server",           //  分页方式：client客户端分页，server服务端分页
+        sidePagination: "client",           //  分页方式：client客户端分页，server服务端分页
+        pageSize: 5,                       //  每页的记录行数
+        showPaginationSwitch:true,
+        pageList:"[5,10,25,50,100,all]",
+        queryParamsType: '',
+        queryParams: function (param) {
+            return {
+                current: param.pageNumber, // 当前页 1
+                size: param.pageSize,      // 一页显示多少天 10
+                // phoneId:$("#phoneId2").val(),
+                // phoneName:$("#phoneName2").val(),
+                // supplierId:$("#supplierId2").val(),
+                // phoneType:$("#phoneType2").val(),
+                // phoneColor:$("#phoneColor2").val(),
+                // phoneRam:$("#phoneRam2").val(),
+                // phoneStorage:$("#phoneStorage2").val(),
+                // phoneNetwork:$("#phoneNetwork2").val(),
+                // phoneState:$("#phoneState2").val()
+            }
+        },
+        columns: [
+            {
+                checkbox: true
+            },{
+                field: 'proId',
+                title: '退货单号'
+            }, {
+                field: 'proNumber',
+                title: '商品总数量'
+            }, {
+                field: 'orderTime',
+                title: '订单时间'
+            }, {
+                field: 'totalMoney',
+                title: '订单总金额'
+            }, {
+                field: 'payType',
+                title: '支付方式',
+                formatter: function(value, item, index) {
+                    if(value==0){
+                        return "现金";
+                    }else if(value==1){
+                        return "银行转账";
+                    }else if(value==2){
+                        return "支付宝";
+                    }else if(value==3){
+                        return "微信";
+                    }else if(value==4){
+                        return "其他";
+                    }
+                }
+            }, {
+                field: 'userId',
+                title: '经手人编号',
+                visible:false,
+                formatter: function(value, item, index) {
+                    return item.user.userId;
+                }
+            }, {
+                field: 'username',
+                title: '经手人',
+                formatter: function(value, item, index) {
+                    return item.user.username;
+                }
+            }, {
+                field: 'proStatus',
+                title: '订单状态',
+                formatter: function(value, item, index) {
+                    if(value==0){
+                        return "未完成";
+                    }else if(value==1){
+                        return "已完成";
+                    }else if(value==2) {
+                        return "已取消";
+                    }
+                }
+            }, {
+                field: 'proReason',
+                title: '退货原因'
+            },{
+                field: 'action',
+                title: '操作',
+                formatter: function(value, item, index) {
+                    return "<button type=\"button\" class=\"btn btn-info btn-rounded btn-xs\" onclick=\"getOrderDetail(this)\">详情</button>";
+                }
+            }]
+    });
+
+    // 查询
+    $('#btn-search').bind('click', function () {
+        dataTable.bootstrapTable('removeAll');
+        refreshTable();
+    });
+
+    // 刷新表格
+    function refreshTable() {
+        dataTable.bootstrapTable('refresh');
+    }
+</script>
+
+
+
 
 <script>
     /**

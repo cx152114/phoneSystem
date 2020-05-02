@@ -4,11 +4,14 @@ package com.cx.business.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.cx.business.beans.Inventory;
 import com.cx.business.service.IInventoryService;
+import com.cx.common.model.R;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -27,13 +30,31 @@ public class InventoryController {
     @Autowired
     private IInventoryService iInventoryService;
 
-    @RequestMapping(value = "/findAllInventory",method = RequestMethod.GET)
-    private ModelAndView findAllInventory(ModelAndView modelAndView){
+    /**
+     * 跳转到库存查询页面
+     * @return
+     */
+    @GetMapping
+    private String searchProductInventory(){
+        return "/business/inventory-show";
+    }
+
+    @RequestMapping(value = "/findAllInventory",method = RequestMethod.POST)
+    @ResponseBody
+    private R findAllInventory(){
         QueryWrapper<Inventory> queryWrapper=new QueryWrapper<>();
         List<Inventory> inventoryList =iInventoryService.selectTargetList(queryWrapper);
-        modelAndView.addObject("inventoryList",inventoryList);
-        modelAndView.setViewName("/business/inventory-show");
-        return modelAndView;
+        return R.ok().put("rows",inventoryList);
     }
+
+
+//    @RequestMapping(value = "/findAllInventory",method = RequestMethod.GET)
+//    private ModelAndView findAllInventory(ModelAndView modelAndView){
+//        QueryWrapper<Inventory> queryWrapper=new QueryWrapper<>();
+//        List<Inventory> inventoryList =iInventoryService.selectTargetList(queryWrapper);
+//        modelAndView.addObject("inventoryList",inventoryList);
+//        modelAndView.setViewName("/business/inventory-show");
+//        return modelAndView;
+//    }
 
 }

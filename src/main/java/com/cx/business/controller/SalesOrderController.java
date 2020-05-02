@@ -8,6 +8,7 @@ import com.cx.business.service.ISalesOrderService;
 import com.cx.business.service.IStockOrderService;
 import com.cx.common.model.R;
 import com.cx.sys.beans.User;
+import lombok.Data;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
@@ -43,13 +44,23 @@ public class SalesOrderController {
     @Autowired
     private ISalesDetailService salesDetailService;
 
-    @RequestMapping(value = "/findAllSalesOrder",method = RequestMethod.GET)
-    public ModelAndView findAllSalesOrder(ModelAndView modelAndView){
+
+    /**
+     * 跳转到销售订单管理页面
+     * @return
+     */
+    @GetMapping
+    private String salesOrderList(){
+        return "/business/sale-order-list";
+    }
+
+
+    @RequestMapping(value = "/findAllSalesOrder",method = RequestMethod.POST)
+    @ResponseBody
+    public R findAllSalesOrder(){
         QueryWrapper queryWrapper=new QueryWrapper();
         List<SalesOrder> salesOrderList=salesOrderService.listSalesOrderInfo(queryWrapper);
-        modelAndView.addObject("salesOrderList",salesOrderList);
-        modelAndView.setViewName("/business/sale-order-list");
-        return modelAndView;
+        return R.ok().put("rows",salesOrderList);
     }
 
     /**

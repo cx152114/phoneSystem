@@ -10,7 +10,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-
     <title>仓库管理</title>
     <!-- Favicons -->
     <link href="${pageContext.request.contextPath}/img/favicon.png" rel="icon">
@@ -82,34 +81,9 @@
                                data-exportDataType ="basic"
                                data-show-pagination-switch="true"
                                data-pagination="true"
-                               data-page-list="[5,10,25,50,100,all]"
-                               data-side-pagination="client">
-
+                               data-page-list="[5,10,25,50,100,all]">
                             <h4><i class="fa fa-angle-right"></i> 仓库管理</h4>
                             <hr>
-                            <thead>
-                            <tr>
-                                <th data-field="state" data-checkbox="true">#</th>
-                                <th data-field="warehouseId">仓库编号</th>
-                                <th data-field="warehouseName">仓库名称</th>
-                                <th data-field="employeeId">负责人</th>
-                                <th data-field="warehouseAddress">仓库地址</th>
-                                <th data-field="warehouseRemark">备注</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${warehouseList}" var="warehouse">
-                                <tr>
-                                    <td style="text-align: center;vertical-align: middle">
-                                    </td>
-                                    <td style="vertical-align: middle">${warehouse.warehouseId}</td>
-                                    <td style="vertical-align: middle">${warehouse.warehouseName}</td>
-                                    <td style="vertical-align: middle">${warehouse.userId}</td>
-                                    <td style="vertical-align: middle">${warehouse.warehouseAddress}</td>
-                                    <td style="vertical-align: middle" >${warehouse.warehouseRemark}</td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
                         </table>
                     </div>
 
@@ -252,11 +226,6 @@
 <%--<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>--%>
 <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table-locale-all.min.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
-<%--<script  type="text/javascript" src="${pageContext.request.contextPath}/lib/tableExport/bootstrap-table-export.min.js"></script>--%>
-
-
-<%--<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table-locale-all.min.js"></script>--%>
-<%--<script  type="text/javascript" src="${pageContext.request.contextPath}/lib/tableExport/bootstrap-table-export.min.js"></script>--%>
 
 
 <!-- 数据导出 -->
@@ -275,6 +244,52 @@
 
 
 <script>
+
+
+    // 初始化表格数据
+    var dataTable = $('#warehouses').bootstrapTable({
+        url: "/business/warehouse/findTargetWarehouse",                      //  请求后台的URL
+        method: "post",                      //  请求方式
+        contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+        uniqueId: "customerId",                 //  每一行的唯一标识，一般为主键列
+        cache: false,                       //  设置为 false 禁用 AJAX 数据缓存， 默认为true
+        pagination: true,                   //  是否显示分页
+        sidePagination: "client",           //  分页方式：client客户端分页，server服务端分页
+        pageSize: 5,                       //  每页的记录行数
+        showPaginationSwitch:true,
+        pageList:"[5,10,25,50,100,all]",
+        columns: [
+            {
+                checkbox: true
+            }, {
+                field: 'warehouseId',
+                title: '仓库编号'
+            }, {
+                field: 'warehouseName',
+                title: '仓库名称'
+            }, {
+                field: 'userId',
+                title: '负责人编号',
+                visible:false,
+                formatter: function(value, item, index) {
+                    return item.user.userId;
+                }
+            }, {
+                field: 'userName',
+                title: '负责人姓名',
+                formatter: function(value, item, index) {
+                    return item.user.username;
+                }
+            }, {
+                field: 'warehouseAddress',
+                title: '仓库地址'
+            }, {
+                field: 'warehouseRemark',
+                title: '备注'
+            }]
+    });
+
+
 
     /**
      * 设置导出文件的属性

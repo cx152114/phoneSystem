@@ -49,19 +49,24 @@ public class PreturnOrderController {
     private IPreturnDetailService preturnDetailService;
 
 
+    @GetMapping
+    public String pReturnOrderList() {
+        return "/business/stock_return_order_list";
+    }
+
+
     /**
      * 显示所有进货退货单
-     * @param modelAndView
      * @return
      */
-    @RequestMapping(value = "/findAllPreturnOrder",method = RequestMethod.GET)
-    public ModelAndView findAllPreturnOrder(ModelAndView modelAndView){
+    @RequestMapping(value = "/findAllPreturnOrder",method = RequestMethod.POST)
+    @ResponseBody
+    public R findAllPreturnOrder(){
         QueryWrapper<PreturnOrder> queryWrapper=new QueryWrapper();
-        List<PreturnOrder> preturnOrderList=preturnOrderService.listPreturnOrderInfo(queryWrapper);
-        modelAndView.addObject("preturnOrderList",preturnOrderList);
-        modelAndView.setViewName("/business/stock_return_order_list");
-        return modelAndView;
+        List<PreturnOrder> list=preturnOrderService.listPreturnOrderInfo(queryWrapper);
+        return R.ok().put("rows",list);
     }
+
 
     /**
      * 获得指定订单的订单详情
