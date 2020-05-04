@@ -5,14 +5,13 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.cx.business.beans.PreturnDetail;
 import com.cx.business.beans.PreturnOrder;
 import com.cx.business.beans.SerialNumber;
-import com.cx.business.beans.SorderDetail;
 import com.cx.business.service.IPreturnDetailService;
 import com.cx.business.service.IPreturnOrderService;
 import com.cx.common.model.R;
 import com.cx.sys.beans.User;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
@@ -61,9 +60,40 @@ public class PreturnOrderController {
      */
     @RequestMapping(value = "/findAllPreturnOrder",method = RequestMethod.POST)
     @ResponseBody
-    public R findAllPreturnOrder(){
-        QueryWrapper<PreturnOrder> queryWrapper=new QueryWrapper();
-        List<PreturnOrder> list=preturnOrderService.listPreturnOrderInfo(queryWrapper);
+    public R findAllPreturnOrder(PreturnOrder preturnOrder,Integer minNumber,Integer maxNumber,String startTime,String endTime,Double minAccount,Double maxAccount){
+        QueryWrapper<PreturnOrder> queryWrapper=new QueryWrapper<PreturnOrder>();
+        if (null!=preturnOrder.getProId()){
+            queryWrapper.eq("pro_id",preturnOrder.getProId());
+        }
+        if (null!=preturnOrder.getProStatus()){
+            queryWrapper.eq("pro_status",preturnOrder.getProStatus());
+        }
+        if (null!=preturnOrder.getUserId()){
+            queryWrapper.eq("user_id",preturnOrder.getUserId());
+        }
+        if(null!=preturnOrder.getPayType()){
+            queryWrapper.eq("pay_type",preturnOrder.getPayType());
+        }
+        if (null!=minNumber){
+            queryWrapper.ge("pro_number",minNumber);
+        }
+        if (null!=maxNumber){
+            queryWrapper.le("pro_number",maxNumber);
+        }
+        if (!StringUtils.isEmpty(startTime)){
+            queryWrapper.ge("order_time",startTime);
+        }
+        if (!StringUtils.isEmpty(endTime)){
+            queryWrapper.le("order_time",endTime);
+        }
+        if (null!=minAccount){
+            queryWrapper.ge("total_money",minAccount);
+        }
+        if (null!=maxAccount){
+            queryWrapper.le("total_money",maxAccount);
+        }
+        List<PreturnOrder> list=preturnOrderService.list(queryWrapper);
+        //List<PreturnOrder> list=preturnOrderService.listPreturnOrderInfo(queryWrapper);
         return R.ok().put("rows",list);
     }
 

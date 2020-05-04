@@ -43,15 +43,53 @@ public class ProductDamageOrderController {
     private IProductDamageDetailService productDamageDetailService;
 
 
-
-    @RequestMapping(value = "/findAllProductDamageOrder",method = RequestMethod.GET)
-    public ModelAndView findAllProductDamageOrder(ModelAndView modelAndView){
-        QueryWrapper queryWrapper=new QueryWrapper();
-        List<ProductDamageOrder> productDamageOrders=productDamageOrderService.listProductDamageOrder(queryWrapper);
-        modelAndView.addObject("productDamageOrders",productDamageOrders);
-        modelAndView.setViewName("/business/product_damage_list");
-        return modelAndView;
+    @GetMapping
+    private String productDamageManagement(){
+        return "/business/product_damage_list";
     }
+
+    /**
+     * 报损单
+     * @return
+     */
+    @RequestMapping(value = "/findAllProductDamageOrder",method = RequestMethod.POST)
+    @ResponseBody
+    public R findAllProductDamageOrder(ProductDamageOrder productDamageOrder,Integer minNumber,Integer maxNumber,String startTime,String endTime,Double minAccount,Double maxAccount){
+        QueryWrapper<ProductDamageOrder> queryWrapper=new QueryWrapper<ProductDamageOrder>();
+        if (null!=productDamageOrder.getPdoId()){
+            queryWrapper.eq("pdo_id",productDamageOrder.getPdoId());
+        }
+        if(null!=productDamageOrder.getWarehouseId()){
+            queryWrapper.eq("warehouse_id",productDamageOrder.getWarehouseId());
+        }
+
+        if (null!=productDamageOrder.getUserId()){
+            queryWrapper.eq("user_id",productDamageOrder.getUserId());
+        }
+        if (null!=minNumber){
+            queryWrapper.ge("pdo_number",minNumber);
+        }
+        if (null!=maxNumber){
+            queryWrapper.le("pdo_number",maxNumber);
+        }
+        if (!StringUtils.isEmpty(startTime)){
+            queryWrapper.ge("pdo_time",startTime);
+        }
+        if (!StringUtils.isEmpty(endTime)){
+            queryWrapper.le("pdo_time",endTime);
+        }
+        if (null!=minAccount){
+            queryWrapper.ge("total_money",minAccount);
+        }
+        if (null!=maxAccount){
+            queryWrapper.le("total_money",maxAccount);
+        }
+        List<ProductDamageOrder> productDamageOrders=productDamageOrderService.list(queryWrapper);
+        //List<ProductDamageOrder> productDamageOrders=productDamageOrderService.listProductDamageOrder(queryWrapper);
+        return R.ok().put("rows",productDamageOrders);
+    }
+
+
 
 
     @RequestMapping(value = "/getProductDamageDetailsByPdoId",method = RequestMethod.POST)

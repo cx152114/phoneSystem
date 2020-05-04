@@ -72,18 +72,18 @@
                         <ul>
                             <li>
                                 <label style="width: 80px">调拨单号：</label>
-                                <input type="text" style="width: 100px;" id="stoId" name="stoId"/>
+                                <input type="text" style="width: 100px;" id="bimorderId" name="bimorderId"/>
                             </li>
                             <li>
                                 <label style="width: 80px">当前仓库：</label>
-                                <select id="customerId" style="width: 100px;"  name="customerId">
+                                <select id="warehouseOutid" style="width: 100px;"  name="warehouseOutid">
                                     <option value=""></option>
                                 </select>
                             </li>
 
                             <li>
                                 <label style="width: 80px">调入仓库：</label>
-                                <select id="customerId1" style="width: 100px;"  name="customerId">
+                                <select id="warehouseInid" style="width: 100px;"  name="warehouseInid">
                                     <option value=""></option>
                                 </select>
                             </li>
@@ -97,7 +97,7 @@
 
                             <li>
                                 <label style="width: 60px">经手人：</label>
-                                <select id="selectUserId" style="width: 100px"  name="userId">
+                                <select id="userId" style="width: 100px"  name="userId">
                                     <option value=""></option>
                                 </select>
                             </li>
@@ -137,43 +137,6 @@
                    data-pagination="true"
                    data-page-list="[5,10,25,50,100,all]"
                    data-side-pagination="client">
-                <thead>
-                <tr>
-                    <th data-field="state" data-checkbox="true"> #</th>
-                    <th data-field="bimOrderId">调拨单号</th>
-                    <th data-field="warehouseOutid" data-visible="false">当前仓库编号</th>
-                    <th data-field="warehouseOutName">当前仓库</th>
-                    <th data-field="warehouseInid" data-visible="false">调入仓库编号</th>
-                    <th data-field="warehouseInName">调入仓库</th>
-                    <th data-field="movementTime">调拨时间</th>
-                    <th data-field="userId" data-visible="false">员工编号</th>
-                    <th data-field="username">经手人</th>
-                    <th data-field="bimoNumber">总数量</th>
-                    <th data-field="bimoReason">调拨原因</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${inventoryMovementOrders}" var="inventoryMovementOrder">
-                    <tr style="text-align: center;vertical-align: middle">
-                        <td style="text-align: center;vertical-align: middle"></td>
-                        <td style="text-align: center;vertical-align: middle;">${inventoryMovementOrder.bimorderId}</td>
-                        <td style="text-align: center;vertical-align: middle">${inventoryMovementOrder.outWarehouse.warehouseId}</td>
-                        <td style="text-align: center;vertical-align: middle">${inventoryMovementOrder.outWarehouse.warehouseName}</td>
-                        <td style="text-align: center;vertical-align: middle">${inventoryMovementOrder.inWarehouse.warehouseId}</td>
-                        <td style="text-align: center;vertical-align: middle">${inventoryMovementOrder.inWarehouse.warehouseName}</td>
-                        <td style="text-align: center;vertical-align: middle">${inventoryMovementOrder.movementTimeStr}</td>
-                        <td style="text-align: center;vertical-align: middle">${inventoryMovementOrder.user.userId}</td>
-                        <td style="text-align: center;vertical-align: middle">${inventoryMovementOrder.user.username}</td>
-                        <td style="text-align: center;vertical-align: middle">${inventoryMovementOrder.bimoNumber}</td>
-                        <td style="text-align: center;vertical-align: middle">${inventoryMovementOrder.bimoReason}</td>
-                        <td style="text-align: center;vertical-align: middle">
-                            <button type="button" class="btn btn-info btn-rounded btn-xs" onclick="getOrderDetail(this)">详情</button>
-                        </td>
-                    </tr>
-                </c:forEach>
-
-                </tbody>
             </table>
         </div>
     </div>
@@ -249,10 +212,167 @@
 <%--layui插件--%>
 <script src="${pageContext.request.contextPath}/lib/layer/layer.js"></script>
 
+
+<script type="application/javascript">
+    function resetForm(data) {
+        $(data)[0].reset();
+        refreshTable();
+    }
+
+    // 初始化表格数据
+    var dataTable = $('#inventoryMovementOrders').bootstrapTable({
+        url: "/business/inventoryMovementOrder/findAllInventoryMovementOrder",                      //  请求后台的URL
+        method: "post",                      //  请求方式
+        contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+        uniqueId: "bimOrderId",                 //  每一行的唯一标识，一般为主键列
+        cache: false,                       //  设置为 false 禁用 AJAX 数据缓存， 默认为true
+        pagination: true,                   //  是否显示分页
+        //sidePagination: "server",           //  分页方式：client客户端分页，server服务端分页
+        sidePagination: "client",           //  分页方式：client客户端分页，server服务端分页
+        pageSize: 5,                       //  每页的记录行数
+        showPaginationSwitch:true,
+        pageList:"[5,10,25,50,100,all]",
+        queryParamsType: '',
+        queryParams: function (param) {
+            return {
+                current: param.pageNumber, // 当前页 1
+                size: param.pageSize,      // 一页显示多少天 10
+                bimorderId:$("#bimorderId").val(),
+                warehouseOutid:$("#warehouseOutid").val(),
+                warehouseInid:$("#warehouseInid").val(),
+                userId:$("#userId").val(),
+                minNumber:$("#minNumber").val(),
+                maxNumber:$("#maxNumber").val(),
+                startTime:$("#startTime").val(),
+                endTime:$("#endTime").val()
+            }
+        },
+        columns: [
+            {
+                checkbox: true
+            },{
+                field: 'bimorderId',
+                title: '调拨单号'
+            }, {
+                field: 'warehouseOutid',
+                title: '当前仓库编号',
+                visible:false,
+                formatter: function(value, item, index) {
+                    return item.outWarehouse.warehouseId;
+                }
+            }, {
+                field: 'warehouseOutName',
+                title: '当前仓库',
+                formatter: function(value, item, index) {
+                    return item.outWarehouse.warehouseName;
+                }
+            }, {
+                field: 'warehouseInid',
+                title: '调入仓库编号',
+                visible:false,
+                formatter: function(value, item, index) {
+                    return item.inWarehouse.warehouseId;
+                }
+            }, {
+                field: 'warehouseInName',
+                title: '调入仓库',
+                formatter: function(value, item, index) {
+                    return item.inWarehouse.warehouseName;
+                }
+            }, {
+                field: 'movementTime',
+                title: '订单时间'
+            }, {
+                field: 'userId',
+                title: '员工编号',
+                visible:false,
+                formatter: function(value, item, index) {
+                    return item.user.userId;
+                }
+            }, {
+                field: 'username',
+                title: '经手人',
+                formatter: function(value, item, index) {
+                    return item.user.username;
+                }
+            }, {
+                field: 'bimoNumber',
+                title: '总数量'
+            }, {
+                field: 'bimoReason',
+                title: '调拨原因'
+            },{
+                field: 'action',
+                title: '操作',
+                formatter: function(value, item, index) {
+                    return "<button type=\"button\" class=\"btn btn-info btn-rounded btn-xs\" onclick=\"getOrderDetail(this)\">详情</button>";
+                }
+            }]
+    });
+
+    // 查询
+    $('#btn-search').bind('click', function () {
+        dataTable.bootstrapTable('removeAll');
+        refreshTable();
+    });
+
+    // 刷新表格
+    function refreshTable() {
+        dataTable.bootstrapTable('refresh');
+    }
+
+    /**
+     * 获取所需要的员工信息
+     */
+    $(document).ready(function(){
+        $.ajax({
+            url:'/user/getTargetUsers',
+            dataType:'json',
+            type:'post',
+            success:function(data){
+                if(data.code==0){
+                    var userList=data.userList;
+                    $.each(userList,function(i,item){
+                        <!-- 向商品详情表中进行数据注入 -->
+                        $("#userId").append("<option value='"+item.userId+"'>"+item.username+"</option>");
+                        i++;
+                    });
+                }else{
+                    layer.alert(data.msg, {icon: 5, offset: '0px'});
+                }
+            }
+        });
+    });
+
+    /**
+     * 获取仓库信息
+     */
+    $(document).ready(function(){
+        $.ajax({
+            url:'/business/warehouse/getTargetWarehouses',
+            dataType:'json',
+            type:'post',
+            success:function(data){
+                if(data.code==0){
+                    var warehouseList=data.warehouseList;
+                    $.each(warehouseList,function(i,item){
+                        <!-- 向商品详情表中进行数据注入 -->
+                        $("#warehouseOutid").append("<option value='"+item.warehouseId+"'>"+item.warehouseName+"</option>");
+                        $("#warehouseInid").append("<option value='"+item.warehouseId+"'>"+item.warehouseName+"</option>");
+                        i++;
+                    });
+                }else{
+                    layer.alert(data.msg, {icon: 5, offset: '0px'});
+                }
+
+            }
+        });
+    });
+
+</script>
+
+
 <script>
-
-
-
     /**
      * 获取订单详情
      * @param data1
@@ -307,16 +427,6 @@
 <%--日期选择--%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/lib/laydate/laydate.js"></script>
 <script type="text/javascript">
-
-
-
-    function resetForm(data) {
-        $(data)[0].reset();
-    }
-
-
-
-
     var startDate = laydate.render({
         elem: '#startTime',
         max: $('#endTime').val(),

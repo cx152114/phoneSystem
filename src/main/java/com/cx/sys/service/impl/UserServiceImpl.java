@@ -1,13 +1,17 @@
 package com.cx.sys.service.impl;
 
 import cn.hutool.core.util.IdUtil;
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.cx.common.exception.BizException;
 import com.cx.common.model.TreeNode;
 import com.cx.common.util.MD5Util;
 import com.cx.common.util.TreeUtil;
+import com.cx.sys.beans.Dept;
 import com.cx.sys.beans.Menu;
 import com.cx.sys.beans.User;
+import com.cx.sys.mapper.DeptMapper;
 import com.cx.sys.mapper.ResourceMapper;
 import com.cx.sys.mapper.UserMapper;
 import com.cx.sys.mapper.UserRoleMapper;
@@ -35,9 +39,21 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private DeptMapper deptMapper;
 
 
 
+
+    @Override
+    public List<User> list(Wrapper<User> queryWrapper) {
+        List<User> list=userMapper.selectList(queryWrapper);
+        for (User user:list) {
+            Dept dept=deptMapper.selectById(user.getDeptId());
+            user.setDept(dept);
+        }
+        return list;
+    }
 
     @Override
     public Set<String> selectUserRoleNameSet(Integer id) {

@@ -9,6 +9,7 @@ import com.cx.sys.beans.User;
 import com.cx.sys.beans.UserRole;
 import com.cx.sys.service.IUserRoleService;
 import com.cx.sys.service.IUserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,22 +38,55 @@ public class UserController {
     private IUserRoleService userRoleService;
 
 
+    @GetMapping(value = "/userManagement")
+    private String userManagement(){
+        return "/sys/employee-list";
+    }
+
     @RequestMapping(value = "/showAllUser")
-    public ModelAndView showAllUser(ModelAndView modelAndView){
+    @ResponseBody
+    public R showAllUser(User user,String startTime,String endTime){
         QueryWrapper<User> param = new QueryWrapper<>();
         param.eq("deleted",0);
+        if (null!=user.getUserId()){
+            param.like("user_id",user.getUserId());
+        }
+        if (!StringUtils.isEmpty(user.getUsername())){
+            param.like("username",user.getUsername());
+        }
+        if (null!=user.getUserStatus()){
+            param.eq("user_status",user.getUserStatus());
+        }
+        if (null!=user.getDeptId()){
+            param.eq("dept_id",user.getDeptId());
+        }
+        if (!StringUtils.isEmpty(startTime)){
+            param.ge("create_time",startTime);
+        }
+        if (!StringUtils.isEmpty(endTime)){
+            param.le("create_time",endTime);
+        }
         List<User> userList=userService.list(param);
-        //System.out.println(userList);
-        modelAndView.addObject("userList",userList);
-        modelAndView.setViewName("/sys/employee-list");
-        return modelAndView;
+        return R.ok().put("rows",userList);
     }
+
+
+//    @RequestMapping(value = "/showAllUser")
+//    public ModelAndView showAllUser(ModelAndView modelAndView){
+//        QueryWrapper<User> param = new QueryWrapper<>();
+//        param.eq("deleted",0);
+//        List<User> userList=userService.list(param);
+//        //System.out.println(userList);
+//        modelAndView.addObject("userList",userList);
+//        modelAndView.setViewName("/sys/employee-list");
+//        return modelAndView;
+//    }
 
 
     @RequestMapping(value = "/addUser",method = RequestMethod.POST)
     public String addCustomer(User user){
         userService.save(user);
-        return "redirect:/user/showAllUser";
+        return "redirect:/user/userManagement";
     }
 
 
@@ -66,7 +100,7 @@ public class UserController {
         user.setSalt(salt);
         user.setPassword(password);
         userService.updateById(user);
-        return "redirect:/user/showAllUser";
+        return "redirect:/user/userManagement";
     }
 
     @RequestMapping(value = "/removeUser",method = RequestMethod.POST)

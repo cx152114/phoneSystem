@@ -12,7 +12,7 @@ import com.cx.common.model.R;
 import com.cx.sys.beans.User;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,14 +61,44 @@ public class StockOrderController {
 
     /**
      * 显示所有订单
-     * @param modelAndView
      * @return
      */
     @RequestMapping(value = "/findAllStockOrder",method = RequestMethod.POST)
     @ResponseBody
-    public R findAllStockOrder(ModelAndView modelAndView){
-        QueryWrapper queryWrapper=new QueryWrapper();
-        List<StockOrder> stockOrderList=stockOrderService.listStockOrderInfo(queryWrapper);
+    public R findAllStockOrder(StockOrder stockOrder,Integer minNumber,Integer maxNumber,String startTime,String endTime,Double minAccount,Double maxAccount){
+        QueryWrapper<StockOrder> queryWrapper=new QueryWrapper<StockOrder>();
+        //List<StockOrder> stockOrderList=stockOrderService.listStockOrderInfo(queryWrapper);
+        if (null!=stockOrder.getStoId()){
+            queryWrapper.eq("sto_id",stockOrder.getStoId());
+        }
+        if (null!=stockOrder.getUserId()){
+            queryWrapper.eq("user_id",stockOrder.getUserId());
+        }
+        if (null!=stockOrder.getStoStatus()){
+            queryWrapper.eq("sto_status",stockOrder.getStoStatus());
+        }
+        if(null!=stockOrder.getPayType()){
+            queryWrapper.eq("pay_type",stockOrder.getPayType());
+        }
+        if (null!=minNumber){
+            queryWrapper.ge("sto_number",minNumber);
+        }
+        if (null!=maxNumber){
+            queryWrapper.le("sto_number",maxNumber);
+        }
+        if (!StringUtils.isEmpty(startTime)){
+            queryWrapper.ge("order_time",startTime);
+        }
+        if (!StringUtils.isEmpty(endTime)){
+            queryWrapper.le("order_time",endTime);
+        }
+        if (null!=minAccount){
+            queryWrapper.ge("total_money",minAccount);
+        }
+        if (null!=maxAccount){
+            queryWrapper.le("total_money",maxAccount);
+        }
+        List<StockOrder> stockOrderList=stockOrderService.list(queryWrapper);
         return R.ok().put("rows",stockOrderList);
     }
 

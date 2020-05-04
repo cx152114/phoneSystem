@@ -1,16 +1,17 @@
 package com.cx.business.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.cx.business.beans.Inventory;
-import com.cx.business.beans.SerialNumber;
-import com.cx.business.beans.SorderDetail;
-import com.cx.business.beans.StockOrder;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.cx.business.beans.*;
 import com.cx.business.mapper.StockOrderMapper;
 import com.cx.business.service.IInventoryService;
 import com.cx.business.service.ISerialNumberService;
 import com.cx.business.service.ISorderDetailService;
 import com.cx.business.service.IStockOrderService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.cx.sys.beans.User;
+import com.cx.sys.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,6 +35,9 @@ public class StockOrderServiceImpl extends ServiceImpl<StockOrderMapper, StockOr
     private StockOrderMapper stockOrderMapper;
 
     @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
     private ISerialNumberService serialNumberService;
 
     @Autowired
@@ -46,6 +50,19 @@ public class StockOrderServiceImpl extends ServiceImpl<StockOrderMapper, StockOr
     @Override
     public List<StockOrder> listStockOrderInfo(QueryWrapper queryWrapper) {
         return stockOrderMapper.selectStockOrderList(queryWrapper);
+    }
+
+
+    @Override
+    public List<StockOrder> list(Wrapper<StockOrder> queryWrapper) {
+        List<StockOrder> list=stockOrderMapper.selectList(queryWrapper);
+        if (list.size()>0){
+            for (StockOrder stockOrder :list) {
+                User user=userMapper.selectById(stockOrder.getUserId());
+                stockOrder.setUser(user);
+            }
+        }
+        return list;
     }
 
     @Override

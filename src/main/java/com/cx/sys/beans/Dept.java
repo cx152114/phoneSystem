@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -15,6 +17,7 @@ import java.io.Serializable;
  * @since 2020-03-11
  */
 @TableName("sys_dept")
+@Data
 public class Dept implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,53 +39,4 @@ public class Dept implements Serializable {
 
     private String deptRemark;
 
-
-
-    public Integer getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
-    }
-    public String getDeptName() {
-        return deptName;
-    }
-
-    public void setDeptName(String deptName) {
-        this.deptName = deptName;
-    }
-    public Integer getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
-    }
-    public Integer getDeptStatus() {
-        return deptStatus;
-    }
-
-    public void setDeptStatus(Integer deptStatus) {
-        this.deptStatus = deptStatus;
-    }
-    public String getDeptRemark() {
-        return deptRemark;
-    }
-
-    public void setDeptRemark(String deptRemark) {
-        this.deptRemark = deptRemark;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Dept{" +
-            "deptId=" + deptId +
-            ", deptName=" + deptName +
-            ", parentId=" + parentId +
-            ", deptStatus=" + deptStatus +
-            ", deptRemark=" + deptRemark +
-        "}";
-    }
 }

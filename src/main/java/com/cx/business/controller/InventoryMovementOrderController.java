@@ -44,14 +44,47 @@ public class InventoryMovementOrderController {
     @Autowired
     private IInventoryMovementDetailService inventoryMovementDetailService;
 
+    /**
+     * 跳转到历史库存调拨单管理页面
+     * @return
+     */
+    @GetMapping
+    private String inventoryMovementManagement(){
+        return "/business/InventoryMovementOrder_list";
+    }
 
-    @RequestMapping(value = "/findAllInventoryMovementOrder",method = RequestMethod.GET)
-    public ModelAndView findAllInventoryMovementOrder(ModelAndView modelAndView){
-        QueryWrapper queryWrapper=new QueryWrapper();
-        List<InventoryMovementOrder> inventoryMovementOrders=inventoryMovementOrderService.listInventoryMovementOrder(queryWrapper);
-        modelAndView.addObject("inventoryMovementOrders",inventoryMovementOrders);
-        modelAndView.setViewName("/business/InventoryMovementOrder_list");
-        return modelAndView;
+
+    @RequestMapping(value = "/findAllInventoryMovementOrder",method = RequestMethod.POST)
+    @ResponseBody
+    public R findAllInventoryMovementOrder(InventoryMovementOrder order,Integer minNumber,Integer maxNumber,String startTime,String endTime){
+        QueryWrapper<InventoryMovementOrder> queryWrapper=new QueryWrapper<InventoryMovementOrder>();
+        if (null!=order.getBimorderId()){
+            queryWrapper.eq("bimorder_id",order.getBimorderId());
+        }
+        if (null!=order.getWarehouseOutid()){
+            queryWrapper.eq("warehouse_outid",order.getWarehouseOutid());
+        }
+        if (null!=order.getWarehouseInid()){
+            queryWrapper.eq("warehouse_inid",order.getWarehouseInid());
+        }
+        if (null!=order.getUserId()){
+            queryWrapper.eq("user_id",order.getUserId());
+        }
+        if (null!=minNumber){
+            queryWrapper.ge("bimo_number",minNumber);
+        }
+        if (null!=maxNumber){
+            queryWrapper.le("bimo_number",maxNumber);
+        }
+        if (!StringUtils.isEmpty(startTime)){
+            queryWrapper.ge("movement_time",startTime);
+        }
+        if (!StringUtils.isEmpty(endTime)){
+            queryWrapper.le("movement_time",endTime);
+        }
+        List<InventoryMovementOrder> inventoryMovementOrders=inventoryMovementOrderService.list(queryWrapper);
+        //List<InventoryMovementOrder> inventoryMovementOrders=inventoryMovementOrderService.listInventoryMovementOrder(queryWrapper);
+        return R.ok().put("rows",inventoryMovementOrders);
     }
 
 

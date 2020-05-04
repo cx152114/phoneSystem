@@ -56,20 +56,46 @@ public class SalesBackOrderController {
 
     @RequestMapping(value = "/findAllSalesBackOrder",method = RequestMethod.POST)
     @ResponseBody
-    public R findAllSalesBackOrder(){
-        QueryWrapper<SalesBackOrder> queryWrapper=new QueryWrapper();
-        List<SalesBackOrder> salesBackOrderList=salesBackOrderService.listSalesBackOrderInfo(queryWrapper);
+    public R findAllSalesBackOrder(SalesBackOrder salesBackOrder,Integer minNumber,Integer maxNumber,String startTime,String endTime,Double minAccount,Double maxAccount){
+        QueryWrapper<SalesBackOrder> queryWrapper=new QueryWrapper<SalesBackOrder>();
+        if (null!=salesBackOrder.getSboId()){
+            queryWrapper.eq("sbo_id",salesBackOrder.getSboId());
+        }
+        if (null!=salesBackOrder.getSboStatus()){
+            queryWrapper.eq("sbo_status",salesBackOrder.getSboStatus());
+        }
+        if (null!=salesBackOrder.getUserId()){
+            queryWrapper.eq("user_id",salesBackOrder.getUserId());
+        }
+        if (null!=salesBackOrder.getCustomerId()){
+            queryWrapper.eq("customer_id",salesBackOrder.getCustomerId());
+        }
+        if(null!=salesBackOrder.getPayType()){
+            queryWrapper.eq("pay_type",salesBackOrder.getPayType());
+        }
+        if (null!=minNumber){
+            queryWrapper.ge("sbo_number",minNumber);
+        }
+        if (null!=maxNumber){
+            queryWrapper.le("sbo_number",maxNumber);
+        }
+        if (!StringUtils.isEmpty(startTime)){
+            queryWrapper.ge("order_time",startTime);
+        }
+        if (!StringUtils.isEmpty(endTime)){
+            queryWrapper.le("order_time",endTime);
+        }
+        if (null!=minAccount){
+            queryWrapper.ge("total_money",minAccount);
+        }
+        if (null!=maxAccount){
+            queryWrapper.le("total_money",maxAccount);
+        }
+        List<SalesBackOrder> salesBackOrderList=salesBackOrderService.list(queryWrapper);
+        //List<SalesBackOrder> salesBackOrderList=salesBackOrderService.listSalesBackOrderInfo(queryWrapper);
         return R.ok().put("rows",salesBackOrderList);
     }
 
-//    @RequestMapping(value = "/findAllSalesBackOrder",method = RequestMethod.GET)
-//    public ModelAndView findAllSalesBackOrder(ModelAndView modelAndView){
-//        QueryWrapper<SalesBackOrder> queryWrapper=new QueryWrapper();
-//        List<SalesBackOrder> salesBackOrderList=salesBackOrderService.listSalesBackOrderInfo(queryWrapper);
-//        modelAndView.addObject("salesBackOrderList",salesBackOrderList);
-//        modelAndView.setViewName("/business/sale_back_order_list");
-//        return modelAndView;
-//    }
 
 
     @RequestMapping(value = "/getSalesBackOrderBySboId",method = RequestMethod.POST)

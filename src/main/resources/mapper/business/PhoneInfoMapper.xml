@@ -47,7 +47,6 @@
             <if test="phoneState!=null">
                 phone_state=#{phoneState}
             </if>
-
         </trim>
 <!--        <if test="phoneId!=null">-->
 <!--            and phone_id=#{phoneId}-->

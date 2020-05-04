@@ -1,14 +1,16 @@
 package com.cx.business.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.cx.business.beans.SalesDetail;
-import com.cx.business.beans.SalesOrder;
-import com.cx.business.beans.SerialNumber;
+import com.cx.business.beans.*;
+import com.cx.business.mapper.CustomerMapper;
 import com.cx.business.mapper.SalesOrderMapper;
 import com.cx.business.service.ISalesDetailService;
 import com.cx.business.service.ISalesOrderService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cx.business.service.ISerialNumberService;
+import com.cx.sys.beans.User;
+import com.cx.sys.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,12 +30,33 @@ public class SalesOrderServiceImpl extends ServiceImpl<SalesOrderMapper, SalesOr
     @Autowired
     private SalesOrderMapper salesOrderMapper;
 
+    @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
+    private CustomerMapper customerMapper;
+
 
     @Autowired
     private ISerialNumberService serialNumberService;
 
     @Autowired
     private ISalesDetailService salesDetailService;
+
+
+    @Override
+    public List<SalesOrder> list(Wrapper<SalesOrder> queryWrapper) {
+        List<SalesOrder> list=salesOrderMapper.selectList(queryWrapper);
+        if (list.size()>0){
+            for (SalesOrder salesOrder :list) {
+                User user=userMapper.selectById(salesOrder.getUserId());
+                Customer customer=customerMapper.selectById(salesOrder.getCustomerId());
+                salesOrder.setUser(user);
+               salesOrder.setCustomer(customer);
+            }
+        }
+        return list;
+    }
 
     @Override
     public List<SalesOrder> listSalesOrderInfo(QueryWrapper queryWrapper) {

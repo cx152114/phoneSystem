@@ -74,11 +74,11 @@
                         <ul>
                             <li>
                                 <label style="width: 80px">报损单号：</label>
-                                <input type="text" style="width: 100px;" id="stoId" name="stoId"/>
+                                <input type="text" style="width: 100px;" id="pdoId" name="pdoId"/>
                             </li>
                             <li>
                                 <label style="width: 80px">报损仓库：</label>
-                                <select id="customerId" style="width: 90px;"  name="customerId">
+                                <select id="warehouseId" style="width: 90px;"  name="warehouseId">
                                     <option value=""></option>
                                 </select>
                             </li>
@@ -93,7 +93,7 @@
 
                             <li>
                                 <label style="width: 60px">经手人：</label>
-                                <select id="selectUserId" style="width: 70px"  name="userId">
+                                <select id="userId" style="width: 70px"  name="userId">
                                     <option value=""></option>
                                 </select>
                             </li>
@@ -143,41 +143,6 @@
                    data-pagination="true"
                    data-page-list="[5,10,25,50,100,all]"
                    data-side-pagination="client">
-                <thead>
-                <tr>
-                    <th data-field="state" data-checkbox="true"> #</th>
-                    <th data-field="proId">调拨单号</th>
-                    <th data-field="warehouseId" data-visible="false">仓库编号</th>
-                    <th data-field="warehouseOName">报损仓库</th>
-                    <th data-field="pdoTime">报损时间</th>
-                    <th data-field="userId" data-visible="false">员工编号</th>
-                    <th data-field="username">经手人</th>
-                    <th data-field="pdoNumber">总数量</th>
-                    <th data-field="totalMoney">总金额</th>
-                    <th data-field="pdoRemark">备注</th>
-                    <th>操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${productDamageOrders}" var="productDamageOrder">
-                    <tr style="text-align: center;vertical-align: middle">
-                        <td style="text-align: center;vertical-align: middle"></td>
-                        <td style="text-align: center;vertical-align: middle;">${productDamageOrder.pdoId}</td>
-                        <td style="text-align: center;vertical-align: middle">${productDamageOrder.warehouse.warehouseId}</td>
-                        <td style="text-align: center;vertical-align: middle">${productDamageOrder.warehouse.warehouseName}</td>
-                        <td style="text-align: center;vertical-align: middle">${productDamageOrder.pdoTimeStr}</td>
-                        <td style="text-align: center;vertical-align: middle">${productDamageOrder.user.userId}</td>
-                        <td style="text-align: center;vertical-align: middle">${productDamageOrder.user.username}</td>
-                        <td style="text-align: center;vertical-align: middle">${productDamageOrder.pdoNumber}</td>
-                        <td style="text-align: center;vertical-align: middle">${productDamageOrder.totalMoney}</td>
-                        <td style="text-align: center;vertical-align: middle">${productDamageOrder.pdoRemark}</td>
-                        <td style="text-align: center;vertical-align: middle">
-                            <button type="button" class="btn btn-info btn-rounded btn-xs" onclick="getOrderDetail(this)">详情</button>
-                        </td>
-                    </tr>
-                </c:forEach>
-
-                </tbody>
             </table>
         </div>
     </div>
@@ -254,6 +219,156 @@
 <%--layui插件--%>
 <script src="${pageContext.request.contextPath}/lib/layer/layer.js"></script>
 
+<script type="application/javascript">
+    function resetForm(data) {
+        $(data)[0].reset();
+        refreshTable();
+    }
+
+    // 初始化表格数据
+    var dataTable = $('#productDamageOrders').bootstrapTable({
+        url: "/business/productDamageOrder/findAllProductDamageOrder",                      //  请求后台的URL
+        method: "post",                      //  请求方式
+        contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+        uniqueId: "proId",                 //  每一行的唯一标识，一般为主键列
+        cache: false,                       //  设置为 false 禁用 AJAX 数据缓存， 默认为true
+        pagination: true,                   //  是否显示分页
+        //sidePagination: "server",           //  分页方式：client客户端分页，server服务端分页
+        sidePagination: "client",           //  分页方式：client客户端分页，server服务端分页
+        pageSize: 5,                       //  每页的记录行数
+        showPaginationSwitch:true,
+        pageList:"[5,10,25,50,100,all]",
+        queryParamsType: '',
+        queryParams: function (param) {
+            return {
+                current: param.pageNumber, // 当前页 1
+                size: param.pageSize,      // 一页显示多少天 10
+                pdoId:$("#pdoId").val(),
+                warehouseId:$("#warehouseId").val(),
+                userId:$("#userId").val(),
+                minNumber:$("#minNumber").val(),
+                maxNumber:$("#maxNumber").val(),
+                startTime:$("#startTime").val(),
+                endTime:$("#endTime").val(),
+                minAccount:$("#minAccount").val(),
+                maxAccount:$("#maxAccount").val()
+            }
+        },
+        columns: [
+            {
+                checkbox: true
+            },{
+                field: 'pdoId',
+                title: '报损单号'
+            }, {
+                field: 'warehouseId',
+                title: '仓库编号',
+                visible:false,
+                formatter: function(value, item, index) {
+                    return item.warehouse.warehouseId;
+                }
+            }, {
+                field: 'warehouseName',
+                title: '报损仓库',
+                formatter: function(value, item, index) {
+                    return item.warehouse.warehouseName;
+                }
+            }, {
+                field: 'pdoTime',
+                title: '报损时间'
+            }, {
+                field: 'userId',
+                title: '员工编号',
+                visible:false,
+                formatter: function(value, item, index) {
+                    return item.user.userId;
+                }
+            }, {
+                field: 'username',
+                title: '经手人',
+                formatter: function(value, item, index) {
+                    return item.user.username;
+                }
+            }, {
+                field: 'pdoNumber',
+                title: '总数量'
+            }, {
+                field: 'totalMoney',
+                title: '总金额'
+            }, {
+                field: 'pdoRemark',
+                title: '备注'
+            },{
+                field: 'action',
+                title: '操作',
+                formatter: function(value, item, index) {
+                    return "<button type=\"button\" class=\"btn btn-info btn-rounded btn-xs\" onclick=\"getOrderDetail(this)\">详情</button>";
+                }
+            }]
+    });
+
+    // 查询
+    $('#btn-search').bind('click', function () {
+        dataTable.bootstrapTable('removeAll');
+        refreshTable();
+    });
+
+    // 刷新表格
+    function refreshTable() {
+        dataTable.bootstrapTable('refresh');
+    }
+
+    /**
+     * 获取所需要的员工信息
+     */
+    $(document).ready(function(){
+        $.ajax({
+            url:'/user/getTargetUsers',
+            dataType:'json',
+            type:'post',
+            success:function(data){
+                if(data.code==0){
+                    var userList=data.userList;
+                    $.each(userList,function(i,item){
+                        <!-- 向商品详情表中进行数据注入 -->
+                        $("#userId").append("<option value='"+item.userId+"'>"+item.username+"</option>");
+                        i++;
+                    });
+                }else{
+                    layer.alert(data.msg, {icon: 5, offset: '0px'});
+                }
+            }
+        });
+    });
+
+    /**
+     * 获取仓库信息
+     */
+    $(document).ready(function(){
+        $.ajax({
+            url:'/business/warehouse/getTargetWarehouses',
+            dataType:'json',
+            type:'post',
+            success:function(data){
+                if(data.code==0){
+                    var warehouseList=data.warehouseList;
+                    $.each(warehouseList,function(i,item){
+                        <!-- 向商品详情表中进行数据注入 -->
+                        $("#warehouseId").append("<option value='"+item.warehouseId+"'>"+item.warehouseName+"</option>");
+                        i++;
+                    });
+                }else{
+                    layer.alert(data.msg, {icon: 5, offset: '0px'});
+                }
+
+            }
+        });
+    });
+</script>
+
+
+
+
 <script>
 
 
@@ -310,15 +425,6 @@
 <%--日期选择--%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/lib/laydate/laydate.js"></script>
 <script type="text/javascript">
-
-
-
-    function resetForm(data) {
-        $(data)[0].reset();
-    }
-
-
-
 
     var startDate = laydate.render({
         elem: '#startTime',

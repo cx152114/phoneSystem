@@ -81,8 +81,6 @@
                                         <span>-</span>
                                         <input type="number"  id="maxNumber" placeholder="最大数量" name="params[maxNumber]"/>
                                     </li>
-
-
                                     <li class="select-time">
                                         <label>创建时间： </label>
                                         <input type="text" class="time-input" id="startTime" placeholder="开始时间" name="params[beginTime]"/>
@@ -99,7 +97,7 @@
 
                                     <li>
                                         <label style="width: 60px">经手人：</label>
-                                        <select id="selectUserId"  name="userId">
+                                        <select id="userId"  name="userId">
                                             <option value="">所有</option>
                                         </select>
                                     </li>
@@ -259,15 +257,16 @@
             return {
                 current: param.pageNumber, // 当前页 1
                 size: param.pageSize,      // 一页显示多少天 10
-                // phoneId:$("#phoneId2").val(),
-                // phoneName:$("#phoneName2").val(),
-                // supplierId:$("#supplierId2").val(),
-                // phoneType:$("#phoneType2").val(),
-                // phoneColor:$("#phoneColor2").val(),
-                // phoneRam:$("#phoneRam2").val(),
-                // phoneStorage:$("#phoneStorage2").val(),
-                // phoneNetwork:$("#phoneNetwork2").val(),
-                // phoneState:$("#phoneState2").val()
+                stoId:$("#stoId").val(),
+                userId:$("#userId").val(),
+                payType:$("#payType").val(),
+                stoStatus:$("#stoStatus").val(),
+                minNumber:$("#minNumber").val(),
+                maxNumber:$("#maxNumber").val(),
+                startTime:$("#startTime").val(),
+                endTime:$("#endTime").val(),
+                minAccount:$("#minAccount").val(),
+                maxAccount:$("#maxAccount").val()
             }
         },
         columns: [
@@ -372,7 +371,7 @@
                     var userList=data.userList;
                     $.each(userList,function(i,item){
                         <!-- 向商品详情表中进行数据注入 -->
-                        $("#selectUserId").append("<option value='"+item.userId+"'>"+item.username+"</option>");
+                        $("#userId").append("<option value='"+item.userId+"'>"+item.username+"</option>");
                         i++;
                     });
                 }else{
@@ -448,15 +447,6 @@
 <%--日期选择--%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/lib/laydate/laydate.js"></script>
 <script type="text/javascript">
-
-
-
-    function resetForm(data) {
-        $(data)[0].reset();
-    }
-
-
-
 
     var startDate = laydate.render({
         elem: '#startTime',

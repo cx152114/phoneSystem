@@ -74,7 +74,7 @@
                         <ul>
                             <li>
                                 <label style="width: 60px">订单号：</label>
-                                <input type="text" id="stoId" name="stoId"/>
+                                <input type="text" id="sboId" name="sboId"/>
                             </li>
                             <li>
                                 <label style="width: 80px">客户名称：</label>
@@ -119,7 +119,7 @@
 
                             <li>
                                 <label style="width: 60px">经手人：</label>
-                                <select id="selectUserId" style="width: 100px"  name="userId">
+                                <select id="userId" style="width: 100px"  name="userId">
                                     <option value=""></option>
                                 </select>
                             </li>
@@ -128,7 +128,7 @@
 
                             <li>
                                 <label style="width: 80px">订单状态：</label>
-                                <select id="stoStatus" style="width: 100px" name="stoStatus">
+                                <select id="sboStatus" style="width: 100px" name="sboStatus">
                                     <option value="">所有</option>
                                     <option value="0">已完成</option>
                                     <option value="1">未完成</option>
@@ -262,15 +262,17 @@
             return {
                 current: param.pageNumber, // 当前页 1
                 size: param.pageSize,      // 一页显示多少天 10
-                // phoneId:$("#phoneId2").val(),
-                // phoneName:$("#phoneName2").val(),
-                // supplierId:$("#supplierId2").val(),
-                // phoneType:$("#phoneType2").val(),
-                // phoneColor:$("#phoneColor2").val(),
-                // phoneRam:$("#phoneRam2").val(),
-                // phoneStorage:$("#phoneStorage2").val(),
-                // phoneNetwork:$("#phoneNetwork2").val(),
-                // phoneState:$("#phoneState2").val()
+                sboId:$("#sboId").val(),
+                userId:$("#userId").val(),
+                customerId:$("#customerId").val(),
+                payType:$("#payType").val(),
+                sboStatus:$("#sboStatus").val(),
+                minNumber:$("#minNumber").val(),
+                maxNumber:$("#maxNumber").val(),
+                startTime:$("#startTime").val(),
+                endTime:$("#endTime").val(),
+                minAccount:$("#minAccount").val(),
+                maxAccount:$("#maxAccount").val()
             }
         },
         columns: [
@@ -364,6 +366,52 @@
     function refreshTable() {
         dataTable.bootstrapTable('refresh');
     }
+
+    /**
+     * 获取所需要的员工信息
+     */
+    $(document).ready(function(){
+        $.ajax({
+            url:'/user/getTargetUsers',
+            dataType:'json',
+            type:'post',
+            success:function(data){
+                if(data.code==0){
+                    var userList=data.userList;
+                    $.each(userList,function(i,item){
+                        <!-- 向商品详情表中进行数据注入 -->
+                        $("#userId").append("<option value='"+item.userId+"'>"+item.username+"</option>");
+                        i++;
+                    });
+                }else{
+                    layer.alert(data.msg, {icon: 5, offset: '0px'});
+                }
+            }
+        });
+    });
+
+    /**
+     * 获取所需要的客户信息
+     */
+    $(document).ready(function(){
+        $.ajax({
+            url:'/customer/findAllCustomer',
+            dataType:'json',
+            type:'post',
+            success:function(data){
+                if(data.code==0){
+                    var customerList=data.rows;
+                    $.each(customerList,function(i,item){
+                        <!-- 向商品详情表中进行数据注入 -->
+                        $("#customerId").append("<option value='"+item.customerId+"'>"+item.customerName+"</option>");
+                        i++;
+                    });
+                }else{
+                    layer.alert(data.msg, {icon: 5, offset: '0px'});
+                }
+            }
+        });
+    });
 </script>
 
 
@@ -419,6 +467,48 @@
 
 
 
+</script>
+<%--日期选择--%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/lib/laydate/laydate.js"></script>
+<script type="text/javascript">
+
+    var startDate = laydate.render({
+        elem: '#startTime',
+        max: $('#endTime').val(),
+        theme: 'molv',
+        trigger: 'click',
+        done: function(value, date) {
+            // 结束时间大于开始时间
+            if (value !== '') {
+                endDate.config.min.year = date.year;
+                endDate.config.min.month = date.month - 1;
+                endDate.config.min.date = date.date;
+            } else {
+                endDate.config.min.year = '';
+                endDate.config.min.month = '';
+                endDate.config.min.date = '';
+            }
+        }
+    });
+
+    var endDate = laydate.render({
+        elem: '#endTime',
+        min: $('#startTime').val(),
+        theme: 'molv',
+        trigger: 'click',
+        done: function(value, date) {
+            // 开始时间小于结束时间
+            if (value !== '') {
+                startDate.config.max.year = date.year;
+                startDate.config.max.month = date.month - 1;
+                startDate.config.max.date = date.date;
+            } else {
+                startDate.config.max.year = '';
+                startDate.config.max.month = '';
+                startDate.config.max.date = '';
+            }
+        }
+    });
 </script>
 </body>
 </html>

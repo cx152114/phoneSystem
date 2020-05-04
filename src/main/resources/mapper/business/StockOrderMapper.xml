@@ -5,7 +5,7 @@
     <!--  查询所有进货单信息  -->
     <resultMap id="proInfo" type="com.cx.business.beans.StockOrder">
         <id property="stoId" column="sto_id"></id>
-        <id property="warehouseId" column="warehouse_id"></id>
+        <result property="warehouseId" column="warehouse_id"></result>
         <result property="stoNumber" column="sto_number"></result>
         <result property="orderTime" column="order_time"></result>
         <result property="totalMoney" column="total_money"></result>

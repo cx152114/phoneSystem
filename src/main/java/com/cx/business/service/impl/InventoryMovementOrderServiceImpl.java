@@ -1,17 +1,18 @@
 package com.cx.business.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.cx.business.beans.Inventory;
-import com.cx.business.beans.InventoryMovementDetail;
-import com.cx.business.beans.InventoryMovementOrder;
-import com.cx.business.beans.SerialNumber;
+import com.cx.business.beans.*;
 import com.cx.business.mapper.InventoryMovementDetailMapper;
 import com.cx.business.mapper.InventoryMovementOrderMapper;
+import com.cx.business.mapper.WarehouseMapper;
 import com.cx.business.service.IInventoryMovementDetailService;
 import com.cx.business.service.IInventoryMovementOrderService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cx.business.service.IInventoryService;
 import com.cx.business.service.ISerialNumberService;
+import com.cx.sys.beans.User;
+import com.cx.sys.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +34,12 @@ public class InventoryMovementOrderServiceImpl extends ServiceImpl<InventoryMove
     private InventoryMovementOrderMapper inventoryMovementOrderMapper;
 
     @Autowired
+    private WarehouseMapper warehouseMapper;
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
     private IInventoryMovementDetailService inventoryMovementDetailService;
 
 
@@ -43,6 +50,22 @@ public class InventoryMovementOrderServiceImpl extends ServiceImpl<InventoryMove
     @Autowired
     private IInventoryService inventoryService;
 
+    @Override
+    public List<InventoryMovementOrder> list(Wrapper<InventoryMovementOrder> queryWrapper) {
+        List<InventoryMovementOrder> list=inventoryMovementOrderMapper.selectList(queryWrapper);
+        if (list.size()>0){
+            for (InventoryMovementOrder inventoryMovementOrder :list) {
+                User user=userMapper.selectById(inventoryMovementOrder.getUserId());
+                Warehouse warehouse=warehouseMapper.selectById(inventoryMovementOrder.getWarehouseInid());
+                Warehouse warehouse1=warehouseMapper.selectById(inventoryMovementOrder.getWarehouseOutid());
+                inventoryMovementOrder.setUser(user);
+                inventoryMovementOrder.setInWarehouse(warehouse);
+                inventoryMovementOrder.setOutWarehouse(warehouse1);
+                //preturnOrder.setUser(user);
+            }
+        }
+        return list;
+    }
 
     @Override
     public List<InventoryMovementOrder> listInventoryMovementOrder(QueryWrapper queryWrapper) {

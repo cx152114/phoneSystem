@@ -8,6 +8,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.cx.common.util.DateUtil;
 import com.cx.sys.beans.User;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.io.Serializable;
@@ -24,6 +26,7 @@ import java.util.List;
  * @since 2020-03-27
  */
 @TableName("business_productdamage_order")
+@Data
 public class ProductDamageOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,6 +45,7 @@ public class ProductDamageOrder implements Serializable {
     /**
      * 报损日期
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date pdoTime;
 
     /**
@@ -68,118 +72,10 @@ public class ProductDamageOrder implements Serializable {
     @TableField(exist = false)
     private Warehouse warehouse;
 
-
-    @TableField(exist = false)
-    private String pdoTimeStr;
-
     @TableField(exist = false)
     private User user;
 
     @TableField(exist = false)
     private List<ProductDamageDetail> productDamageDetails=new ArrayList<>();
 
-
-
-
-    public Integer getPdoId() {
-        return pdoId;
-    }
-
-    public void setPdoId(Integer pdoId) {
-        this.pdoId = pdoId;
-    }
-    public Integer getWarehouseId() {
-        return warehouseId;
-    }
-
-    public void setWarehouseId(Integer warehouseId) {
-        this.warehouseId = warehouseId;
-    }
-    public Date getPdoTime() {
-        return pdoTime;
-    }
-
-    public void setPdoTime(Date pdoTime) {
-        this.pdoTime = pdoTime;
-    }
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-    public Integer getPdoNumber() {
-        return pdoNumber;
-    }
-
-    public void setPdoNumber(Integer pdoNumber) {
-        this.pdoNumber = pdoNumber;
-    }
-    public BigDecimal getTotalMoney() {
-        return totalMoney;
-    }
-
-    public void setTotalMoney(BigDecimal totalMoney) {
-        this.totalMoney = totalMoney;
-    }
-    public String getPdoRemark() {
-        return pdoRemark;
-    }
-
-    public void setPdoRemark(String pdoRemark) {
-        this.pdoRemark = pdoRemark;
-    }
-
-
-    public Warehouse getWarehouse() {
-        return warehouse;
-    }
-
-    public void setWarehouse(Warehouse warehouse) {
-        this.warehouse = warehouse;
-    }
-
-    public String getPdoTimeStr() {
-        if (pdoTime!=null){
-            pdoTimeStr= DateUtil.date2String(pdoTime,"yyyy-MM-dd HH:mm:ss");
-        }
-        return pdoTimeStr;
-    }
-
-    public void setPdoTimeStr(String pdoTimeStr) {
-        this.pdoTimeStr = pdoTimeStr;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<ProductDamageDetail> getProductDamageDetails() {
-        return productDamageDetails;
-    }
-
-    public void setProductDamageDetails(List<ProductDamageDetail> productDamageDetails) {
-        this.productDamageDetails = productDamageDetails;
-    }
-
-    @Override
-    public String toString() {
-        return "ProductDamageOrder{" +
-                "pdoId=" + pdoId +
-                ", warehouseId=" + warehouseId +
-                ", pdoTime=" + pdoTime +
-                ", userId=" + userId +
-                ", pdoNumber=" + pdoNumber +
-                ", totalMoney=" + totalMoney +
-                ", pdoRemark='" + pdoRemark + '\'' +
-                ", warehouse=" + warehouse +
-                ", pdoTimeStr='" + pdoTimeStr + '\'' +
-                ", user=" + user +
-                '}';
-    }
 }

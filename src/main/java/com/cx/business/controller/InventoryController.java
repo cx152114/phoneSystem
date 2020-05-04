@@ -41,20 +41,12 @@ public class InventoryController {
 
     @RequestMapping(value = "/findAllInventory",method = RequestMethod.POST)
     @ResponseBody
-    private R findAllInventory(){
-        QueryWrapper<Inventory> queryWrapper=new QueryWrapper<>();
+    private R findAllInventory(Inventory inventory){
+        QueryWrapper<Inventory> queryWrapper=new QueryWrapper<Inventory>();
+        //List<Inventory> inventoryList =iInventoryService.list(queryWrapper);
         List<Inventory> inventoryList =iInventoryService.selectTargetList(queryWrapper);
         return R.ok().put("rows",inventoryList);
     }
 
-
-//    @RequestMapping(value = "/findAllInventory",method = RequestMethod.GET)
-//    private ModelAndView findAllInventory(ModelAndView modelAndView){
-//        QueryWrapper<Inventory> queryWrapper=new QueryWrapper<>();
-//        List<Inventory> inventoryList =iInventoryService.selectTargetList(queryWrapper);
-//        modelAndView.addObject("inventoryList",inventoryList);
-//        modelAndView.setViewName("/business/inventory-show");
-//        return modelAndView;
-//    }
 
 }

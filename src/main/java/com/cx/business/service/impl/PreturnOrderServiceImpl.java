@@ -1,10 +1,8 @@
 package com.cx.business.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.cx.business.beans.Inventory;
-import com.cx.business.beans.PreturnDetail;
-import com.cx.business.beans.PreturnOrder;
-import com.cx.business.beans.SerialNumber;
+import com.cx.business.beans.*;
 import com.cx.business.mapper.PreturnOrderMapper;
 import com.cx.business.mapper.SerialNumberMapper;
 import com.cx.business.service.IInventoryService;
@@ -13,6 +11,8 @@ import com.cx.business.service.IPreturnOrderService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cx.business.service.ISerialNumberService;
 import com.cx.common.exception.BizException;
+import com.cx.sys.beans.User;
+import com.cx.sys.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -39,11 +39,25 @@ public class PreturnOrderServiceImpl extends ServiceImpl<PreturnOrderMapper, Pre
     private SerialNumberMapper serialNumberMapper;
 
     @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
     private IPreturnDetailService preturnDetailService;
 
     @Autowired
     private IInventoryService inventoryService;
 
+    @Override
+    public List<PreturnOrder> list(Wrapper<PreturnOrder> queryWrapper) {
+        List<PreturnOrder> list=preturnOrderMapper.selectList(queryWrapper);
+        if (list.size()>0){
+            for (PreturnOrder preturnOrder :list) {
+                User user=userMapper.selectById(preturnOrder.getUserId());
+                preturnOrder.setUser(user);
+            }
+        }
+        return super.list(queryWrapper);
+    }
 
     @Override
     public List<PreturnOrder> listPreturnOrderInfo(QueryWrapper queryWrapper) {

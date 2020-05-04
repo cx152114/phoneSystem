@@ -8,10 +8,8 @@
         <result property="lastStockTime" column="last_stock_time"></result>
         <result property="productNumber" column="product_number"></result>
         <result property="remark" column="remark"></result>
-        <association property="phoneInfo" column="phone_id" javaType="com.cx.business.beans.PhoneInfo" select="com.cx.business.mapper.PhoneInfoMapper.selectById" >
-        </association>
-        <association property="warehouse" column="warehouse_id" javaType="com.cx.business.beans.Warehouse"  select="com.cx.business.mapper.WarehouseMapper.selectById">
-        </association>
+        <association property="phoneInfo" column="phone_id" javaType="com.cx.business.beans.PhoneInfo" select="com.cx.business.mapper.PhoneInfoMapper.selectById" ></association>
+        <association property="warehouse" column="warehouse_id" javaType="com.cx.business.beans.Warehouse"  select="com.cx.business.mapper.WarehouseMapper.selectById"></association>
     </resultMap>
     
     

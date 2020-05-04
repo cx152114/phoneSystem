@@ -57,9 +57,43 @@ public class SalesOrderController {
 
     @RequestMapping(value = "/findAllSalesOrder",method = RequestMethod.POST)
     @ResponseBody
-    public R findAllSalesOrder(){
-        QueryWrapper queryWrapper=new QueryWrapper();
-        List<SalesOrder> salesOrderList=salesOrderService.listSalesOrderInfo(queryWrapper);
+    public R findAllSalesOrder(SalesOrder salesOrder,Integer minNumber,Integer maxNumber,String startTime,String endTime,Double minAccount,Double maxAccount){
+        QueryWrapper<SalesOrder> queryWrapper=new QueryWrapper<SalesOrder>();
+        if (null!=salesOrder.getOrderId()){
+            queryWrapper.eq("order_id",salesOrder.getOrderId());
+        }
+        if (null!=salesOrder.getOrderStatus()){
+            queryWrapper.eq("order_status",salesOrder.getOrderStatus());
+        }
+        if (null!=salesOrder.getUserId()){
+            queryWrapper.eq("user_id",salesOrder.getUserId());
+        }
+        if (null!=salesOrder.getCustomerId()){
+            queryWrapper.eq("customer_id",salesOrder.getCustomerId());
+        }
+        if(null!=salesOrder.getPayType()){
+            queryWrapper.eq("pay_type",salesOrder.getPayType());
+        }
+        if (null!=minNumber){
+            queryWrapper.ge("sales_number",minNumber);
+        }
+        if (null!=maxNumber){
+            queryWrapper.le("sales_number",maxNumber);
+        }
+        if (!StringUtils.isEmpty(startTime)){
+            queryWrapper.ge("order_time",startTime);
+        }
+        if (!StringUtils.isEmpty(endTime)){
+            queryWrapper.le("order_time",endTime);
+        }
+        if (null!=minAccount){
+            queryWrapper.ge("total_money",minAccount);
+        }
+        if (null!=maxAccount){
+            queryWrapper.le("total_money",maxAccount);
+        }
+        List<SalesOrder> salesOrderList=salesOrderService.list(queryWrapper);
+        //List<SalesOrder> salesOrderList=salesOrderService.listSalesOrderInfo(queryWrapper);
         return R.ok().put("rows",salesOrderList);
     }
 

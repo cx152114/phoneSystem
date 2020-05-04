@@ -78,14 +78,11 @@
                                     </li>
                                     <li>
                                         <label style="width: 80px">员工名称：</label>
-                                        <input type="text" style="width: 80px;" id="phoneName2" name="phoneName"/>
+                                        <input type="text" style="width: 80px;" id="userName2" name="userName"/>
                                     </li>
-
-
-
                                     <li>
                                         <label style="width: 80px">所属部门：</label>
-                                        <select id="phoneType2" style="width: 100px;"  name="phoneType">
+                                        <select id="deptId1" style="width: 100px;"  name="deptId1">
                                             <option value=""></option>
                                         </select>
                                     </li>
@@ -101,7 +98,7 @@
 
                                     <li>
                                         <label style="width: 40px">状态：</label>
-                                        <select id="phoneState2" style="width: 80px;" name="phoneState">
+                                        <select id="userStatus" style="width: 80px;" name="userStatus">
                                             <option value="">所有</option>
                                             <option value="0">正常</option>
                                             <option value="1">冻结</option>
@@ -140,35 +137,6 @@
                                data-page-list="[5,10,25,50,100,all]"
                                data-side-pagination="client">
                             <hr/>
-                            <thead>
-                            <tr>
-                                <th data-field="state" data-checkbox="true">#</th>
-                                <th data-field="userId">编号</th>
-                                <th data-field="username">姓名</th>
-                                <th data-field="userEmail">邮箱</th>
-                                <th data-field="userPhone">手机号</th>
-                                <th data-field="deptId">部门</th>
-                                <th data-field="userTime">创建时间</th>
-                                <th data-field="userStatus">状态</th>
-                                <th>操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${userList}" var="employee">
-                                <tr style="text-align: center;vertical-align: middle">
-                                    <td style="text-align: center;vertical-align: middle">
-                                    </td>
-                                    <td style="text-align: center;vertical-align: middle;display: none">${employee.userId}</td>
-                                    <td style="text-align: center;vertical-align: middle">${employee.username}</td>
-                                    <td style="text-align: center;vertical-align: middle">${employee.userEmail}</td>
-                                    <td style="text-align: center;vertical-align: middle">${employee.userPhone}</td>
-                                    <td style="text-align: center;vertical-align: middle">${employee.deptId}</td>
-                                    <td style="text-align: center;vertical-align: middle">${employee.createTimeStr}</td>
-                                    <td style="text-align: center;vertical-align: middle">${employee.userStatusStr}</td>
-                                    <td>分配角色</td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
                         </table>
                     </div>
 
@@ -426,12 +394,8 @@
 
 
 <script src="${pageContext.request.contextPath}/lib/tableExport/tableExport.js"></script>
-<%--<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>--%>
 <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table-locale-all.min.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
-<%--<script  type="text/javascript" src="${pageContext.request.contextPath}/lib/tableExport/bootstrap-table-export.min.js"></script>--%>
-
-
 
 <!-- 数据导出 -->
 <script src="${pageContext.request.contextPath}/lib/tableExport/FileSaver.min.js"></script>
@@ -449,8 +413,114 @@
 <%--引入bootstrap用于表单验证的插件--%>
 <script src="${pageContext.request.contextPath}/lib/bootstrapValidator/js/bootstrapValidator.js"></script>
 
-<script>
+<script type="application/javascript">
+    function resetForm(data) {
+        $(data)[0].reset();
+        refreshTable();
+    }
 
+    // 初始化表格数据
+    var dataTable = $('#users').bootstrapTable({
+        url: "/user/showAllUser",                      //  请求后台的URL
+        method: "post",                      //  请求方式
+        contentType:'application/x-www-form-urlencoded; charset=UTF-8',
+        uniqueId: "userId",                 //  每一行的唯一标识，一般为主键列
+        cache: false,                       //  设置为 false 禁用 AJAX 数据缓存， 默认为true
+        pagination: true,                   //  是否显示分页
+        //sidePagination: "server",           //  分页方式：client客户端分页，server服务端分页
+        sidePagination: "client",           //  分页方式：client客户端分页，server服务端分页
+        pageSize: 5,                       //  每页的记录行数
+        showPaginationSwitch:true,
+        pageList:"[5,10,25,50,100,all]",
+        queryParamsType: '',
+        queryParams: function (param) {
+            return {
+                current: param.pageNumber, // 当前页 1
+                size: param.pageSize,      // 一页显示多少天 10
+                userId:$("#userId2").val(),
+                username:$("#userName2").val(),
+                deptId:$("#deptId1").val(),
+                userStatus:$("#userStatus").val(),
+                startTime:$("#startTime").val(),
+                endTime:$("#endTime").val(),
+                // phoneStorage:$("#phoneStorage2").val(),
+                // phoneNetwork:$("#phoneNetwork2").val(),
+                // phoneState:$("#phoneState2").val()
+            }
+        },
+        columns: [
+            {
+                checkbox: true
+            },{
+                field: 'userId',
+                title: '编号'
+            }, {
+                field: 'username',
+                title: '姓名'
+            }, {
+                field: 'userEmail',
+                title: '邮箱'
+            }, {
+                field: 'userPhone',
+                title: '手机号'
+            }, {
+                field: 'deptId',
+                title: '部门编号',
+                formatter: function(value, item, index) {
+                    if (item.dept!=null){
+                        return item.dept.deptId;
+                    }
+                }
+            }, {
+                field: 'deptName',
+                title: '所属部门',
+                formatter: function(value, item, index) {
+                    if (item.dept!=null){
+                        return item.dept.deptName;
+                    }
+                    //alert(item.dept);
+                }
+            }, {
+                field: 'createTime',
+                title: '创建时间'
+            }, {
+                field: 'userStatus',
+                title: '状态',
+                formatter: function(value, item, index) {
+                    if (value==0){
+                        return "正常";
+                    }else if (value==1){
+                        return "禁用";
+                    }else{
+                        return "锁定";
+                    }
+                }
+            },{
+                field: 'action',
+                title: '操作',
+                // formatter: function(value, item, index) {
+                //     return "<button type=\"button\" class=\"btn btn-info btn-rounded btn-xs\" onclick=\"getOrderDetail(this)\">详情</button>";
+                // }
+                formatter: function(value, item, index) {
+                    return "分配角色";
+                }
+            }]
+    });
+
+    // 查询
+    $('#btn-search').bind('click', function () {
+        dataTable.bootstrapTable('removeAll');
+        refreshTable();
+    });
+
+    // 刷新表格
+    function refreshTable() {
+        dataTable.bootstrapTable('refresh');
+    }
+</script>
+
+
+<script>
 
     /**
      * 设置导出文件的属性
@@ -661,16 +731,18 @@
      */
     $(document).ready(function() {
             $.ajax({
-                url: '../dept/getAllDept',
+                url: '/dept/showAllDept',
                 dataType: 'json',
                 type: 'post',
                 success: function (data) {
                     console.log(data);
                     if (data.code == 0) {
-                        var depts = data.depts;
+                        var depts = data.rows;
                         $.each(depts, function (i, item) {
                             <!-- 向商品详情表中进行数据注入 -->
+
                             $("#deptId").append("<option value='" + item.deptId + "'>" + item.deptName + "</option>");
+                            $("#deptId1").append("<option value='" + item.deptId + "'>" + item.deptName + "</option>");
                             $("#deptId2").append("<option value='" + item.deptId + "'>" + item.deptName + "</option>");
                             i++;
                         });
@@ -831,5 +903,49 @@
     });
 
 </script>
+<%--日期选择--%>
+<script type="text/javascript" src="${pageContext.request.contextPath}/lib/laydate/laydate.js"></script>
+<script type="text/javascript">
+    var startDate = laydate.render({
+        elem: '#startTime',
+        max: $('#endTime').val(),
+        theme: 'molv',
+        trigger: 'click',
+        done: function(value, date) {
+            // 结束时间大于开始时间
+            if (value !== '') {
+                endDate.config.min.year = date.year;
+                endDate.config.min.month = date.month - 1;
+                endDate.config.min.date = date.date;
+            } else {
+                endDate.config.min.year = '';
+                endDate.config.min.month = '';
+                endDate.config.min.date = '';
+            }
+        }
+    });
+
+    var endDate = laydate.render({
+        elem: '#endTime',
+        min: $('#startTime').val(),
+        theme: 'molv',
+        trigger: 'click',
+        done: function(value, date) {
+            // 开始时间小于结束时间
+            if (value !== '') {
+                startDate.config.max.year = date.year;
+                startDate.config.max.month = date.month - 1;
+                startDate.config.max.date = date.date;
+            } else {
+                startDate.config.max.year = '';
+                startDate.config.max.month = '';
+                startDate.config.max.date = '';
+            }
+        }
+    });
+</script>
+
+
+
 </body>
 </html>

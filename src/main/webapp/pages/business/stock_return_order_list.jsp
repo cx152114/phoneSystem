@@ -75,7 +75,7 @@
                          <ul>
                              <li>
                                  <label style="width: 60px">订单号：</label>
-                                 <input type="text" id="stoId" name="stoId"/>
+                                 <input type="text" id="proId" name="proId"/>
                              </li>
                              <li>
                                  <label style="width: 60px">总数量：</label>
@@ -101,7 +101,7 @@
 
                              <li>
                                  <label style="width: 60px">经手人：</label>
-                                 <select id="selectUserId"  name="userId">
+                                 <select id="userId"  name="userId">
                                      <option value="">所有</option>
                                  </select>
                              </li>
@@ -120,7 +120,7 @@
                              </li>
                              <li>
                                  <label style="width: 80px">订单状态：</label>
-                                 <select id="stoStatus" name="stoStatus">
+                                 <select id="proStatus" name="proStatus">
                                      <option value="">所有</option>
                                      <option value="0">已完成</option>
                                      <option value="1">未完成</option>
@@ -160,41 +160,6 @@
                        data-side-pagination="client">
                     <h4><i class="fa fa-angle-right"></i> 采购退货单信息</h4>
                     <hr>
-<%--                    <thead>--%>
-<%--                        <tr>--%>
-<%--                            <th ata-field="state" data-checkbox="true">#</th>--%>
-<%--                            <th data-field="proId">退货单号</th>--%>
-<%--                            <th data-field="proNumber">商品总数量</th>--%>
-<%--                            <th data-field="orderTime">订单时间</th>--%>
-<%--                            <th data-field="totalMoney">订单总金额</th>--%>
-<%--                            <th data-field="payType">支付方式</th>--%>
-<%--                            <th data-field="userId" data-visible="false">经手人编号</th>--%>
-<%--                            <th data-field="userName">经手人</th>--%>
-<%--                            <th data-field="proStatus">订单状态</th>--%>
-<%--                            <th data-field="proReason">退货原因</th>--%>
-<%--                            <th>操作</th>--%>
-<%--                        </tr>--%>
-<%--                    </thead>--%>
-<%--                    <tbody>--%>
-<%--                    <c:forEach items="${preturnOrderList}" var="preturnOrder">--%>
-<%--                        <tr style="text-align: center;vertical-align: middle">--%>
-<%--                            <td style="text-align: center;vertical-align: middle"></td>--%>
-<%--                            <td style="text-align: center;vertical-align: middle;">${preturnOrder.proId}</td>--%>
-<%--                            <td style="text-align: center;vertical-align: middle">${preturnOrder.proNumber}</td>--%>
-<%--                            <td style="text-align: center;vertical-align: middle">${preturnOrder.orderTimeStr}</td>--%>
-<%--                            <td style="text-align: center;vertical-align: middle">${preturnOrder.totalMoney}</td>--%>
-<%--                            <td style="text-align: center;vertical-align: middle">${preturnOrder.payTypeStr}</td>--%>
-<%--                            <td style="text-align: center;vertical-align: middle">${preturnOrder.user.userId}</td>--%>
-<%--                            <td style="text-align: center;vertical-align: middle">${preturnOrder.user.username}</td>--%>
-<%--                            <td style="text-align: center;vertical-align: middle">${preturnOrder.proStatusStr}</td>--%>
-<%--                            <td style="text-align: center;vertical-align: middle">${preturnOrder.proReason}</td>--%>
-<%--                            <td style="text-align: center;vertical-align: middle">--%>
-<%--                                <button type="button" class="btn btn-info btn-rounded btn-xs" onclick="getOrderDetail(this)">详情</button>--%>
-<%--                            </td>--%>
-<%--                        </tr>--%>
-<%--                    </c:forEach>--%>
-
-                    </tbody>
                 </table>
             </div>
          </div>
@@ -294,15 +259,16 @@
             return {
                 current: param.pageNumber, // 当前页 1
                 size: param.pageSize,      // 一页显示多少天 10
-                // phoneId:$("#phoneId2").val(),
-                // phoneName:$("#phoneName2").val(),
-                // supplierId:$("#supplierId2").val(),
-                // phoneType:$("#phoneType2").val(),
-                // phoneColor:$("#phoneColor2").val(),
-                // phoneRam:$("#phoneRam2").val(),
-                // phoneStorage:$("#phoneStorage2").val(),
-                // phoneNetwork:$("#phoneNetwork2").val(),
-                // phoneState:$("#phoneState2").val()
+                proId:$("#proId").val(),
+                userId:$("#userId").val(),
+                payType:$("#payType").val(),
+                proStatus:$("#proStatus").val(),
+                minNumber:$("#minNumber").val(),
+                maxNumber:$("#maxNumber").val(),
+                startTime:$("#startTime").val(),
+                endTime:$("#endTime").val(),
+                minAccount:$("#minAccount").val(),
+                maxAccount:$("#maxAccount").val()
             }
         },
         columns: [
@@ -402,13 +368,12 @@
                     var userList=data.userList;
                     $.each(userList,function(i,item){
                         <!-- 向商品详情表中进行数据注入 -->
-                        $("#selectUserId").append("<option value='"+item.userId+"'>"+item.username+"</option>");
+                        $("#userId").append("<option value='"+item.userId+"'>"+item.username+"</option>");
                         i++;
                     });
                 }else{
                     layer.alert(data.msg, {icon: 5, offset: '0px'});
                 }
-
             }
         });
     });
