@@ -46,14 +46,19 @@
     <!--内容区域-->
     <section id="main-content">
         <section class="wrapper">
-                <iframe src="${pageContext.request.contextPath}/login/index"
+            <div>
+                <iframe
+                        id="main-body"
+<%--                        src="${pageContext.request.contextPath}/login/index"--%>
+                        src="/login/index"
                         frameborder="0"
                         scrolling="no"
-                        id="main-body"
                         name="main-body"
                         width="100%"
                         height="600px">
+<%--                     sandbox="allow-scripts"   height="1200px">--%>
                 </iframe>
+            </div>
             <!-- /row -->
         </section>
     </section>
@@ -92,6 +97,20 @@
 
 <%--layui插件--%>
 <script src="${pageContext.request.contextPath}/lib/layer/layer.js"></script>
+<script>
+
+        document.addEventListener('DOMContentLoaded', function () {//刷新
+            var hash = location.hash;
+            //alert(hash.toString());
+            var url = hash.substring(1,hash.length);
+            if (url.length==0){
+                $("#main-body").attr("src","/login/index");
+            }
+        }, false)
+
+</script>
+
+
 
 
 

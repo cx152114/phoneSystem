@@ -77,6 +77,7 @@
                             $('.sub li').removeClass('active');
                             var url = $(this).attr('url');
                             if (url!=null) {
+                            //if (url) {
                                 var name= $(this).attr("url");
                                 location.hash = name;//设置锚点
                                 $('#main-body').attr('src', url);

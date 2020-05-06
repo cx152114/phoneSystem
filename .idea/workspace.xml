@@ -7,824 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2cbafe71-5c62-4164-a873-f667f2a9c1c0" name="Default Changelist" comment="项目备份">
-      <change afterPath="$PROJECT_DIR$/target/classes/META-INF/phoneManagement.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/application-shiro.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/Customer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/Inventory.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/InventoryMovementDetail.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/InventoryMovementOrder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/PhoneInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/PreturnDetail.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/PreturnOrder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/ProductDamageDetail.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/ProductDamageOrder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/SalesBackDetail.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/SalesBackOrder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/SalesDetail.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/SalesOrder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/SerialNumber.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/SorderDetail.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/StockOrder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/Supplier.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/Warehouse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/beans/vo/StaticStock.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/controller/CustomerController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/controller/InventoryController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/controller/InventoryMovementOrderController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/controller/PhoneInfoController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/controller/PreturnOrderController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/controller/ProductDamageOrderController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/controller/SalesBackOrderController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/controller/SalesOrderController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/controller/SerialNumberController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/controller/StaticController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/controller/StockOrderController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/controller/SupplierController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/controller/WarehouseController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/CustomerMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/InventoryMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/InventoryMovementDetailMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/InventoryMovementOrderMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/PhoneInfoMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/PreturnDetailMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/PreturnOrderMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/ProductDamageDetailMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/ProductDamageOrderMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/SalesBackDetailMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/SalesBackOrderMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/SalesDetailMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/SalesOrderMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/SerialNumberMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/SorderDetailMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/StaticStockMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/StockOrderMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/SupplierMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/mapper/WarehouseMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/ICustomerService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/IInventoryMovementDetailService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/IInventoryMovementOrderService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/IInventoryService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/IPhoneInfoService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/IPreturnDetailService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/IPreturnOrderService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/IProductDamageDetailService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/IProductDamageOrderService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/ISalesBackDetailService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/ISalesBackOrderService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/ISalesDetailService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/ISalesOrderService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/ISerialNumberService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/ISorderDetailService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/IStaticStockService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/IStockOrderService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/ISupplierService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/IWarehouseService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/CustomerServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/InventoryMovementDetailServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/InventoryMovementOrderServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/InventoryServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/PhoneInfoServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/PreturnDetailServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/PreturnOrderServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/ProductDamageDetailServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/ProductDamageOrderServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/SalesBackDetailServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/SalesBackOrderServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/SalesDetailServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/SalesOrderServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/SerialNumberServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/SorderDetailServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/StaticStockServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/StockOrderServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/SupplierServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/business/service/impl/WarehouseServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/common/controller/CommonExceptionHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/common/exception/BizException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/common/model/R.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/common/model/TreeNode.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/common/util/DateUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/common/util/MD5Util.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/common/util/MysqlGenerator$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/common/util/MysqlGenerator$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/common/util/MysqlGenerator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/common/util/TreeUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/beans/Dept.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/beans/LogLogin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/beans/Menu.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/beans/Resource.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/beans/Role.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/beans/RoleResource.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/beans/User.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/beans/UserRole.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/controller/DeptController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/controller/LogLoginController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/controller/LoginController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/controller/ResourceController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/controller/RoleController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/controller/UserController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/mapper/DeptMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/mapper/LogLoginMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/mapper/ResourceMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/mapper/RoleMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/mapper/RoleResourceMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/mapper/UserMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/mapper/UserRoleMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/realm/ShiroRealm.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/service/IDeptService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/service/ILogLoginService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/service/IResourceService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/service/IRoleResourceService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/service/IRoleService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/service/IUserRoleService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/service/IUserService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/service/impl/DeptServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/service/impl/LogLoginServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/service/impl/ResourceServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/service/impl/RoleResourceServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/service/impl/RoleServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/service/impl/UserRoleServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/cx/sys/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/log4j2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/CustomerMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/InventoryMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/InventoryMovementDetailMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/InventoryMovementOrderMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/PhoneInfoMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/PreturnDetailMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/PreturnOrderMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/ProductDamageDetailMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/ProductDamageOrderMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/SalesBackDetailMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/SalesBackOrderMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/SalesDetailMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/SalesOrderMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/SerialNumberMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/SorderDetailMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/StaticStockMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/StockOrderMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/SupplierMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/business/WarehouseMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/sys/DeptMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/sys/LogLoginMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/sys/ResourceMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/sys/RoleMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/sys/RoleResourceMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/sys/UserMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/sys/UserRoleMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mybatis-config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/springmvc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/404.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/META-INF/phoneManagement.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/application-shiro.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/applicationContext.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/Customer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/Inventory.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/InventoryMovementDetail.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/InventoryMovementOrder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/PhoneInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/PreturnDetail.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/PreturnOrder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/ProductDamageDetail.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/ProductDamageOrder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/SalesBackDetail.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/SalesBackOrder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/SalesDetail.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/SalesOrder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/SerialNumber.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/SorderDetail.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/StockOrder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/Supplier.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/Warehouse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/beans/vo/StaticStock.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/controller/CustomerController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/controller/InventoryController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/controller/InventoryMovementOrderController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/controller/PhoneInfoController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/controller/PreturnOrderController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/controller/ProductDamageOrderController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/controller/SalesBackOrderController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/controller/SalesOrderController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/controller/SerialNumberController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/controller/StaticController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/controller/StockOrderController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/controller/SupplierController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/controller/WarehouseController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/CustomerMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/InventoryMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/InventoryMovementDetailMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/InventoryMovementOrderMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/PhoneInfoMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/PreturnDetailMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/PreturnOrderMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/ProductDamageDetailMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/ProductDamageOrderMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/SalesBackDetailMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/SalesBackOrderMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/SalesDetailMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/SalesOrderMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/SerialNumberMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/SorderDetailMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/StaticStockMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/StockOrderMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/SupplierMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/mapper/WarehouseMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/ICustomerService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/IInventoryMovementDetailService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/IInventoryMovementOrderService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/IInventoryService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/IPhoneInfoService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/IPreturnDetailService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/IPreturnOrderService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/IProductDamageDetailService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/IProductDamageOrderService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/ISalesBackDetailService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/ISalesBackOrderService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/ISalesDetailService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/ISalesOrderService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/ISerialNumberService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/ISorderDetailService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/IStaticStockService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/IStockOrderService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/ISupplierService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/IWarehouseService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/CustomerServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/InventoryMovementDetailServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/InventoryMovementOrderServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/InventoryServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/PhoneInfoServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/PreturnDetailServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/PreturnOrderServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/ProductDamageDetailServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/ProductDamageOrderServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/SalesBackDetailServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/SalesBackOrderServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/SalesDetailServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/SalesOrderServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/SerialNumberServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/SorderDetailServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/StaticStockServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/StockOrderServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/SupplierServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/business/service/impl/WarehouseServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/common/controller/CommonExceptionHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/common/exception/BizException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/common/model/R.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/common/model/TreeNode.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/common/util/DateUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/common/util/MD5Util.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/common/util/MysqlGenerator$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/common/util/MysqlGenerator$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/common/util/MysqlGenerator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/common/util/TreeUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/beans/Dept.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/beans/LogLogin.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/beans/Menu.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/beans/Resource.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/beans/Role.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/beans/RoleResource.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/beans/User.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/beans/UserRole.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/controller/DeptController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/controller/LogLoginController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/controller/LoginController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/controller/ResourceController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/controller/RoleController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/controller/UserController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/mapper/DeptMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/mapper/LogLoginMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/mapper/ResourceMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/mapper/RoleMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/mapper/RoleResourceMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/mapper/UserMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/mapper/UserRoleMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/realm/ShiroRealm.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/service/IDeptService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/service/ILogLoginService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/service/IResourceService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/service/IRoleResourceService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/service/IRoleService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/service/IUserRoleService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/service/IUserService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/service/impl/DeptServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/service/impl/LogLoginServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/service/impl/ResourceServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/service/impl/RoleResourceServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/service/impl/RoleServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/service/impl/UserRoleServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/com/cx/sys/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/log4j2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/CustomerMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/InventoryMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/InventoryMovementDetailMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/InventoryMovementOrderMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/PhoneInfoMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/PreturnDetailMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/PreturnOrderMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/ProductDamageDetailMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/ProductDamageOrderMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/SalesBackDetailMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/SalesBackOrderMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/SalesDetailMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/SalesOrderMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/SerialNumberMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/SorderDetailMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/StaticStockMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/StockOrderMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/SupplierMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/business/WarehouseMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/sys/DeptMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/sys/LogLoginMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/sys/ResourceMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/sys/RoleMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/sys/RoleResourceMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/sys/UserMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mapper/sys/UserRoleMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/mybatis-config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/classes/springmvc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/FastInfoset-1.2.15.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/aspectjweaver-1.9.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/commons-beanutils-1.7.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/commons-collections-3.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/commons-fileupload-1.3.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/commons-io-2.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/commons-lang-2.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/commons-lang3-3.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/commons-logging-1.1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/druid-1.1.19.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/ehcache-3.8.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/ehcache-core-2.6.11.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/ezmorph-1.0.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/fastjson-1.2.60.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/freemarker-2.3.29.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/hutool-all-4.6.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/istack-commons-runtime-3.0.7.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/jackson-annotations-2.9.6.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/jackson-core-2.9.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/jackson-databind-2.9.9.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/javax.activation-api-1.2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/jaxb-api-2.3.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/jaxb-runtime-2.3.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/joda-time-2.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/json-lib-2.2.1-jdk15.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/json-simple-1.1.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/jsqlparser-2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/jstl-1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/log4j-api-2.12.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/log4j-core-2.12.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/log4j-slf4j-impl-2.12.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/log4j-web-2.12.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/mybatis-3.5.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/mybatis-generator-core-1.3.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/mybatis-plus-3.2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/mybatis-plus-annotation-3.2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/mybatis-plus-core-3.2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/mybatis-plus-extension-3.2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/mybatis-plus-generator-3.2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/mybatis-spring-2.0.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/shiro-cache-1.4.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/shiro-config-core-1.4.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/shiro-config-ogdl-1.4.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/shiro-core-1.4.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/shiro-crypto-cipher-1.4.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/shiro-crypto-core-1.4.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/shiro-crypto-hash-1.4.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/shiro-ehcache-1.4.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/shiro-event-1.4.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/shiro-lang-1.4.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/shiro-spring-1.4.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/shiro-web-1.4.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/slf4j-api-1.7.25.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/spring-aop-5.2.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/spring-aspects-5.2.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/spring-beans-5.2.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/spring-context-5.2.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/spring-core-5.2.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/spring-expression-5.2.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/spring-jcl-5.2.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/spring-jdbc-5.2.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/spring-orm-5.2.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/spring-test-5.2.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/spring-tx-5.2.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/spring-web-5.2.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/spring-webmvc-5.2.2.RELEASE.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/stax-ex-1.8.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/txw2-2.3.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/lib/velocity-engine-core-2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/css/build.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/css/customer/custom.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/css/customer/custom.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/css/style-responsive.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/css/table-responsive.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/css/to-do.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/css/zabuto_calendar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/date/data.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/404.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/500.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/apple-touch-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/blog-bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/checkbox-gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/friends/fr-01.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/friends/fr-02.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/friends/fr-03.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/friends/fr-04.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/friends/fr-05.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/friends/fr-06.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/friends/fr-07.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/friends/fr-08.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/friends/fr-09.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/friends/fr-10.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/friends/fr-11.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/instagram.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/login-bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/lorde.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/main.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/mask.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/ny.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/portfolio/port01.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/portfolio/port02.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/portfolio/port03.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/portfolio/port04.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/portfolio/port05.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/portfolio/port06.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/product.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/product/oneplus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/profile-01.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/profile-02.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/radio-gray.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/ui-danro.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/ui-divya.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/ui-sam.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/ui-sherman.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/ui-zac.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/weather.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/img/zoom.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/js/custom.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/js/custom.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/css/DT_bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/css/demo_page.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/css/demo_table.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/css/demo_table_jui.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/css/jquery.dataTables.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/css/jquery.dataTables_themeroller.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/images/Sorting icons.psd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/images/back_disabled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/images/back_enabled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/images/back_enabled_hover.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/images/details_close.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/images/details_open.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/images/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/images/forward_disabled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/images/forward_enabled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/images/forward_enabled_hover.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/images/sort_asc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/images/sort_asc_disabled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/images/sort_both.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/images/sort_desc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/images/sort_desc_disabled.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/js/DT_bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/js/jquery.dataTables.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/js/jquery.dataTables.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-datatable/js/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/advanced-form-components.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/art-template/template-web.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-datepicker/css/datepicker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-datepicker/js/bootstrap-datepicker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-daterangepicker/date.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-daterangepicker/daterangepicker-bs3.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-daterangepicker/daterangepicker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-daterangepicker/daterangepicker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-daterangepicker/moment.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-datetimepicker/css/datetimepicker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/css/fileinput.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/explorer-fas/theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/explorer-fas/theme.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/explorer-fas/theme.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/explorer-fas/theme.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/explorer-fas/theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/explorer-fas/theme.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/explorer-fas/theme.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/explorer-fas/theme.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/fileinput.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/LANG.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/ar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/az.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/bg.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/ca.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/cr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/cs.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/da.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/de.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/el.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/es.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/et.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/fa.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/fi.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/fr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/gl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/he.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/hu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/id.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/it.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/ja.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/ka.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/kr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/kz.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/lt.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/nl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/no.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/pl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/pt-BR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/pt.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/ro.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/ru.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/sk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/sl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/sv.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/th.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/tr.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/uk.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/uz.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/vi.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/zh-TW.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/locales/zh.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/plugins/piexif.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/plugins/piexif.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/plugins/purify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/plugins/purify.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/plugins/sortable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/plugins/sortable.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileinput/js/theme.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileupload/bootstrap-fileupload.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-fileupload/bootstrap-fileupload.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-inputmask/bootstrap-inputmask.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-select/bootstrap-select.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-select/bootstrap-select.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-select/bootstrap-select.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-select/bootstrap-select.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-switch.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-table/css/bootstrap-table.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-table/js/bootstrap-table-zh-CN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-table/js/bootstrap-table.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-timepicker/compiled/timepicker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-timepicker/js/bootstrap-timepicker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-treeview/bootstrap-treeview.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-treeview/bootstrap-treeview.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-treeview/bootstrap-treeview.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-treeview/bootstrap-treeview.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-wysihtml5/bootstrap-wysihtml5.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-wysihtml5/bootstrap-wysihtml5.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap-wysihtml5/wysihtml5-0.3.0.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrap/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/css/bootstrapValidator.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/css/bootstrapValidator.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/bootstrapValidator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/bootstrapValidator.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/ar_MA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/be_FR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/be_NL.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/bg_BG.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/cs_CZ.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/da_DK.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/de_DE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/en_US.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/es_CL.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/es_ES.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/fa_IR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/fr_FR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/gr_EL.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/he_IL.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/hu_HU.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/id_ID.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/it_IT.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/ja_JP.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/nl_NL.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/no_NO.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/pl_PL.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/pt_BR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/pt_PT.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/ro_RO.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/ru_RU.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/sq_AL.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/sr_RS.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/sv_SE.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/th_TH.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/tr_TR.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/ua_UA.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/vi_VN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/zh_CN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/bootstrapValidator/js/language/zh_TW.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/calendar-conf-events.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/chart-master/Chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/chartjs-conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/ckeditor/ckeditor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/common-scripts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/dropzone/css/dropzone.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/dropzone/dropzone.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/dropzone/images/spritemap.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/dropzone/images/spritemap@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/easy-pie-chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/fancybox/jquery.fancybox.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/fancybox/jquery.fancybox.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/file-uploader/css/jquery.fileupload-noscript.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/file-uploader/css/jquery.fileupload-ui-noscript.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/file-uploader/css/jquery.fileupload-ui.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/file-uploader/css/jquery.fileupload.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/file-uploader/img/loading.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/file-uploader/img/progressbar.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/file-uploader/js/cors/jquery.xdr-transport.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/file-uploader/js/jquery.fileupload-audio.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/file-uploader/js/jquery.fileupload-image.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/file-uploader/js/jquery.fileupload-process.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/file-uploader/js/jquery.fileupload-ui.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/file-uploader/js/jquery.fileupload-validate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/file-uploader/js/jquery.fileupload-video.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/file-uploader/js/jquery.fileupload.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/file-uploader/js/jquery.iframe-transport.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/file-uploader/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/file-uploader/js/vendor/jquery.ui.widget.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/flot/jquery.flot.crosshair.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/flot/jquery.flot.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/flot/jquery.flot.pie.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/flot/jquery.flot.resize.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/flot/jquery.flot.stack.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/flotchart-conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/font-awesome/css/font-awesome.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/font-awesome/css/font-awesome.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/font-awesome/fonts/FontAwesome.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/font-awesome/fonts/fontawesome-webfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/font-awesome/fonts/fontawesome-webfont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/font-awesome/fonts/fontawesome-webfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/font-awesome/fonts/fontawesome-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/font-awesome/fonts/fontawesome-webfont.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/form-component.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/form-validation-script.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/fullcalendar/bootstrap-fullcalendar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/fullcalendar/fullcalendar.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/google-maps/data/points.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/google-maps/maplace.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/gritter-conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/gritter/css/jquery.gritter.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/gritter/css/jquery.gritter0.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/gritter/images/gritter-light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/gritter/images/gritter-long.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/gritter/images/gritter.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/gritter/images/ie-spacer.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/gritter/js/jquery.gritter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/jquery-easy-pie-chart/jquery.easy-pie-chart.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/jquery-easy-pie-chart/jquery.easy-pie-chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/jquery-ui-1.9.2.custom.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/jquery.backstretch.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/jquery.dcjqaccordion.2.7.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/jquery.nicescroll.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/jquery.scrollTo.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/jquery.sparkline.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/jquery.tagsinput.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/jquery.ui.touch-punch.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/jquery/jquery.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/jquery/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/laydate/laydate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/laydate/theme/default/font/iconfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/laydate/theme/default/font/iconfont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/laydate/theme/default/font/iconfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/laydate/theme/default/font/iconfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/laydate/theme/default/laydate.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/layer/layer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/layer/theme/default/icon-ext.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/layer/theme/default/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/layer/theme/default/layer.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/layer/theme/default/loading-0.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/layer/theme/default/loading-1.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/layer/theme/default/loading-2.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/morris-conf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/morris/morris.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/php-mail-form/validate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/raphael/raphael.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/ruoyi/css/ry-ui.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/ruoyi/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/ruoyi/js/common.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/ruoyi/js/ry-ui.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/ruoyi/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/ruoyi/register.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/sparkline-chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/tableExport/FileSaver.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/tableExport/bootstrap-table-export.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/tableExport/es6-promise.auto.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/tableExport/html2canvas.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/tableExport/jspdf.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/tableExport/jspdf.plugin.autotable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/tableExport/tableExport.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/tableExport/xlsx.core.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/tasks.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/xchart/d3.v3.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/xchart/xcharts.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/xchart/xcharts.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/lib/zabuto_calendar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/login.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/aside.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/InventoryMovementOrder_list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/customer-list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/inventory-show.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/inventory_movement.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/product-list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/product-sale-back.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/product-sale.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/product-stock.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/product_damage.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/product_damage_list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/product_stock_back.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/sale-order-list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/sale_back_order_list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/static-list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/stock-order-list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/stock_return_order_list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/stock_static_list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/supplier-list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/business/warehouse-list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/customer-show.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/header.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/main.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/pro-list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/product-add.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/salesManagement.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/sys/deptManagement.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/sys/employee-list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/sys/login.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/sys/loginLog.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/sys/permissionManagement.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/sys/resource-add.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/sys/resource-index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/sys/resource-list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/sys/resource-update.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/pages/sys/role-list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/phoneManagement/test.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/mapper/InventoryMapperTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/mapper/InventoryMovementDetailMapperTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/mapper/InventoryMovementOrderMapperTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/mapper/PreturnOrderMapperTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/mapper/SalesOrderMapperTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/mapper/SerialNumberMapperTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/mapper/SorderDetailMapperTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/mapper/StaticStockMapperTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/mapper/StockOrderMapperTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/mapper/UserMapperTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/service/impl/ProductDamageOrderServiceImplTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/service/impl/ResourceServiceImplTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/service/impl/StaticTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/service/impl/UserRoleServiceImplTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/service/impl/UserServiceImplTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/cx/service/impl/preturnOrderServiceImplTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/InventoryMovementDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/InventoryMovementDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/InventoryMovementOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/InventoryMovementOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/ProductDamageDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/ProductDamageDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/ProductDamageOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/ProductDamageOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/SalesBackOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/beans/SalesBackOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/InventoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/InventoryMovementOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/InventoryMovementOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/PreturnOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/PreturnOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/ProductDamageOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/ProductDamageOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/SalesBackOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/SalesBackOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/SalesOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/SalesOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/StockOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/controller/StockOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/service/impl/InventoryMovementOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/service/impl/InventoryMovementOrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/service/impl/InventoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/service/impl/InventoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/service/impl/PreturnOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/service/impl/PreturnOrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/service/impl/ProductDamageOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/service/impl/ProductDamageOrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/service/impl/SalesBackOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/service/impl/SalesBackOrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/service/impl/SalesOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/service/impl/SalesOrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/business/service/impl/StockOrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/business/service/impl/StockOrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/sys/beans/Dept.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/sys/beans/Dept.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/sys/beans/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/sys/beans/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/sys/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/sys/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/sys/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/sys/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/business/InventoryMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/business/InventoryMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/business/PhoneInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/business/PhoneInfoMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/business/StockOrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/business/StockOrderMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/business/InventoryMovementOrder_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/business/InventoryMovementOrder_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/business/product_damage_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/business/product_damage_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/business/sale-order-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/business/sale-order-list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/business/sale_back_order_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/business/sale_back_order_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/business/stock-order-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/business/stock-order-list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/business/stock_return_order_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/business/stock_return_order_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/sys/employee-list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/sys/employee-list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/common/util/MysqlGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/common/util/MysqlGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/sys/beans/LogLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/sys/beans/LogLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/sys/controller/LogLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/sys/controller/LogLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cx/sys/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cx/sys/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/aside.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/aside.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/sys/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/main.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/pages/sys/loginLog.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/pages/sys/loginLog.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -850,6 +44,7 @@
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
         <option value="Jsp File" />
       </list>
     </option>
@@ -892,11 +87,12 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ICBC/icbc3.1/icbc" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/pages/sys" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -909,34 +105,34 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\idea\ssm\phoneManagement\target\phoneManagement\img\product" />
-      <recent name="D:\idea\ssm\phoneManagement\src\main\webapp\img" />
-      <recent name="D:\idea\ssm\phoneManagement\src\main\resources\mapper\business" />
-      <recent name="D:\idea\ssm\phoneManagement\src\main\webapp\lib" />
-      <recent name="D:\idea\ssm\phoneManagement\target\phoneManagement\lib" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\idea\ssm\phoneManagement\src\main\webapp\pages" />
       <recent name="D:\idea\ssm\phoneManagement\target\phoneManagement\img" />
       <recent name="D:\idea\ssm\phoneManagement\src\main\resources\mapper\business" />
       <recent name="D:\idea\ssm\phoneManagement\src\main\resources\mapper\business\vo" />
       <recent name="D:\idea\ssm\phoneManagement\src\main\webapp\pages\business" />
-      <recent name="D:\idea\ssm\phoneManagement\src\main\webapp\pages" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.cx.sys.beans" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\idea\ssm\phoneManagement\src\main\webapp\pages\sys" />
+      <recent name="D:\idea\ssm\phoneManagement\target\phoneManagement\img\product" />
+      <recent name="D:\idea\ssm\phoneManagement\src\main\webapp\img" />
+      <recent name="D:\idea\ssm\phoneManagement\src\main\resources\mapper\business" />
+      <recent name="D:\idea\ssm\phoneManagement\src\main\webapp\lib" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.2014">
-    <configuration name="InventoryMapperTest.test02" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MysqlGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.cx.common.util.MysqlGenerator" />
       <module name="phoneManagement" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.cx.mapper.*" />
+          <option name="PATTERN" value="com.cx.common.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.cx.mapper" />
-      <option name="MAIN_CLASS_NAME" value="com.cx.mapper.InventoryMapperTest" />
-      <option name="METHOD_NAME" value="test02" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -1155,19 +351,19 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.StaticStockMapperTest.test02" />
-      <item itemvalue="JUnit.InventoryMapperTest.test02" />
       <item itemvalue="JUnit.StaticStockMapperTest.test01" />
       <item itemvalue="JUnit.StaticTest.test01" />
       <item itemvalue="JUnit.StaticTest.test02" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.2014" />
+      <item itemvalue="Application.MysqlGenerator" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MysqlGenerator" />
         <item itemvalue="JUnit.StaticTest.test02" />
         <item itemvalue="JUnit.StaticStockMapperTest.test02" />
         <item itemvalue="JUnit.StaticTest.test01" />
         <item itemvalue="JUnit.StaticStockMapperTest.test01" />
-        <item itemvalue="JUnit.InventoryMapperTest.test02" />
       </list>
     </recent_temporary>
   </component>
@@ -1268,6 +464,10 @@
       <workItem from="1588319754545" duration="25455000" />
       <workItem from="1588382147891" duration="25081000" />
       <workItem from="1588488824900" duration="18803000" />
+      <workItem from="1588583731538" duration="6179000" />
+      <workItem from="1588594944683" duration="10837000" />
+      <workItem from="1588664480687" duration="16566000" />
+      <workItem from="1588728929154" duration="25535000" />
     </task>
     <task id="LOCAL-00001" summary="项目备份">
       <created>1587484893322</created>
@@ -1297,7 +497,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588383748802</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="项目完善">
+      <created>1588583858605</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1588583858605</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1310,7 +517,8 @@
     <MESSAGE value="完成部分条件查询" />
     <MESSAGE value="部分修改" />
     <MESSAGE value=" 日常完善" />
-    <option name="LAST_COMMIT_MESSAGE" value=" 日常完善" />
+    <MESSAGE value="项目完善" />
+    <option name="LAST_COMMIT_MESSAGE" value="项目完善" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#Console" timestamp="1587217684030">
@@ -1325,10 +533,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="364" y="86" key="#Tomcat_Server/0.0.1536.824@0.0.1536.824" timestamp="1583925851644" />
-    <state x="227" y="68" width="1089" height="755" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588317584811">
+    <state x="227" y="68" width="1089" height="755" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588671479842">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="227" y="68" width="1089" height="755" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1588317584811" />
+    <state x="227" y="68" width="1089" height="755" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1588671479842" />
     <state x="515" y="248" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1585366127152">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1349,38 +557,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1584808236362" />
-    <state x="503" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587437384340">
+    <state x="503" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588780591590">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="503" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1587437384340" />
-    <state x="343" y="2" key="CommitChangelistDialog2" timestamp="1588383733264">
+    <state x="503" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588780591590" />
+    <state x="343" y="2" key="CommitChangelistDialog2" timestamp="1588583827401">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="343" y="2" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588383733264" />
+    <state x="343" y="2" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1588583827401" />
     <state x="104" y="100" width="1336" height="624" key="DiffContextDialog" timestamp="1585366083736">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="104" y="100" width="1336" height="624" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1585366083736" />
-    <state x="552" y="168" key="FileChooserDialogImpl" timestamp="1588038841225">
+    <state x="552" y="168" key="FileChooserDialogImpl" timestamp="1588596956963">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="552" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588038841225" />
-    <state width="1014" height="182" key="GridCell.Tab.0.bottom" timestamp="1588522635825">
+    <state x="552" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588596956963" />
+    <state width="1014" height="187" key="GridCell.Tab.0.bottom" timestamp="1588781021373">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1014" height="182" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588522635825" />
-    <state width="1014" height="182" key="GridCell.Tab.0.center" timestamp="1588522635825">
+    <state width="1014" height="187" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588781021373" />
+    <state width="1014" height="187" key="GridCell.Tab.0.center" timestamp="1588781021372">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1014" height="182" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588522635825" />
-    <state width="1014" height="182" key="GridCell.Tab.0.left" timestamp="1588522635825">
+    <state width="1014" height="187" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588781021372" />
+    <state width="1014" height="187" key="GridCell.Tab.0.left" timestamp="1588781021371">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1014" height="182" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588522635825" />
-    <state width="1014" height="182" key="GridCell.Tab.0.right" timestamp="1588522635825">
+    <state width="1014" height="187" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588781021371" />
+    <state width="1014" height="187" key="GridCell.Tab.0.right" timestamp="1588781021373">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1014" height="182" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588522635825" />
+    <state width="1014" height="187" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588781021373" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1586617131689">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -1401,10 +609,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="274" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1588319656729" />
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1588383806662">
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1588583897214">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588383806662" />
+    <state x="361" y="146" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1588583897214" />
     <state x="507" y="166" key="extract.method.dialog" timestamp="1588494304149">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

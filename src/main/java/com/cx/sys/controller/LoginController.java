@@ -2,18 +2,25 @@ package com.cx.sys.controller;
 
 import com.cx.common.model.R;
 import com.cx.common.model.TreeNode;
+import com.cx.common.util.WebUtils;
+import com.cx.sys.beans.LogLogin;
 import com.cx.sys.beans.User;
+import com.cx.sys.service.ILogLoginService;
 import com.cx.sys.service.IUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.HttpRequestHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 
@@ -24,6 +31,10 @@ public class LoginController {
 
     @Autowired
     private IUserService userService;
+
+
+    @Autowired
+    private ILogLoginService logLoginService;
 
     /**
      * 跳转到系统登录页面
@@ -43,11 +54,18 @@ public class LoginController {
      */
     @PostMapping("/login")
     @ResponseBody
-    public R login(String username, String password) {
+    public R login(HttpServletRequest request, String username, String password) {
         UsernamePasswordToken token =
                 new UsernamePasswordToken(username,password);
         Subject subject = SecurityUtils.getSubject();
         subject.login(token);
+        User user= (User) subject.getPrincipal();
+
+        LogLogin logLogin=new LogLogin();
+        logLogin.setLoginName(user.getUsername());
+        logLogin.setLoginIp(WebUtils.getRequest().getRemoteAddr());
+        logLogin.setLoginTime(new Date());
+        logLoginService.save(logLogin);
         return R.ok();
     }
 
@@ -57,8 +75,8 @@ public class LoginController {
      */
     @GetMapping("/index")
     public String index(){
-//        return "index";
-        return "index";
+        //HttpRequestHandler handler=new H
+        return "/sys/index";
     }
 
     /**

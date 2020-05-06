@@ -2,9 +2,13 @@ package com.cx.sys.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cx.common.model.R;
 import com.cx.sys.beans.LogLogin;
 import com.cx.sys.service.ILogLoginService;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,21 +30,59 @@ import java.util.List;
  * @since 2020-03-17
  */
 @Controller
-@RequestMapping("/sys/log-login")
+@RequestMapping("/sys/logLogin")
 public class LogLoginController {
 
 
     @Autowired
     private ILogLoginService logLoginService;
 
-
-
-    @RequestMapping(value = "loadAllLoginInfo")
-    public ModelAndView loadAllLoginInfo(ModelAndView modelAndView){
-        List<LogLogin> loginList=logLoginService.list();
-        modelAndView.addObject("loginList",loginList);
-        modelAndView.setViewName("/sys/loginLog");
-        return modelAndView;
+    @GetMapping
+    public String loginLogInfo(){
+        return "/sys/loginLog";
     }
+
+
+
+    @RequestMapping(value = "/loadAllLoginInfo")
+    @ResponseBody
+    public R loadAllLoginInfo(Page<LogLogin> page,LogLogin logLogin,String startTime,String endTime){
+        QueryWrapper<LogLogin> queryWrapper=new QueryWrapper<LogLogin>();
+        if (!StringUtils.isEmpty(logLogin.getLoginName())){
+            queryWrapper.like("login_name",logLogin.getLoginName());
+        }
+        if (!StringUtils.isEmpty(logLogin.getLoginIp())){
+            queryWrapper.like("login_ip",logLogin.getLoginIp());
+        }
+        if (!StringUtils.isEmpty(startTime)){
+            queryWrapper.ge("login_time",startTime);
+        }
+        if (!StringUtils.isEmpty(endTime)){
+            queryWrapper.le("login_time",startTime);
+        }
+        logLoginService.page(page, queryWrapper);
+        return R.ok(page);
+    }
+
+    @RequestMapping(value = "deleteTargetLoginInfo")
+    @ResponseBody
+    public R deleteTargetLoginInfo(Integer id){
+        logLoginService.removeById(id);
+        return R.ok("删除成功");
+    }
+
+    @RequestMapping(value = "batchDeleteLoginLog")
+    @ResponseBody
+    public R batchDeleteLoginLog(String ids){
+        JSONArray arrIds= JSONArray.fromObject(ids);
+        List<Integer> list=new ArrayList<>();
+        for (int i = 0; i <arrIds.size() ; i++) {
+            Integer id= (Integer) arrIds.get(i);
+            list.add(id);
+        }
+        logLoginService.removeByIds(list);
+        return R.ok("删除成功");
+    }
+
 
 }
