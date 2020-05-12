@@ -34,7 +34,7 @@
 		<!-- 注入安全管理器 -->
 		<property name="securityManager" ref="securityManager"></property>
 <!--		 注入未登陆的跳转页面 默认的是webapp/login.jsp-->
-<!--		 <property name="loginUrl" value="/sys/sys/toLogin"></property>-->
+		 <property name="loginUrl" value="/login/login"></property>
 		<!-- 注入未授权的访问页面 -->
 		<!-- <property name="unauthorizedUrl" value="/unauthorized.jsp"></property> -->
 		<!-- 配置过滤器链 -->

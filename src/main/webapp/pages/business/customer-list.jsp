@@ -420,10 +420,9 @@
                 title: '状态',
                 formatter: function(value, item, index) {
                     if (value==0){
-                        return '正常';
-                    }
-                    if (value==1){
-                        return '取消合作';
+                        return "<span class=\"label label-success\">正常</span>";
+                    }else {
+                        return "<span class=\"label label-danger\">取消合作</span>";
                     }
                 }
             }]

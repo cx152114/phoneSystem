@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <html>
 <head>
     <title>部门管理</title>
@@ -45,8 +46,6 @@
 
         td{
             text-align: center;
-            vertical-align: middle;
-            vertical-align: center;
             font-size: 14px;
         }
 
@@ -61,16 +60,24 @@
 
     <div class="row">
         <div class="btn-group-sm" id="toolbar" role="group">
-            <a class="btn btn-success" data-toggle="modal" data-backdrop="false" data-target="#addDeptModal" ><i class="fa fa-plus"></i> 新增</a>
 
-            <a href="javascript:void(0)" class="btn btn-primary" onclick="alterDept()"><i class="fa fa-edit"></i> 修改</a>
+            <shiro:hasPermission name="sys:dept:add">
+                <a class="btn btn-success" data-toggle="modal" data-backdrop="false" data-target="#addDeptModal" ><i class="fa fa-plus"></i> 新增</a>
+            </shiro:hasPermission>
 
-            <a href="javascript:void(0)" class="btn btn-danger" onclick="removeDept()"><i class="fa fa-remove"></i> 删除</a>
+            <shiro:hasPermission name="sys:dept:alter">
+                <a href="javascript:void(0)" class="btn btn-primary" onclick="alterDept()"><i class="fa fa-edit"></i> 修改</a>
+            </shiro:hasPermission>
+
+            <shiro:hasPermission name="sys:dept:remove">
+                <a href="javascript:void(0)" class="btn btn-danger" onclick="removeDept()"><i class="fa fa-remove"></i> 删除</a>
+            </shiro:hasPermission>
         </div>
 
 
         <div class="col-md-12 mt">
-            <div class="col-sm-12 search-collapse">
+            <shiro:hasPermission name="sys:dept:search">
+                <div class="col-sm-12 search-collapse">
                 <p class="select-title"></p>
                 <form id="time-form">
                     <div class="select-list">
@@ -93,7 +100,7 @@
                     </div>
                 </form>
             </div>
-
+            </shiro:hasPermission>
             <div class="content-panel" style="height: 500px;overflow: auto;">
                 <table class="table table-hover rowSameHeight"
                        data-toggle="table"
@@ -104,10 +111,12 @@
                        data-show-fullscreen="true"
                        data-show-columns="true"
                        data-show-columns-toggle-all="true"
-                       data-show-export="true"
                        data-click-to-select="true"
                        data-single-select="true"
-                       data-exportDataType ="basic"
+                        <shiro:hasPermission name="sys:dept:export">
+                               data-show-export="true"
+                               data-exportDataType ="basic"
+                        </shiro:hasPermission>
                        >
                     <br>
                 </table>
@@ -126,12 +135,12 @@
                         <h3 class="mb" style="margin: 0px"> 新增部门信息</h3>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal style-form" action="/dept/addDept" method="post">
+                        <form class="form-horizontal style-form" id="addDeptFrom" action="/dept/addDept" method="post">
                             <div class="form-group" >
                                 <div class="col-sm-10" >
                                     <div>
                                         <label class="control-label" style="font-size:19px;margin-bottom: 3px;margin-left: 5px;">部门名称</label>
-                                        <input type="text" class="form-control" name="deptName" placeholder="部门名称" >
+                                        <input type="text" class="form-control" id="deptName1" name="deptName" placeholder="部门名称" >
                                     </div>
                                 </div>
                             </div>
@@ -146,18 +155,18 @@
                                 <div class="col-sm-10" >
                                     <div>
                                         <label class="radio-inline" >
-                                            <input type="radio"  name="deptStatus" checked="checked" value="1">
+                                            <input type="radio"  name="deptStatus" checked="checked" value="0">
                                             正常使用
                                         </label>
                                         <label class="radio-inline" >
-                                            <input type="radio"  name="deptStatus" value="0">
+                                            <input type="radio"  name="deptStatus" value="1">
                                             停用
                                         </label>
                                     </div>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary">提交</button>
-                            <button type="reset" class="btn btn-warning">重置</button>
+                            <button type="reset" id="btn_reset" class="btn btn-warning">重置</button>
                             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                         </form>
                     </div>
@@ -195,11 +204,11 @@
                                     </div>
                                     <div>
                                         <label class="radio-inline" >
-                                            <input type="radio" id="radio1" name="deptStatus"  value="1">
+                                            <input type="radio" id="radio1" name="deptStatus"  value="0">
                                             正常使用
                                         </label>
                                         <label class="radio-inline" >
-                                            <input type="radio" id="radio2"  name="deptStatus" value="0">
+                                            <input type="radio" id="radio2"  name="deptStatus" value="1">
                                             停用
                                         </label>
                                     </div>
@@ -320,10 +329,9 @@
                 title: '状态',
                 formatter: function(value, item, index) {
                     if (value==0){
-                        return '正常';
-                    }
-                    if (value==1){
-                        return '停用';
+                        return "<span class=\"label label-success\">正常</span>";
+                    }else {
+                        return "<span class=\"label label-danger\">停用</span>";
                     }
                 }
             }, {
@@ -364,6 +372,49 @@
         }
     });
 
+
+    /**
+     * 表单验证
+     */
+    $(document).ready(function() {
+        $('#addDeptFrom').bootstrapValidator({
+            message: '请按规定填写部门信息',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                deptName: {
+                    validators: {
+                        notEmpty: {
+                            message: '部门名称不能为空 '
+                        },
+                    }
+                },
+            }
+        });
+        $('#btn_reset').click(function() {
+            $('#addDeptFrom').data('bootstrapValidator').resetForm(true);
+        });
+    });
+
+
+
+    /**
+     * 关闭模态框之后对模态框进行重置
+     */
+    $(document).ready(function() {
+        $('#addDeptModal').on('hide.bs.modal', function () {
+            $('#addDeptFrom').data('bootstrapValidator').resetForm(true);
+        });
+    });
+
+
+
+
+
+
     /**
      * 打开修改窗口
      */
@@ -384,6 +435,7 @@
                 $("#deptId").val(deptId);
                 $("#deptName").val(deptName);
                 $("#deptRemark").val(deptRemark);
+
 
                 if (deptStatus==0){
                     $("#radio1").attr("checked","checked");

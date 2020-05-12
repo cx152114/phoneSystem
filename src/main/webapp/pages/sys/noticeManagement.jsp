@@ -27,6 +27,7 @@
 
     <link  href="${pageContext.request.contextPath}/lib/ruoyi/css/ry-ui.css" rel="stylesheet" />
 
+    <link  href="${pageContext.request.contextPath}/lib/summernote/summernote.css" rel="stylesheet" />
 
     <style type="text/css">
         th{
@@ -57,7 +58,10 @@
 <body>
 <div class="row">
     <div class="btn-group-sm" id="toolbar" role="group">
-        <a href="javascript:void(0)" class="btn btn-danger" onclick="removeSomeLogInfo()"><i class="fa fa-trash-o"></i> 删除</a>
+        <a href="javascript:void(0)" class="btn btn-success"    onclick="addNotice()"><i class="fa fa-plus"></i> 新增</a>
+
+        <a href="javascript:void(0)" class="btn btn-primary" onclick="editNotice()"><i class="fa fa-edit"></i> 修改</a>
+        <a href="javascript:void(0)" class="btn btn-danger" onclick="removeSomeLogInfo()"><i class="fa fa-trash-o"></i> 批量删除</a>
     </div>
     <!-- /col-md-12 -->
     <div class="col-md-12 mt">
@@ -68,10 +72,10 @@
                 <div class="select-list">
                     <ul>
                         <li>
-                            登录名称：<input type="text" id="loginName" name="loginName"/>
+                            公告标题：<input type="text" id="title1" name="title"/>
                         </li>
                         <li>
-                            登录地址：<input type="text" id="loginIp" name="loginIp"/>
+                            发布人：<input type="text" id="opername1" name="opername"/>
                         </li>
                         <li class="select-time">
                             <label>登录时间： </label>
@@ -109,6 +113,92 @@
     <!-- /col-md-12 -->
 </div>
 
+<%--添加公告开始--%>
+<div style="display: none;padding: 5px" id="addOrUpdateDiv">
+    <div class="panel-body">
+            <form class="form-horizontal style-form" id="addNoticeForm" action="" method="post">
+                    <div class="col-sm-12" >
+                        <div>
+                            <label class="control-label" style="font-size:19px;margin-left: 5px;">公告标题</label>
+                            <input type="text" class="form-control" name="title" placeholder="公告标题" style="width: 60%">
+                        </div>
+                        <br>
+                        <div class="box float-e-margins">
+                            <div class="box-title">
+                                <h4>编辑/保存公告内容</h4>
+                            </div>
+                            <div class="box-body" id="eg">
+                                <textarea name="content" id="content" class="form-control summernote" style="display: none;"></textarea>
+                                <div id="test" class="note-editor note-frame panel panel-default"></div></div>
+                            </div>
+                        </div>
+                    <button type="button" id="doSubmit" class="btn btn-primary">提交</button>
+                    <button type="reset" class="btn btn-warning">重置</button>
+
+            </form>
+        </div>
+    </div>
+    <small class="font-bold"></small>
+</div>
+<%--添加公告结束--%>
+
+<%--修改公告开始--%>
+<div style="display: none;padding: 5px" id="editDiv">
+    <div class="panel-body">
+        <form class="form-horizontal style-form" id="editNoticeForm" action="" method="post">
+            <div class="col-sm-12" >
+                <div>
+                    <label class="control-label" style="font-size:19px;margin-left: 5px;">公告编号</label>
+                    <input type="text" class="form-control" id="noticeId" name="noticeId" placeholder="公告标题" style="width: 60%" >
+                </div>
+                <div>
+                    <label class="control-label" style="font-size:19px;margin-left: 5px;">发布人</label>
+                    <input type="text" class="form-control" id="opername" name="opername" placeholder="发布人" style="width: 60%" >
+                </div>
+                <div>
+                    <label class="control-label" style="font-size:19px;margin-left: 5px;">发布时间</label>
+                    <input type="text" class="form-control" id="createtime" name="createtime1" placeholder="发布时间" style="width: 60%" >
+                </div>
+                <div>
+                    <label class="control-label" style="font-size:19px;margin-left: 5px;">公告标题</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="公告标题" style="width: 60%">
+                </div>
+
+                <br>
+                <div class="box float-e-margins">
+                    <div class="box-title">
+                        <h4>编辑/保存公告内容</h4>
+                    </div>
+                    <div class="box-body" id="eg1">
+                        <textarea name="content" id="content1" class="form-control summernote" style="display: none;"></textarea>
+                        <div id="test1" class="note-editor note-frame panel panel-default"></div></div>
+                </div>
+            </div>
+            <button type="button" id="doSubmit1" class="btn btn-primary">提交</button>
+            <button type="reset" class="btn btn-warning">重置</button>
+
+        </form>
+    </div>
+</div>
+<small class="font-bold"></small>
+</div>
+<%--修改公告结束--%>
+
+
+
+<%--查看公告开始--%>
+<div style="display: none;padding: 5px" id="showNoticeDiv">
+    <h3 id="show_title" align="center"></h3>
+    <div style="text-align: right;">
+        发布人:<span id="show_opername"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+        发布时间:<span id="show_createtime"></span>
+    </div>
+    <hr>
+    <div id="show_content" ></div>
+
+</div>
+<%--查看公告结束--%>
+
 
 <!-- js placed at the end of the document so the pages load faster -->
 <script src="${pageContext.request.contextPath}/lib/jquery/jquery.min.js"></script>
@@ -128,7 +218,8 @@
 <%--layui插件--%>
 <script src="${pageContext.request.contextPath}/lib/layer/layer.js"></script>
 
-
+<%--summernote插件--%>
+<script src="${pageContext.request.contextPath}/lib/summernote/summernote.js"></script>
 
 <script>
 
@@ -136,6 +227,7 @@
         $(data)[0].reset();
         refreshTable();
     }
+
     // 初始化表格数据
     var dataTable = $('#notices').bootstrapTable({
         url: "/sys/notice/findAllNotice",                      //  请求后台的URL
@@ -150,8 +242,8 @@
             return {
                 current: param.pageNumber, // 当前页 1
                 size: param.pageSize,      // 一页显示多少天 10
-                loginName:$("#loginName").val(),
-                loginIp: $("#loginIp").val(),
+                title:$("#title1").val(),
+                opername: $("#opername1").val(),
                 startTime:$("#startTime").val(),
                 endTime:$("#endTime").val()
             }
@@ -164,18 +256,18 @@
                 title: 'ID'
             }, {
                 field: 'title',
-                title: '登录名称'
+                title: '公告标题'
             }, {
                 field: 'opername',
-                title: '登录地址'
+                title: '发布人'
             }, {
                 field: 'createtime',
-                title: '登录时间'
+                title: '发布时间'
             },{
                 title:'操作',
                 field: 'active',
                 formatter: function(value, item, index) {
-                    return "<button type=\"button\" class=\"btn btn-danger btn-rounded btn-xs\" onclick=\"remove(this)\">删除</button>";
+                    return "<button type=\"button\" class=\"btn btn-danger btn-rounded btn-xs\" onclick=\"remove(this)\">删除</button>"+"&nbsp;&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-default btn-rounded btn-xs\" onclick=\"showNotice(this)\">查看</button>";
 
                 }
             }]
@@ -196,27 +288,92 @@
     }
 
 
+    var mainIndex;
+
+    //iframe窗
+    function addNotice() {
+        mainIndex=layer.open({
+            type: 1,
+            title: '新增公告',
+            shadeClose: true,
+            shade: false,
+            maxmin: true, //开启最大化最小化按钮
+            area: ['893px', '500px'],
+            content: $("#addOrUpdateDiv")
+        });
+    }
+
+    function editNotice(data) {
+        var $table = $('#notices');
+        var notice = $table.bootstrapTable('getSelections');
+        if (JSON.stringify(notice) == "[]") {
+            layer.alert("请先选择要进行修改的记录", {icon: 5, offset: '0px'});
+        } else {
+            var noticeId = notice[0].noticeId;
+            //alert(noticeId);
+
+            mainIndex = layer.open({
+                type: 1,
+                title: '修改公告',
+                shadeClose: true,
+                shade: false,
+                maxmin: true, //开启最大化最小化按钮
+                area: ['893px', '500px'],
+                content: $("#editDiv"),
+                success: function () {
+                    //$("#editNoticeForm")[0].reset();
+                    //装载新的数据
+                    $("editNoticeForm").val("dataFrm", data);
+                    $.ajax({
+                        url: '/sys/notice/findTargetNotice',
+                        dataType: 'json',
+                        type: 'post',
+                        data: {noticeId: noticeId},
+                        success: function (data) {
+                            if (data.code == 0) {
+                                //layer.msg(data.msg, {icon: 1, time: 1000, offset: '0px'});
+                                $("#noticeId").val(data.notice.noticeId);
+                                $("#opername").val(data.notice.opername);
+                                $("#createtime").val(data.notice.createtime);
+                                $("#title").val(data.notice.title);
+                                $("#content1").val(data.notice.content);
+
+                                var content="<p>"+data.notice.content+"</p>";
+                                $('#test1').summernote('code',content);
+                            } else {
+                                layer.alert(data.msg, {icon: 5, offset: '0px'});
+                            }
+                        }
+                    });
+
+                    //url="/sys/notice/editNotice";
+                }
+            });
+        }
+    }
+
+
 
     /**
      * 批量删除
      */
     function removeSomeLogInfo() {
-        var loginLog= $('#notices').bootstrapTable('getSelections');
-        //alert(loginLog[0].id);
+        var notices= $('#notices').bootstrapTable('getSelections');
+        // alert(notices[0].id);
         var ids = new Array();
-        for (var i = 0; i <loginLog.length ; i++) {
-            ids[i]=loginLog[i].id;
+        for (var i = 0; i <notices.length ; i++) {
+            ids[i]=notices[i].noticeId;
         }
         if (ids.length==0){
-            layer.msg("请选择要删除的角色",{icon:5});
+            layer.msg("请选择要删除的公告",{icon:5});
             return;
         }else {
-            layer.confirm('你是否确定要删除该条日志？', {
+            layer.confirm('你是否确定要删除选定的公告？', {
                 btn: ['确定','取消'] //按钮
             }, function(){
                 ids=JSON.stringify(ids);
                 $.ajax({
-                    url:'/sys/logLogin/batchDeleteLoginLog',
+                    url:'/sys/notice/batchDeleteNotices',
                     dataType:'json',
                     type:'post',
                     data:{ids:ids},
@@ -235,16 +392,16 @@
     }
 
     function remove(data){
-        layer.confirm('你是否确定要删除该条日志？', {
+        layer.confirm('你是否确定要删除该条公告？', {
             btn: ['确定','取消'] //按钮
         }, function(){
             var value = $(data).parent().parent().find("td");
-            var id=value.eq(1).text().toString().trim();
+            var noticeId=value.eq(1).text().toString().trim();
             $.ajax({
-                url:'/sys/logLogin/deleteTargetLoginInfo',
+                url:'/sys/notice/deleteTargetNotice',
                 dataType:'json',
                 type:'post',
-                data:{id:id},
+                data:{noticeId:noticeId},
                 success:function(data){
                     if (data.code == 0) {
                         layer.msg(data.msg, {icon: 1, time: 1000, offset: '0px'});
@@ -262,6 +419,110 @@
     }
 
 
+    $(document).ready(function () {
+        $("#test").summernote({
+            lang: 'zh-CN',
+            minHeight : 150,
+            toolbar: [
+                ['operate', ['undo','redo']],
+                ['magic',['style']],
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['para', ['height','fontsize','ul', 'ol', 'paragraph']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['color', ['color']],
+                //['insert',['picture','video','link','table','hr']],
+                ['layout',['fullscreen','codeview']],
+            ]
+        });
+    });
+
+    $(document).ready(function () {
+        $("#test1").summernote({
+            lang: 'zh-CN',
+            minHeight : 150,
+            toolbar: [
+                ['operate', ['undo','redo']],
+                ['magic',['style']],
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['para', ['height','fontsize','ul', 'ol', 'paragraph']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['color', ['color']],
+                //['insert',['picture','video','link','table','hr']],
+                ['layout',['fullscreen','codeview']],
+            ]
+        });
+    });
+
+    $("#doSubmit").click(function(){
+        //同步富文本和textarea里面的内容
+        var text = $($("#test").summernote("code")).text();
+        //var text = $($("#test").summernote("code"));
+
+        $("#content").val(text);
+        //return;
+        var data=$("#addNoticeForm").serialize();
+        $.post("/sys/notice/addNotice",data,function(res){
+            if(res.code==0){
+                layer.msg(res.msg);
+                refreshTable();
+                layer.close(mainIndex);
+            }
+        });
+    });
+
+    $("#doSubmit1").click(function(){
+        //同步富文本和textarea里面的内容
+        var text01 = $($("#test1").summernote("code")).text();
+        //var text = $($("#test").summernote("code"));
+        $("#content1").val(text01);
+        var data=$("#editNoticeForm").serialize();
+        $.post("/sys/notice/editNotice",data,function(res){
+            if(res.code==0){
+                layer.msg(res.msg);
+                refreshTable();
+                layer.close(mainIndex);
+            }
+        });
+    });
+
+
+    //弹出查看层
+    function showNotice(data){
+        mainIndex=layer.open({
+            type:1,
+            content:$("#showNoticeDiv"),
+            area:['800px','300px'],
+            title:'查看公告',
+            success:function(){
+                var value = $(data).parent().parent().find("td");
+                var noticeId=value.eq(1).text().toString().trim();
+                $.ajax({
+                    url:'/sys/notice/findTargetNotice',
+                    dataType:'json',
+                    type:'post',
+                    data:{noticeId:noticeId},
+                    success:function(data){
+                        if(data.code==0){
+                            var notice=data.notice;
+                            $("#show_title").html(notice.title);
+                            $("#show_opername").html(notice.opername);
+                            $("#show_createtime").html(notice.createtime);
+
+                            var content="<lable style='font-size: 16px;'>"+notice.content+"</lable>";
+                            $("#show_content").html(content);
+                        }else{
+                            layer.alert(data.msg, {icon: 5, offset: '0px'});
+                        }
+
+                    }
+                });
+
+
+
+
+            }
+        });
+    }
 </script>
 
 <%--日期选择--%>

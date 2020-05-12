@@ -2,6 +2,7 @@ package com.cx.sys.controller;
 
 import com.cx.common.model.R;
 import com.cx.common.model.TreeNode;
+import com.cx.common.util.MD5Util;
 import com.cx.common.util.WebUtils;
 import com.cx.sys.beans.LogLogin;
 import com.cx.sys.beans.User;
@@ -68,6 +69,24 @@ public class LoginController {
         logLoginService.save(logLogin);
         return R.ok();
     }
+
+    /**
+     * 解锁
+     * @param password
+     * @return
+     */
+    @PostMapping("/unlock")
+    @ResponseBody
+    public R unlock(String password) {
+        User user=(User)SecurityUtils.getSubject().getPrincipal();
+        if (user.getPassword().equals(MD5Util.md5_private_salt(password.trim(),user.getSalt()))){
+            return R.ok();
+        }
+        return R.error("密码错误");
+
+
+    }
+
 
     /**
      * 跳转到系统初始化页面

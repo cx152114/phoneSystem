@@ -191,7 +191,7 @@
                          <h3 class="mb" style="margin: 0px"> 新增手机信息</h3>
                      </div>
                      <div class="panel-body">
-                         <form class="form-horizontal style-form" id="addCustomerForm" action="/business/phoneInfo/addProduct" method="post">
+                         <form class="form-horizontal style-form" id="addProductForm" action="/business/phoneInfo/addProduct" method="post">
                              <div>
                                  <div class="form-group" style="float:left;width: 40%;">
                                      <label class="col-sm-5 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">手机名称：</label>
@@ -289,18 +289,12 @@
 
                              <div class="form-group">
                                  <div class="file-loading">
-                                     <input id="file-5"   type="file" multiple data-preview-file-type="any" data-upload-url="#" data-theme="fas">
+                                     <input id="file" name="file"  type="file" multiple data-preview-file-type="any" data-upload-url="/common/file/uploadFile" data-theme="fas">
                                  </div>
+                                 <input type="text" class="form-control"  id="phoneImage" name="phoneImage" placeholder="上传图片" style="width: 60%;display: none" >
+
                              </div>
 
-                             <div class="form-group">
-                                 <div>
-                                     <label class="col-sm-3 control-label" style="font-size:16px;">上传图片：</label>
-                                     <div >
-                                         <input type="text" class="form-control"  name="phoneImage" placeholder="上传图片" style="width: 60%">
-                                     </div>
-                                 </div>
-                             </div>
                              <button type="submit" class="btn btn-primary">提交</button>
                              <button type="reset" class="btn btn-warning">重置</button>
                              <button type="button"  class="btn btn-default" data-dismiss="modal">取消</button>
@@ -315,131 +309,138 @@
 
      <!-- 修改商品 -->
      <div class="modal inmodal" id="alterProductModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false" style="display: none;">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content animated bounceInRight">
-                            <div class="panel  form-panel "  style="margin:0 auto; width:100%; border:1px solid #F00; ">
-                                <div class="panel-heading" style="text-align: center;">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h3 class="mb" style="margin: 0px"> 修改手机信息</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <form class="form-horizontal style-form" id="editSupplierForm" action="/business/phoneInfo/editProduct" method="post">
-                                        <input type="text" class="form-control" id="phoneId" name="phoneId"  style="display: none">
-                                        <div>
-                                            <div class="form-group" style="float:left;width: 40%;">
-                                                <label class="col-sm-5 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">手机名称：</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" class="form-control" id="phoneName" name="phoneName" placeholder="手机名称"  required>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" style="float:left;width: 30%;">
-                                                <label class="col-sm-5 control-label" style="font-size:16px;">供应商：</label>
-                                                <div class="col-sm-6">
-                                                    <select class="form-control" id="supplierId" name="supplierId" required>
-                                                        <option value=""></option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" style="float:left;width: 40%;">
-                                                <label class="col-sm-4 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">类型：</label>
-                                                <div class="col-sm-6">
-                                                    <select class="form-control" id="phoneType" name="phoneType">
-                                                        <option value=""></option>
-                                                        <option value="智能机">智能机</option>
-                                                        <option value="功能机">功能机</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <div class="form-group" style="float:left;width: 40%;">
-                                                <label class="col-sm-3 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">颜色：</label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" class="form-control" id="phoneColor" name="phoneColor" placeholder="手机颜色" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group" style="float:left;width: 30%;">
-                                                <label class="col-sm-4 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">运存：</label>
-                                                <div class="col-sm-7">
-                                                    <select class="form-control" id="phoneRam" name="phoneRam">
-                                                        <option value=""></option>
-                                                        <option value="4GB">4GB</option>
-                                                        <option value="6GB">6GB</option>
-                                                        <option value="8GB">8GB</option>
-                                                        <option value="10GB">10GB</option>
-                                                        <option value="12GB">12GB</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group" style="float:left;width: 40%;">
-                                                <label class="col-sm-4 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">储存容量：</label>
-                                                <div class="col-sm-4">
-                                                    <select class="form-control" id="phoneStorage" name="phoneStorage" required>
-                                                        <option value=""></option>
-                                                        <option value="16GB">16GB</option>
-                                                        <option value="32GB">32GB</option>
-                                                        <option value="64GB">64GB</option>
-                                                        <option value="128GB">128GB</option>
-                                                        <option value="256GB">256GB</option>
-                                                        <option value="512GB">512GB</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-
-                                        <div>
-                                            <div class="form-group" style="float:left;width: 50%;">
-                                                <label class="col-sm-4 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">网络类型：</label>
-                                                <div class="col-sm-4">
-                                                    <select class="form-control" id="phoneNetwork" name="phoneNetwork">
-                                                        <option value=""></option>
-                                                        <option value="2G">2G</option>
-                                                        <option value="3G">3G</option>
-                                                        <option value="全网通4G">全网通4G</option>
-                                                        <option value="5G">5G</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group" style="float:left;width: 50%;">
-                                                <label class="col-sm-4 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">售卖状态：</label>
-                                                <div class="col-sm-4">
-                                                    <select class="form-control" id="phoneState" name="phoneState" required>
-                                                        <option value="0">在售</option>
-                                                        <option value="1">下架</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="form-group" >
-                                            <div class="col-sm-7">
-                                                <textarea class="form-control" id="phoneRemark" name="phoneRemark"  placeholder="手机描述" rows="4" data-rule="required" data-msg="手机描述"></textarea>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <div class="file-loading">
-                                                <input id="file-6"   type="file" multiple data-preview-file-type="any" data-upload-url="#" data-theme="fas">
-                                            </div>
-                                        </div>
-
-                                        <button type="submit" class="btn btn-primary">提交</button>
-                                        <button type="reset" class="btn btn-warning">重置</button>
-                                        <button type="button"  class="btn btn-default" data-dismiss="modal">取消</button>
-                                    </form>
-                                </div>
-                            </div>
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content animated bounceInRight">
+                    <div class="panel  form-panel "  style="margin:0 auto; width:100%; border:1px solid #F00; ">
+                        <div class="panel-heading" style="text-align: center;">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h3 class="mb" style="margin: 0px"> 修改手机信息</h3>
                         </div>
-                        <small class="font-bold"></small>
+                        <div class="panel-body">
+                            <form class="form-horizontal style-form" id="editSupplierForm" action="/business/phoneInfo/editProduct" method="post">
+                                <input type="text" class="form-control" id="phoneId" name="phoneId"  style="display: none">
+                                <div>
+                                    <div class="form-group" style="float:left;width: 40%;">
+                                        <label class="col-sm-5 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">手机名称：</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="phoneName" name="phoneName" placeholder="手机名称"  required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="float:left;width: 30%;">
+                                        <label class="col-sm-5 control-label" style="font-size:16px;">供应商：</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control" id="supplierId" name="supplierId" required>
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="float:left;width: 40%;">
+                                        <label class="col-sm-4 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">类型：</label>
+                                        <div class="col-sm-6">
+                                            <select class="form-control" id="phoneType" name="phoneType">
+                                                <option value=""></option>
+                                                <option value="智能机">智能机</option>
+                                                <option value="功能机">功能机</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="form-group" style="float:left;width: 40%;">
+                                        <label class="col-sm-3 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">颜色：</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="phoneColor" name="phoneColor" placeholder="手机颜色" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" style="float:left;width: 30%;">
+                                        <label class="col-sm-4 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">运存：</label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control" id="phoneRam" name="phoneRam">
+                                                <option value=""></option>
+                                                <option value="4GB">4GB</option>
+                                                <option value="6GB">6GB</option>
+                                                <option value="8GB">8GB</option>
+                                                <option value="10GB">10GB</option>
+                                                <option value="12GB">12GB</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" style="float:left;width: 40%;">
+                                        <label class="col-sm-4 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">储存容量：</label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" id="phoneStorage" name="phoneStorage" required>
+                                                <option value=""></option>
+                                                <option value="16GB">16GB</option>
+                                                <option value="32GB">32GB</option>
+                                                <option value="64GB">64GB</option>
+                                                <option value="128GB">128GB</option>
+                                                <option value="256GB">256GB</option>
+                                                <option value="512GB">512GB</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div>
+                                    <div class="form-group" style="float:left;width: 50%;">
+                                        <label class="col-sm-4 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">网络类型：</label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" id="phoneNetwork" name="phoneNetwork">
+                                                <option value=""></option>
+                                                <option value="2G">2G</option>
+                                                <option value="3G">3G</option>
+                                                <option value="全网通4G">全网通4G</option>
+                                                <option value="5G">5G</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group" style="float:left;width: 50%;">
+                                        <label class="col-sm-4 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">售卖状态：</label>
+                                        <div class="col-sm-4">
+                                            <select class="form-control" id="phoneState" name="phoneState" required>
+                                                <option value="0">在售</option>
+                                                <option value="1">下架</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group" >
+                                    <div class="col-sm-7">
+                                        <textarea class="form-control" id="phoneRemark" name="phoneRemark"  placeholder="手机描述" rows="4" data-rule="required" data-msg="手机描述"></textarea>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <img style="width: 140px;height: 100px;" id="test01" src="" />
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="file-loading">
+
+                                        <input id="file-6"   type="file" multiple data-preview-file-type="any" data-upload-url="/common/file/uploadFile" data-theme="fas">
+                                    </div>
+
+                                    <input type="text" class="form-control"  id="phoneImage1" name="phoneImage" placeholder="上传图片" style="width: 60%;display: none" >
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">提交</button>
+                                <button type="reset" class="btn btn-warning">重置</button>
+                                <button type="button"  class="btn btn-default" data-dismiss="modal">取消</button>
+                            </form>
+                        </div>
                     </div>
-                    <small class="font-bold"></small>
                 </div>
+                <small class="font-bold"></small>
+            </div>
+            <small class="font-bold"></small>
+        </div>
 
      <!-- 移除商品-->
      <div class="modal fade" id="removeProductModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -547,8 +548,8 @@
                      field: 'phoneImage',
                      title: '#',
                      formatter: function(value, item, index) {
-                         // return '<img src="'+value+' alt="图片正在加载">';
-                         return 0;
+                         //return "<img src='/common/file/showImageByPath?path='+value  />";
+                         return '<img style="width: 40px;height: 40px;" src=/common/file/showImageByPath?path='+value+'/>';
                      }
                  }, {
                      field: 'phoneName',
@@ -626,80 +627,6 @@
 
 
          $(document).ready(function() {
-             $('#addUserForm').bootstrapValidator({
-                 message: '请填写正确的用户信息',
-                 feedbackIcons: {
-                     valid: 'glyphicon glyphicon-ok',
-                     invalid: 'glyphicon glyphicon-remove',
-                     validating: 'glyphicon glyphicon-refresh'
-                 },
-                 fields: {
-                     username: {
-                         message: 'The username is not valid',
-                         validators: {
-                             notEmpty: {
-                                 message: '用户名不能为空 '
-                             },
-                             different: {
-                                 field: 'password,confirmPassword',
-                                 message: 'The username and password cannot be the same as each other'
-                             }
-                         }
-                     },
-                     userEmail: {
-                         validators: {
-                             notEmpty: {
-                                 message: '邮箱不能为空 '
-                             },
-                             emailAddress: {
-                                 message: '这不是一个正确的邮箱'
-                             }
-                         }
-                     },
-                     userPhone: {
-                         validators: {
-                             notEmpty: {
-                                 message: '手机号不能为空'
-                             },
-                             regexp: {
-                                 regexp: /^1\d{10}$/,
-                                 message: '手机号格式错误'
-                             }
-                         }
-                     },
-                     password: {
-                         validators: {
-                             notEmpty: {
-                                 message: '密码不能为空'
-                             },
-                             identical: {
-                                 field: 'confirmPassword',
-                                 message: '两次填写的密码不一致，请重新确认'
-                             },
-                             different: {
-                                 field: 'username',
-                                 message: '请不要使用用户名作为密码'
-                             }
-                         }
-                     },
-                     confirmPassword: {
-                         validators: {
-                             notEmpty: {
-                                 message: '密码不能为空'
-                             },
-                             identical: {
-                                 field: 'password',
-                                 message: '两次填写的密码不一致'
-                             },
-                             different: {
-                                 field: 'username',
-                                 message: '请不要使用用户名作为密码'
-                             }
-                         }
-                     },
-                 }
-             });
-
              // Validate the form manually
              $('#validateBtn').click(function() {
                  $('#defaultForm').bootstrapValidator('validate');
@@ -715,8 +642,8 @@
           * 关闭模态框之后对模态框进行重置
           */
          $(document).ready(function() {
-             $('#addSupplierModal').on('hidden.bs.modal', function () {
-                 //$('#addS').data('bootstrapValidator').resetForm(true);
+             $('#addProductModal').on('hidden.bs.modal', function () {
+                 $('#addProductForm')[0].reset();
              });
 
              $('#alterSupplierModal').on('hidden.bs.modal', function () {
@@ -785,7 +712,10 @@
                     $("#phoneNetwork").val(phoneNetwork);
                     $("#phoneState").val(phoneState);
                     $("#phoneRemark").val(phoneRemark);
-                    $("#phoneImage").val(phoneImage);
+                    $("#phoneImage1").val(phoneImage);
+                $("#test01").attr("src","/common/file/showImageByPath?path="+phoneImage);
+
+
                 }
         }
 
@@ -836,13 +766,76 @@
 
          $(document).ready(function() {
              var projectfileoptions = {
-                 language: 'zh'
+                 language: 'zh',
+                 uploadUrl: "/common/file/uploadFile",
              }
-             $("#file-5").fileinput(projectfileoptions);
 
-             $("#file-6").fileinput(projectfileoptions);
+
+             var phoneImage1=$("#phoneImage1").val();
+             var projectfileoptions1 = {
+                 language: 'zh',
+                 uploadUrl: "/common/file/uploadFile"
+             }
+             $("#file").fileinput(projectfileoptions);
+
+             $("#file-6").fileinput(projectfileoptions1);
          });
 
+    </script>
+
+     <%--    图片上传--%>
+    <script>
+ // $(function() {
+ //     $("#file").fileinput({
+ //         uploadUrl: "/common/file/uploadFile", //接受请求地址
+ //         //deleteUrl: ctx + "common/delete",
+ //         uploadAsync: true, //默认异步上传
+ //         showUpload: true, //是否显示上传按钮,跟随文本框的那个
+ //         showRemove: true, //显示移除按钮,跟随文本框的那个
+ //         showCaption: true,//是否显示标题,就是那个文本框
+ //         showPreview: true, //是否显示预览,不写默认为true
+ //         dropZoneEnabled: false,//是否显示拖拽区域，默认不写为true，但是会占用很大区域
+ //         initialPreviewAsData: true,
+ //         //minImageWidth: 50, //图片的最小宽度
+ //         //minImageHeight: 50,//图片的最小高度
+ //         //maxImageWidth: 1000,//图片的最大宽度
+ //         //maxImageHeight: 1000,//图片的最大高度
+ //         //maxFileSize: 0,//单位为kb，如果为0表示不限制文件大小
+ //         //minFileCount: 0,
+ //         maxFileCount: 1, //表示允许同时上传的最大文件个数
+ //         enctype: 'multipart/form-data',
+ //         validateInitialCount: true,
+ //         previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+ //         msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+ //         allowedFileTypes: ['image'],//配置允许文件上传的类型
+ //         allowedPreviewTypes: ['image'],//配置所有的被预览文件类型
+ //         allowedPreviewMimeTypes: ['jpg', 'png', 'gif'],//控制被预览的所有mime类型
+ //         language: 'zh',
+ //         // initialPreview: [
+ //         //     "/profile/upload/2020/04/16/3f2ec280305390be676fdb815f5468c2.jpg",
+ //         // ],
+ //     })
+ //     //异步上传返回结果处理
+ //     $('#file').on('fileerror', function (event, data, msg) {
+ //         console.log("fileerror");
+ //         alert(data);
+ //     });
+     //异步上传返回结果处理
+     $("#file").on("fileuploaded", function (event, data) {
+         //alert(JSON.stringify(data));
+         if (data.response.code == 0) {
+             alert(data.response.path);
+             var path=data.response.path;
+             $('#phoneImage').val(path);
+             alert($('#phoneImage').val());
+         }else{
+         }
+     });
+ //     //上传前
+ //     $('#file').on('filepreupload', function (event, data, previewId, index) {
+ //         console.log("filepreupload");
+ //     });
+ // });
     </script>
 </body>
 </html>

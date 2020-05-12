@@ -5,6 +5,7 @@ import com.cx.common.util.MD5Util;
 import com.cx.sys.beans.User;
 
 import com.cx.sys.service.IUserService;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -42,7 +43,6 @@ public class ShiroRealm extends AuthorizingRealm {
         QueryWrapper<User> param = new QueryWrapper<>();
         param.eq("username",username);
         User user = userService.getOne(param);
-        System.out.println(user);
 
         if(user == null) {
             throw new UnknownAccountException("用户名不存在");
@@ -76,7 +76,6 @@ public class ShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-
         User user = (User) principals.getPrimaryPrincipal();
         // 简单授权信息对象，对象中包含用户的角色和权限信息
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
@@ -91,11 +90,14 @@ public class ShiroRealm extends AuthorizingRealm {
         Set<String> permissions = new HashSet<>();
         for(String name : permissionNameSet) {
             for(String permission : name.split(",")){
-                permissions.add(permission);
+                    if (!StringUtils.isEmpty(permission)) {
+                        permissions.add(permission);
+                    }
             }
         }
-        info.addStringPermissions(permissions);
-
+        if(null!=permissions&&permissions.size()>0) {
+            info.addStringPermissions(permissions);
+        }
         System.out.println("授权完成....");
         return info;
     }

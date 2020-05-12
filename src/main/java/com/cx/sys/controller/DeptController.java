@@ -10,6 +10,7 @@ import com.cx.sys.beans.Role;
 import com.cx.sys.beans.User;
 import com.cx.sys.service.IDeptService;
 import org.apache.commons.lang.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,11 +35,13 @@ public class DeptController {
     private IDeptService deptService;
 
     @GetMapping
+    @RequiresPermissions("sys:dept:menu")
     public String list() {
         return "/sys/deptManagement";
     }
 
     @PostMapping("/showAllDept")
+    @RequiresPermissions("sys:dept:search")
     @ResponseBody
     public R data(Integer deptStatus,String deptName,Page<Dept> page) {
         //1.构造查询条件构造器
@@ -59,6 +62,7 @@ public class DeptController {
 
 
     @RequestMapping(value = "/addDept",method = RequestMethod.POST)
+    @RequiresPermissions("sys:dept:add")
     public String addDept(Dept dept){
         deptService.save(dept);
         return "/sys/deptManagement";
@@ -66,12 +70,14 @@ public class DeptController {
 
 
     @RequestMapping(value = "/editDept",method = RequestMethod.POST)
+    @RequiresPermissions("sys:dept:alter")
     public String editDept(Dept dept){
         deptService.updateById(dept);
         return "/sys/deptManagement";
     }
 
     @RequestMapping(value = "/removeDept",method = RequestMethod.POST)
+    @RequiresPermissions("sys:dept:remove")
     @ResponseBody
     public R removeDept(Integer deptId){
         if (deptId==null){

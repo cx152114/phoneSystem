@@ -11,7 +11,7 @@
     <div id="sidebar" class="nav-collapse ">
         <!-- sidebar menu start-->
         <div style="padding-top: 70px;">
-            <p class="centered"><a href="profile.html"><img src="${pageContext.request.contextPath}/img/ui-sam.jpg" class="img-circle" width="80"></a></p>
+            <p class="centered"><img src="${pageContext.request.contextPath}/img/ui-sam.jpg" class="img-circle" width="80"></p>
             <h5 class="centered"><shiro:principal property="username"></shiro:principal></h5>
         </div>
 

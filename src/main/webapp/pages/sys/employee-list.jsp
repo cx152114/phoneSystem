@@ -894,7 +894,7 @@
             success: function (response) {
                 if (response.code == 0) {
                     window.parent.layer.msg(response.msg, {icon: 1, time: 1000, offset: '0px'});
-                    window.location.href = '/user/showAllUser';
+                    window.location.href = '/user/userManagement';
                 } else {
                     window.parent.layer.alert(response.msg, {icon: 5, offset: '0px'});
                 }

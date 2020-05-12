@@ -12,20 +12,8 @@
         <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
     </div>
     <!--logo start-->
-    <a href="index.jsp" class="logo"><b>手机<span>进销存管理系统</span></b></a>
+    <a href="/login/main"  class="logo"><b>手机<span>进销存管理系统</span></b></a>
     <!--logo end-->
-
-
-    <div class="nav notify-row" id="top_menu">
-        <!--  notification start -->
-        <ul class="nav top-menu">
-            <!-- settings start -->
-
-        </ul>
-        <!--  notification end -->
-    </div>
-
-
 
     <div class="top-menu">
         <!-- 登录按钮 -->
@@ -36,15 +24,11 @@
             <ul class="nav pull-right dropdown-menu" role="menu">
                 <li><a href="#"><i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;&nbsp;个人中心</a></li>
                 <li><a href="#"><i class="fa fa-key"></i></i>&nbsp;&nbsp;&nbsp;&nbsp;修改密码</a></li>
-                <li><a href="#"><i class="fa fa-unlock-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;锁屏</a></li>
+                <li><a href="/sys/lockScreen"><i class="fa fa-unlock-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;锁屏</a></li>
                 <li class="divider"></li>
                 <li><a href="/user/logout"><i class="fa fa-sign-out"></i>&nbsp;&nbsp;&nbsp;&nbsp;退出系统</a></li>
             </ul>
-
-<%--            <li><a class="logout " href="/user/logout"> 退出系统</a></li>--%>
         </ul>
     </div>
-
-
 </header>
 <!--页面头部-->

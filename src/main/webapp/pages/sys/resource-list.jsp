@@ -10,7 +10,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
-    <title>角色管理</title>
+    <title>菜单管理</title>
     <!-- Favicons -->
     <link href="${pageContext.request.contextPath}/img/favicon.png" rel="icon">
 

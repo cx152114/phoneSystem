@@ -26,7 +26,7 @@
     <!--  根据用户Id查询用户所拥有的角色  -->
     <select id="selectUserRoleNameSet" resultType="java.lang.String" parameterType="java.lang.Integer">
         SELECT
-            DISTINCT t2.name
+            DISTINCT t2.role_name
         FROM
             sys_user_role t1,sys_role t2
         WHERE
@@ -54,7 +54,7 @@
 
     <select id="selectMenuList" resultType="com.cx.sys.beans.Menu" parameterType="java.lang.Integer">
         SELECT
-          t1.resource_id,
+          distinct t1.resource_id,
           t1.parent_id,
           t1.resource_name,
           t1.url,

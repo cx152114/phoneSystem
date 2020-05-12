@@ -36,8 +36,6 @@
 
         td{
             text-align: center;
-            vertical-align: middle;
-            vertical-align: center;
             font-size: 14px;
         }
 
@@ -50,7 +48,6 @@
             white-space: nowrap;
             overflow: hidden;
         }
-
     </style>
 </head>
 <body>
@@ -112,7 +109,6 @@
                             <td style="text-align: center;vertical-align: middle">${supplier.supplierRemark}</td>
                         </tr>
                     </c:forEach>
-
                     </tbody>
                   </table>
               </div>
@@ -168,7 +164,7 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">提交</button>
-                                    <button type="reset" class="btn btn-warning">重置</button>
+                                    <button type="reset" class="btn btn-warning" id="btn-reset">重置</button>
                                     <button type="button"  class="btn btn-default" data-dismiss="modal">取消</button>
                                 </form>
                             </div>
@@ -285,7 +281,6 @@
 <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table-locale-all.min.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
 
-
 <!-- 数据导出 -->
 <script src="${pageContext.request.contextPath}/lib/tableExport/FileSaver.min.js"></script>
 <script src="${pageContext.request.contextPath}/lib/tableExport/xlsx.core.min.js"></script>
@@ -325,7 +320,7 @@
      * 表单验证
      */
     $(document).ready(function() {
-        $('#addSupplier').bootstrapValidator({
+        $('#addSupplierForm').bootstrapValidator({
             message: '请按规定填写供应商信息',
             feedbackIcons: {
                 valid: 'glyphicon glyphicon-ok',
@@ -334,74 +329,53 @@
             },
             fields: {
                 supplierName: {
-                    message: 'The username is not valid',
                     validators: {
                         notEmpty: {
                             message: '供应商名称不能为空 '
                         },
                     }
                 },
-                userEmail: {
+                supplierAddress: {
                     validators: {
                         notEmpty: {
-                            message: '邮箱不能为空 '
+                            message: '供应商地址不能为空 '
                         },
-                        emailAddress: {
-                            message: '这不是一个正确的邮箱'
-                        }
                     }
                 },
-                userPhone: {
+
+                supplierContacts: {
+                    validators: {
+                        notEmpty: {
+                            message: '联系人不能为空 '
+                        },
+                    }
+                },
+                supplierPhone: {
                     validators: {
                         notEmpty: {
                             message: '手机号不能为空'
                         },
                         regexp: {
-                            regexp: /^1\d{10}$/,
+                            regexp: /^[1][3,4,5,7,8][0-9]{9}$/,
                             message: '手机号格式错误'
-                        }
+                        },
                     }
                 },
-                password: {
+                supplierEmail: {
                     validators: {
                         notEmpty: {
-                            message: '密码不能为空'
+                            message: '邮箱地址不能为空'
                         },
-                        identical: {
-                            field: 'confirmPassword',
-                            message: '两次填写的密码不一致，请重新确认'
-                        },
-                        different: {
-                            field: 'username',
-                            message: '请不要使用用户名作为密码'
-                        }
-                    }
-                },
-                confirmPassword: {
-                    validators: {
-                        notEmpty: {
-                            message: '密码不能为空'
-                        },
-                        identical: {
-                            field: 'password',
-                            message: '两次填写的密码不一致'
-                        },
-                        different: {
-                            field: 'username',
-                            message: '请不要使用用户名作为密码'
+                        emailAddress: {
+                            message: '不是一个正确的邮箱地址'
                         }
                     }
                 },
             }
         });
 
-        // Validate the form manually
-        $('#validateBtn').click(function() {
-            $('#defaultForm').bootstrapValidator('validate');
-        });
-
-        $('#resetBtn').click(function() {
-            $('#addUserForm').data('bootstrapValidator').resetForm(true);
+        $('#btn-reset').click(function() {
+            $('#addSupplierForm').data('bootstrapValidator').resetForm(true);
         });
     });
 
@@ -410,9 +384,9 @@
      * 关闭模态框之后对模态框进行重置
      */
     $(document).ready(function() {
-        $('#addSupplierModal').on('hidden.bs.modal', function () {
-            //$('#addS').data('bootstrapValidator').resetForm(true);
-            $('#addSupplierForm')[0].reset();
+        $('#addSupplierModal').on('hide.bs.modal', function () {
+            $('#addSupplierForm').data('bootstrapValidator').resetForm(true);
+            $("#btn-reset").click();
         });
     });
 

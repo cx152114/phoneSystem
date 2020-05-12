@@ -57,7 +57,7 @@
 <body>
 <div class="row">
     <div class="btn-group-sm" id="toolbar" role="group">
-        <a href="javascript:void(0)" class="btn btn-danger" onclick="removeSomeLogInfo()"><i class="fa fa-trash-o"></i> 删除</a>
+        <a href="javascript:void(0)" class="btn btn-danger" onclick="removeSomeLogInfo()"><i class="fa fa-trash-o"></i> 批量删除</a>
     </div>
     <!-- /col-md-12 -->
     <div class="col-md-12 mt">
@@ -208,7 +208,7 @@
             ids[i]=loginLog[i].id;
         }
         if (ids.length==0){
-            layer.msg("请选择要删除的角色",{icon:5});
+            layer.msg("请选择要删除的日志",{icon:5});
             return;
         }else {
             layer.confirm('你是否确定要删除该条日志？', {

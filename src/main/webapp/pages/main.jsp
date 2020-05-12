@@ -8,7 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-
     <title>手机进销存管理系统首页</title>
 
     <!-- Favicons -->
@@ -19,12 +18,10 @@
     <link href="${pageContext.request.contextPath}/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!--external css-->
     <link href="${pageContext.request.contextPath}/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/zabuto_calendar.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/lib/gritter/css/jquery.gritter.css" />
     <!-- Custom styles for this template -->
     <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/style-responsive.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/lib/chart-master/Chart.js"></script>
 </head>
 <body>
 <section id="container">
@@ -49,14 +46,12 @@
             <div>
                 <iframe
                         id="main-body"
-<%--                        src="${pageContext.request.contextPath}/login/index"--%>
                         src="/login/index"
                         frameborder="0"
                         scrolling="no"
                         name="main-body"
                         width="100%"
                         height="600px">
-<%--                     sandbox="allow-scripts"   height="1200px">--%>
                 </iframe>
             </div>
             <!-- /row -->
@@ -70,7 +65,7 @@
             <p>
                 &copy; Copyrights <strong>cx</strong>. All Rights Reserved
             </p>
-            <a href="index.html#" class="go-top">
+            <a href="#" class="go-top">
                 <i class="fa fa-angle-up"></i>
             </a>
         </div>
@@ -92,27 +87,19 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/lib/gritter-conf.js"></script>
 <!--script for this page-->
 <script src="${pageContext.request.contextPath}/lib/sparkline-chart.js"></script>
-<script src="${pageContext.request.contextPath}/lib/zabuto_calendar.js"></script>
-<script src="${pageContext.request.contextPath}/lib/art-template/template-web.js"></script>
 
 <%--layui插件--%>
 <script src="${pageContext.request.contextPath}/lib/layer/layer.js"></script>
+
+
 <script>
-
-        document.addEventListener('DOMContentLoaded', function () {//刷新
-            var hash = location.hash;
-            //alert(hash.toString());
-            var url = hash.substring(1,hash.length);
-            if (url.length==0){
-                $("#main-body").attr("src","/login/index");
-            }
-        }, false)
-
+    document.addEventListener('DOMContentLoaded', function () {//刷新
+        var hash = location.hash;
+        var url = hash.substring(1,hash.length);
+        if (url.length==0){
+            $("#main-body").attr("src","/login/index");
+        }
+    }, false);
 </script>
-
-
-
-
-
 </body>
 </html>
