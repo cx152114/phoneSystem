@@ -7,9 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <html>
 <head>
-    <title>登录日志</title>
+    <title>系统公告</title>
     <!-- Favicons -->
     <link href="${pageContext.request.contextPath}/img/favicon.png" rel="icon">
 
@@ -58,14 +59,19 @@
 <body>
 <div class="row">
     <div class="btn-group-sm" id="toolbar" role="group">
-        <a href="javascript:void(0)" class="btn btn-success"    onclick="addNotice()"><i class="fa fa-plus"></i> 新增</a>
-
-        <a href="javascript:void(0)" class="btn btn-primary" onclick="editNotice()"><i class="fa fa-edit"></i> 修改</a>
-        <a href="javascript:void(0)" class="btn btn-danger" onclick="removeSomeLogInfo()"><i class="fa fa-trash-o"></i> 批量删除</a>
+        <shiro:hasPermission name="sys:notice:add">
+            <a href="javascript:void(0)" class="btn btn-success"    onclick="addNotice()"><i class="fa fa-plus"></i> 新增</a>
+        </shiro:hasPermission>
+        <shiro:hasPermission name="sys:notice:edit">
+            <a href="javascript:void(0)" class="btn btn-primary" onclick="editNotice()"><i class="fa fa-edit"></i> 修改</a>
+        </shiro:hasPermission>
+        <shiro:hasPermission name="sys:notice:remove">
+            <a href="javascript:void(0)" class="btn btn-danger" onclick="removeSomeLogInfo()"><i class="fa fa-trash-o"></i> 批量删除</a>
+        </shiro:hasPermission>
     </div>
     <!-- /col-md-12 -->
     <div class="col-md-12 mt">
-
+        <shiro:hasPermission name="sys:notice:search">
         <div class="col-sm-12 search-collapse">
             <p class="select-title"></p>
             <form id="time-form">
@@ -91,7 +97,7 @@
                 </div>
             </form>
         </div>
-
+        </shiro:hasPermission>
         <div class="content-panel" style="height: 480px;overflow: auto;">
             <table class="table table-hover rowSameHeight"
                    data-toggle="table"
@@ -267,7 +273,7 @@
                 title:'操作',
                 field: 'active',
                 formatter: function(value, item, index) {
-                    return "<button type=\"button\" class=\"btn btn-danger btn-rounded btn-xs\" onclick=\"remove(this)\">删除</button>"+"&nbsp;&nbsp;&nbsp; <button type=\"button\" class=\"btn btn-default btn-rounded btn-xs\" onclick=\"showNotice(this)\">查看</button>";
+                    return "<shiro:hasPermission name="sys:notice:remove"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-xs\" onclick=\"remove(this)\">删除</button></shiro:hasPermission>"+"&nbsp;&nbsp;&nbsp;<shiro:hasPermission name="sys:notice:search"><button type=\"button\" class=\"btn btn-default btn-rounded btn-xs\" onclick=\"showNotice(this)\">查看</button></shiro:hasPermission>";
 
                 }
             }]

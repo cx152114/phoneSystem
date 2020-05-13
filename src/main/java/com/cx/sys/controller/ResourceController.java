@@ -7,6 +7,7 @@ import com.cx.common.model.R;
 import com.cx.common.model.TreeNode;
 import com.cx.sys.beans.Resource;
 import com.cx.sys.service.IResourceService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -36,12 +37,14 @@ public class ResourceController {
      * @return
      */
     @GetMapping
+    @RequiresPermissions("sys:resource:list")
     public String index(@RequestParam(defaultValue = "0") Integer parentId,Model model) {
         model.addAttribute("parentId",parentId);
         return "sys/resource-index";
     }
 
     @RequestMapping(value = "/showResource")
+    @RequiresPermissions("sys:resource:list")
     public String showResource(@RequestParam(defaultValue = "0") Integer parentId, Model model){
         model.addAttribute("parentId",parentId);
         return "/sys/resource-index";
@@ -52,6 +55,7 @@ public class ResourceController {
      * @return
      */
     @RequestMapping(value = "/tree")
+    @RequiresPermissions("sys:resource:list")
     @ResponseBody
     public R tree() {
         TreeNode treeNode = resourceService.getTreeById(0);
@@ -63,6 +67,7 @@ public class ResourceController {
      * @return
      */
     @RequestMapping("/list")
+    @RequiresPermissions("sys:resource:list")
     public String list(@RequestParam(defaultValue = "0") Integer parentId,Model model){
         // 查询出父节点的详细信息传递给resource_list.jsp
         Resource parent = resourceService.getById(parentId);
@@ -78,6 +83,7 @@ public class ResourceController {
      * @return
      */
     @RequestMapping("/data")
+    @RequiresPermissions("sys:resource:list")
     @ResponseBody
     public R data(@RequestParam(defaultValue = "0") Integer parentId, Page<Resource> page){
         QueryWrapper queryWrapper = new QueryWrapper<>();
@@ -94,6 +100,7 @@ public class ResourceController {
      * @return
      */
     @RequestMapping("/add/{parentId}")
+    @RequiresPermissions("sys:resource:add")
     public String add(@PathVariable Integer parentId, Model model){
         model.addAttribute("parent",resourceService.getById(parentId));
         return "sys/resource-add";
@@ -105,6 +112,7 @@ public class ResourceController {
      * @return
      */
     @PostMapping("/add")
+    @RequiresPermissions("sys:resource:add")
     @ResponseBody
     public R add(Resource resource) {
         resourceService.save(resource);
@@ -118,6 +126,7 @@ public class ResourceController {
      * @return
      */
     @GetMapping("/update/{resourceId}")
+    @RequiresPermissions("sys:resource:update")
     public String update(@PathVariable Integer resourceId,Model model) {
         // 查询当前资源
         Resource resource = resourceService.getById(resourceId);
@@ -134,6 +143,7 @@ public class ResourceController {
      * @return
      */
     @PostMapping("/update")
+    @RequiresPermissions("sys:resource:update")
     @ResponseBody
     public R update(Resource resource){
         resourceService.updateById(resource);
@@ -146,6 +156,7 @@ public class ResourceController {
      * @return
      */
     @PostMapping("/delete")
+    @RequiresPermissions("sys:resource:delete")
     @ResponseBody
     public R delete( Integer resourceId){
         resourceService.removeById(resourceId);
@@ -158,6 +169,7 @@ public class ResourceController {
      * @return
      */
     @PostMapping("/deletebatch")
+    @RequiresPermissions("sys:resource:delete")
     @ResponseBody
     public R deletebatch(@RequestBody List<Integer> ids) {
         resourceService.removeByIds(ids);

@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <html>
 <head>
     <title>商品销售单</title>
@@ -60,12 +61,16 @@
             <h4><i class="fa fa-angle-right"></i> 销售单信息</h4>
 
             <div class="btn-group-sm" id="toolbar" role="group">
-                <a href="javascript:void(0)" class="btn btn-primary" onclick="alterCustomer()"><i class="fa fa-edit"></i> 修改</a>
-                <a href="javascript:void(0)" class="btn btn-danger" onclick="removeCustomer()"><i class="fa fa-remove"></i> 删除</a>
+                <shiro:hasPermission name="business:stockProduct:edit">
+                    <a href="javascript:void(0)" class="btn btn-primary" onclick="alterCustomer()"><i class="fa fa-edit"></i> 修改</a>
+                </shiro:hasPermission>
+                <shiro:hasPermission name="business:stockProduct:remove">
+                    <a href="javascript:void(0)" class="btn btn-danger" onclick="removeCustomer()"><i class="fa fa-remove"></i> 删除</a>
+                </shiro:hasPermission>
             </div>
 
               <div class="content-panel">
-
+                  <shiro:hasPermission name="business:salesOrder:search">
                   <div class="col-sm-12 search-collapse">
                       <form id="complex-form" >
                           <div class="select-list">
@@ -141,7 +146,7 @@
                           </div>
                       </form>
                   </div>
-
+                  </shiro:hasPermission>
 
 
                    <table class="table table-hover rowSameHeight"
@@ -154,10 +159,12 @@
                       data-show-fullscreen="true"
                       data-show-columns="true"
                       data-show-columns-toggle-all="true"
-                      data-show-export="true"
                       data-click-to-select="true"
                       data-single-select="true"
+                      <shiro:hasPermission name="business:stockProduct:export">
+                      data-show-export="true"
                       data-exportDataType ="basic"
+                      </shiro:hasPermission>
                       data-show-pagination-switch="true"
                       data-pagination="true"
                       data-page-list="[5,10,25,50,100,all]"
@@ -339,11 +346,11 @@
                 title: '订单状态',
                 formatter: function(value, item, index) {
                     if(value==0){
-                        return "未完成";
+                        return "<span class=\"label label-info\">未完成</span>";
                     }else if(value==1){
-                        return "已完成";
+                        return "<span class=\"label label-success\">已完成</span>";
                     }else if(value==2) {
-                        return "已取消";
+                        return "<span class=\"label label-warning\">已取消</span>";
                     }
                 }
             }, {

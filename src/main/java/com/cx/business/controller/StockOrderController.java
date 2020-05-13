@@ -14,6 +14,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,10 +51,11 @@ public class StockOrderController {
 
 
     /**
-     * 跳转到采购商品页面
+     * 跳转到采购订单管理页面
      * @return
      */
     @GetMapping("/stockOrderList")
+    @RequiresPermissions("business:stockOrderList:search")
     private String stockOrderList(){
         return "/business/stock-order-list";
     }
@@ -64,6 +66,7 @@ public class StockOrderController {
      * @return
      */
     @RequestMapping(value = "/findAllStockOrder",method = RequestMethod.POST)
+    @RequiresPermissions("business:stockOrderList:search")
     @ResponseBody
     public R findAllStockOrder(StockOrder stockOrder,Integer minNumber,Integer maxNumber,String startTime,String endTime,Double minAccount,Double maxAccount){
         QueryWrapper<StockOrder> queryWrapper=new QueryWrapper<StockOrder>();
@@ -103,23 +106,6 @@ public class StockOrderController {
     }
 
 
-    /**
-     * 显示所有订单
-     * @param modelAndView
-     * @return
-     */
-//    @RequestMapping(value = "/findAllStockOrder",method = RequestMethod.GET)
-//    public ModelAndView findAllStockOrder(ModelAndView modelAndView){
-//        QueryWrapper queryWrapper=new QueryWrapper();
-//        List<StockOrder> stockOrderList=stockOrderService.listStockOrderInfo(queryWrapper);
-//        modelAndView.addObject("stockOrderList",stockOrderList);
-//        modelAndView.setViewName("/business/stock-order-list");
-//        return modelAndView;
-//    }
-
-
-
-
 
     /**
      * 获得指定订单的订单详情
@@ -128,6 +114,7 @@ public class StockOrderController {
      * @return
      */
     @RequestMapping(value = "/getOrderDetailById",method = RequestMethod.POST)
+    @RequiresPermissions("business:stockOrderList:search")
     @ResponseBody
     public R getOrderDetailById(ModelAndView modelAndView, Integer stoId){
         List<SorderDetail> orderDetails=sorderDetailService.listTargetStockOrderDetailByStoId(stoId);
@@ -139,6 +126,7 @@ public class StockOrderController {
      * @return
      */
     @GetMapping("/stockProduct")
+    @RequiresPermissions("business:stockProduct:menu")
     private String stockProduct(){
         return "/business/product-stock";
     }
@@ -150,6 +138,7 @@ public class StockOrderController {
      * @return
      */
     @RequestMapping(value = "/addStockOrder",method = RequestMethod.POST)
+    @RequiresPermissions("business:stockProduct:menu")
     @ResponseBody
     public R addStockOrder(String stockOrderDetails,Integer warehouseId,Integer payType,Integer stoStatus) {
 

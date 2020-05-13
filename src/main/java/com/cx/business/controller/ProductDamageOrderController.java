@@ -11,6 +11,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +45,7 @@ public class ProductDamageOrderController {
 
 
     @GetMapping
+    @RequiresPermissions("business:productDamageOrder:search")
     private String productDamageManagement(){
         return "/business/product_damage_list";
     }
@@ -53,6 +55,7 @@ public class ProductDamageOrderController {
      * @return
      */
     @RequestMapping(value = "/findAllProductDamageOrder",method = RequestMethod.POST)
+    @RequiresPermissions("business:productDamageOrder:search")
     @ResponseBody
     public R findAllProductDamageOrder(ProductDamageOrder productDamageOrder,Integer minNumber,Integer maxNumber,String startTime,String endTime,Double minAccount,Double maxAccount){
         QueryWrapper<ProductDamageOrder> queryWrapper=new QueryWrapper<ProductDamageOrder>();
@@ -93,6 +96,7 @@ public class ProductDamageOrderController {
 
 
     @RequestMapping(value = "/getProductDamageDetailsByPdoId",method = RequestMethod.POST)
+    @RequiresPermissions("business:productDamageOrder:search")
     @ResponseBody
     public R getProductDamageDetailsByPdoId(Integer pdoId){
         List<ProductDamageDetail> productDamageDetails=productDamageDetailService.listTargetProductDamageDetailByPdoId(pdoId);
@@ -100,11 +104,13 @@ public class ProductDamageOrderController {
     }
 
     @GetMapping("/productDamage")
+    @RequiresPermissions("business:productDamage:menu")
     private String productSalesBack(){
         return "/business/product_damage";
     }
 
     @RequestMapping(value = "/addProductDamageOrder")
+    @RequiresPermissions("business:productDamage:menu")
     @ResponseBody
     public R addProductDamageOrder(String productDamageOrder,Integer warehouseId,String pdoRemark) {
         if (StringUtils.isEmpty(productDamageOrder)) {

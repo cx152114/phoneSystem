@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <html>
 <head>
     <title>登录日志</title>
@@ -57,11 +58,14 @@
 <body>
 <div class="row">
     <div class="btn-group-sm" id="toolbar" role="group">
-        <a href="javascript:void(0)" class="btn btn-danger" onclick="removeSomeLogInfo()"><i class="fa fa-trash-o"></i> 批量删除</a>
+        <shiro:hasPermission name="sys:log:list">
+            <a href="javascript:void(0)" class="btn btn-danger" onclick="removeSomeLogInfo()"><i class="fa fa-trash-o"></i> 批量删除</a>
+        </shiro:hasPermission>
     </div>
     <!-- /col-md-12 -->
     <div class="col-md-12 mt">
 
+        <shiro:hasPermission name="sys:log:list">
         <div class="col-sm-12 search-collapse">
             <p class="select-title"></p>
             <form id="time-form">
@@ -87,7 +91,7 @@
                 </div>
             </form>
         </div>
-
+        </shiro:hasPermission>
         <div class="content-panel" style="height: 480px;overflow: auto;">
             <table class="table table-hover rowSameHeight"
                    data-toggle="table"
@@ -175,7 +179,7 @@
                 title:'操作',
                 field: 'active',
                 formatter: function(value, item, index) {
-                    return "<button type=\"button\" class=\"btn btn-danger btn-rounded btn-xs\" onclick=\"remove(this)\">删除</button>";
+                    return "<shiro:hasPermission name="sys:log:remove"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-xs\" onclick=\"remove(this)\">删除</button></shiro:hasPermission>";
 
                 }
             }]

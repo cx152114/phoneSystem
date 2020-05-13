@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <html>
 <head>
     <title>角色管理</title>
@@ -61,18 +62,23 @@
 <body>
      <div class="row">
          <div class="btn-group-sm" id="toolbar" role="group">
-             <a class="btn btn-success" data-toggle="modal" data-backdrop="false" data-target="#addRoleModal"><i class="fa fa-plus"></i> 新增</a>
-
-             <a href="javascript:void(0)" class="btn btn-primary" onclick="alterRole()"><i class="fa fa-edit"></i> 修改</a>
-
-             <a href="javascript:void(0)" class="btn btn-danger" onclick="removeRole()"><i class="fa fa-remove"></i> 删除</a>
-
-             <a href="javascript:void(0)" class="btn btn-info" id="btn-assign-resource"><i class="fa fa-chain"></i> 分配权限</a>
+             <shiro:hasPermission name="sys:role:add">
+                <a class="btn btn-success" data-toggle="modal" data-backdrop="false" data-target="#addRoleModal"><i class="fa fa-plus"></i> 新增</a>
+             </shiro:hasPermission>
+             <shiro:hasPermission name="sys:role:update">
+                <a href="javascript:void(0)" class="btn btn-primary" onclick="alterRole()"><i class="fa fa-edit"></i> 修改</a>
+             </shiro:hasPermission>
+             <shiro:hasPermission name="sys:role:delete">
+                <a href="javascript:void(0)" class="btn btn-danger" onclick="removeRole()"><i class="fa fa-remove"></i> 删除</a>
+             </shiro:hasPermission>
+             <shiro:hasPermission name="sys:role:assign:resource">
+                <a href="javascript:void(0)" class="btn btn-info" id="btn-assign-resource"><i class="fa fa-chain"></i> 分配权限</a>
+             </shiro:hasPermission>
          </div>
                 <!-- /col-md-12 -->
             <div class="col-md-12 mt">
-
-                <div class="col-sm-12 search-collapse">
+                <shiro:hasPermission name="sys:role:list">
+                    <div class="col-sm-12 search-collapse">
                     <p class="select-title"></p>
                     <form id="time-form">
                         <div class="select-list">
@@ -97,7 +103,7 @@
                         </div>
                     </form>
                 </div>
-
+                </shiro:hasPermission>
                 <div class="content-panel" >
                     <table class="table table-hover rowSameHeight"
                            data-toggle="table"
@@ -109,10 +115,8 @@
                            data-show-fullscreen="true"
                            data-show-columns="true"
                            data-show-columns-toggle-all="true"
-                           data-show-export="true"
                            data-click-to-select="true"
                            data-single-select="true"
-                           data-exportDataType ="basic"
                            data-show-pagination-switch="true"
                            data-pagination="true"
                            data-page-list="[5,10,25,50,100,all]"
@@ -276,27 +280,6 @@
 <!--bootstrap-table-->
 <script src="${pageContext.request.contextPath}/lib/bootstrap-table/js/bootstrap-table.js"></script>
 
-
-<script src="${pageContext.request.contextPath}/lib/tableExport/tableExport.js"></script>
-<%--<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>--%>
-<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table-locale-all.min.js"></script>
-<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
-<%--<script  type="text/javascript" src="${pageContext.request.contextPath}/lib/tableExport/bootstrap-table-export.min.js"></script>--%>
-
-
-<%--<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table-locale-all.min.js"></script>--%>
-<%--<script  type="text/javascript" src="${pageContext.request.contextPath}/lib/tableExport/bootstrap-table-export.min.js"></script>--%>
-
-
-<!-- 数据导出 -->
-<script src="${pageContext.request.contextPath}/lib/tableExport/FileSaver.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/tableExport/xlsx.core.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/tableExport/jspdf.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/tableExport/jspdf.plugin.autotable.js"></script>
-<script src="${pageContext.request.contextPath}/lib/tableExport/es6-promise.auto.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/tableExport/html2canvas.min.js"></script>
-<script src="${pageContext.request.contextPath}/lib/bootstrap-table/js/bootstrap-table-zh-CN.js"></script>
-
 <%--layui插件--%>
 <script src="${pageContext.request.contextPath}/lib/layer/layer.js"></script>
 
@@ -348,8 +331,6 @@
         },{
             field: 'updateTime',
             title: '最后更新时间'
-        },{
-            title:'操作'
         }]
     });
 
@@ -368,25 +349,6 @@
     }
 
 
-    /**
-     * 设置导出文件的属性
-     */
-    $.extend($.fn.bootstrapTable.defaults, {
-        showExport: false,
-        exportDataType: 'basic', // basic, all, selected
-        // 'json', 'xml', 'png', 'csv', 'txt', 'sql', 'doc', 'excel', 'powerpoint', 'pdf'
-        exportTypes: ['json', 'xml', 'csv', 'txt', 'sql','doc', 'excel','pdf'],
-        exportOptions: {
-            // 导出数据去除第一列出现"on"
-            ignoreColumn: [0]
-        }
-    });
-
-
-        // Validate the form manually
-        $('#validateBtn').click(function() {
-            $('#defaultForm').bootstrapValidator('validate');
-        });
 
         $('#resetBtn').click(function() {
             $('#addUserForm').data('bootstrapValidator').resetForm(true);
@@ -543,7 +505,6 @@
     $('#btn-save').bind('click', function () {
         // 角色id
         var roleId = $('#roleId1').val();
-        alert(roleId);
         //node-checked
         //node-checked-partial
         var roleResourceList = [];

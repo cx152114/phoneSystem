@@ -35,7 +35,7 @@ public class DeptController {
     private IDeptService deptService;
 
     @GetMapping
-    @RequiresPermissions("sys:dept:menu")
+    @RequiresPermissions("sys:dept:search")
     public String list() {
         return "/sys/deptManagement";
     }

@@ -7,6 +7,7 @@ import com.cx.business.beans.Warehouse;
 import com.cx.business.service.IWarehouseService;
 import com.cx.common.model.R;
 import com.cx.sys.beans.User;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,34 +36,35 @@ public class WarehouseController {
 
 
     @GetMapping
+    @RequiresPermissions("business:warehouse:search")
     public String warehouseManagement() {
         return "/business/warehouse-list";
     }
 
     @RequestMapping(value = "/findTargetWarehouse")
+    @RequiresPermissions("business:warehouse:search")
     @ResponseBody
     public R findTargetWarehouse(){
         List<Warehouse> warehouseList=warehouseService.list();
         return R.ok().put("rows",warehouseList);
     }
 
-
-
-
-
     @RequestMapping(value = "/addWarehouse",method = RequestMethod.POST)
+    @RequiresPermissions("business:warehouse:add")
     public String addWarehouse(Warehouse warehouse){
         warehouseService.save(warehouse);
         return "redirect:/business/warehouse/findAllWarehouse";
     }
 
     @RequestMapping(value = "/editWarehouse",method = RequestMethod.POST)
+    @RequiresPermissions("business:warehouse:edit")
     public String editWarehouse(Warehouse warehouse){
         warehouseService.updateById(warehouse);
         return "redirect:/business/warehouse/findAllWarehouse";
     }
 
     @RequestMapping(value = "/removeTargetWarehouse",method = RequestMethod.POST)
+    @RequiresPermissions("business:warehouse:remove")
     @ResponseBody
     public R removeTargetWarehouse(Integer warehouseId){
         if (warehouseId==null){

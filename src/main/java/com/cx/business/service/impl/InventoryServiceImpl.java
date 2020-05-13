@@ -53,7 +53,7 @@ public class InventoryServiceImpl extends ServiceImpl<InventoryMapper, Inventory
     }
 
     @Override
-    public List<Inventory> selectTargetList(QueryWrapper queryWrapper) {
+    public List<Inventory> selectTargetList(QueryWrapper<Inventory> queryWrapper) {
         return inventoryMapper.selectTargetList(queryWrapper);
     }
 }

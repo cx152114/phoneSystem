@@ -46,7 +46,7 @@
     </style>
 </head>
 <body>
-     <div class="row">
+     <div class="row" style="overflow: auto;">
                <!-- /col-md-12 -->
                 <div class="col-md-12 mt">
                     <div class="page-title">
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="x_content">
-                        <div class="col-md-3"  style="height: 650px;overflow: auto;">
+                        <div class="col-md-3"  style="height: 500px;overflow: auto;">
                             <%--树形菜单--%>
                             <div id="data-tree"></div>
                         </div>

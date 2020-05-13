@@ -18,6 +18,7 @@ import java.util.List;
  */
 public interface IInventoryService extends IService<Inventory> {
 
-    List<Inventory> selectTargetList(QueryWrapper queryWrapper);
+    //List<Inventory> selectTargetList(QueryWrapper<Inventory> queryWrapper);
 
+    List<Inventory> selectTargetList(QueryWrapper<Inventory> queryWrapper);
 }

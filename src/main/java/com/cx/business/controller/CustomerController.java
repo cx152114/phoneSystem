@@ -8,6 +8,7 @@ import com.cx.business.service.ICustomerService;
 import com.cx.common.model.R;
 import com.cx.sys.beans.Dept;
 import org.apache.commons.lang.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,15 +34,17 @@ public class CustomerController {
 
 
     @GetMapping
+    @RequiresPermissions("business:customer:search")
     public String list() {
         return "/business/customer-list";
     }
 
     @PostMapping("/findAllCustomer")
+    @RequiresPermissions("business:customer:search")
     @ResponseBody
     public R data(String customerName, Integer available, Page<Customer> page) {
         //1.构造查询条件构造器
-        QueryWrapper queryWrapper = new QueryWrapper();
+        QueryWrapper<Customer> queryWrapper = new QueryWrapper<>();
         if (!StringUtils.isEmpty(customerName)) {
             queryWrapper.like("customer_name", customerName);
         }
@@ -58,12 +61,14 @@ public class CustomerController {
 
 
     @RequestMapping(value = "/addCustomer",method = RequestMethod.POST)
+    @RequiresPermissions("business:customer:add")
     public String addCustomer(Customer customer){
         customerService.save(customer);
         return "/business/customer-list";
     }
 
     @RequestMapping(value = "/editCustomer",method = RequestMethod.POST)
+    @RequiresPermissions("business:customer:edit")
     public String editCustomer(Customer customer){
         System.out.println();
         customerService.updateById(customer);
@@ -71,10 +76,11 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/removeTargetCustomer",method = RequestMethod.POST)
+    @RequiresPermissions("business:customer:remove")
     @ResponseBody
     public R removeTargetCustomer(Integer customerId){
         if (customerId==null){
-            return R.error("请勾选要删除的用户信息！");
+            return R.error("请勾选要删除的客户信息！");
         }
         try {
             customerService.removeById(customerId);

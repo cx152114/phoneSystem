@@ -8,6 +8,7 @@ import com.cx.business.beans.PhoneInfo;
 import com.cx.business.service.IPhoneInfoService;
 import com.cx.common.model.R;
 import org.apache.commons.lang.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,12 +33,14 @@ public class PhoneInfoController {
     private IPhoneInfoService phoneInfoService;
 
     @GetMapping
+    @RequiresPermissions("business:product:search")
     public String list() {
         return "/business/product-list";
     }
 
 
     @PostMapping("/findAllPhoneInfo")
+    @RequiresPermissions("business:product:add")
     @ResponseBody
     public R data(Integer phoneId ,String phoneName,String phoneType,String phoneColor,String phoneRam,String phoneStorage,String phoneNetwork, Integer phoneState,Integer supplierId, Page<PhoneInfo> page) {
         PhoneInfo phoneInfo=new PhoneInfo(phoneId,phoneName,supplierId,phoneType,phoneColor,phoneRam,phoneStorage,phoneNetwork,phoneState);
@@ -75,7 +78,6 @@ public class PhoneInfoController {
         }
 
         List<PhoneInfo>list=phoneInfoService.listPhoneInfo(phoneInfo);
-
         //2.分页查询
         phoneInfoService.page(page, queryWrapper);
         page.setRecords(phoneInfoService.listPhoneInfo(phoneInfo));
@@ -86,24 +88,22 @@ public class PhoneInfoController {
     }
 
 
-
-
-
-
-
     @RequestMapping(value = "/addProduct",method = RequestMethod.POST)
+    @RequiresPermissions("sys:dept:search")
     public String addProduct(PhoneInfo phoneInfo){
         phoneInfoService.save(phoneInfo);
         return "/business/product-list";
     }
 
     @RequestMapping(value = "/editProduct",method = RequestMethod.POST)
+    @RequiresPermissions("business:product:edit")
     public String editProduct(PhoneInfo phoneInfo){
         phoneInfoService.updateById(phoneInfo);
         return "/business/product-list";
     }
 
     @RequestMapping(value = "/removeProduct",method = RequestMethod.POST)
+    @RequiresPermissions("business:product:remove")
     @ResponseBody
     public R removeProduct(Integer phoneId){
         if (phoneId==null){
@@ -138,10 +138,4 @@ public class PhoneInfoController {
         List<PhoneInfo> phoneLists =phoneInfoService.list(queryWrapper);
         return R.ok().put("phoneLists",phoneLists);
     }
-
-
-
-
-
-
 }

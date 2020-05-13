@@ -10,6 +10,7 @@ import com.cx.sys.beans.UserRole;
 import com.cx.sys.service.IUserRoleService;
 import com.cx.sys.service.IUserService;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,11 +40,13 @@ public class UserController {
 
 
     @GetMapping(value = "/userManagement")
+    @RequiresPermissions("sys:user:list")
     private String userManagement(){
         return "/sys/employee-list";
     }
 
     @RequestMapping(value = "/showAllUser")
+    @RequiresPermissions("sys:user:list")
     @ResponseBody
     public R showAllUser(User user,String startTime,String endTime){
         QueryWrapper<User> param = new QueryWrapper<>();
@@ -71,19 +74,8 @@ public class UserController {
     }
 
 
-//    @RequestMapping(value = "/showAllUser")
-//    public ModelAndView showAllUser(ModelAndView modelAndView){
-//        QueryWrapper<User> param = new QueryWrapper<>();
-//        param.eq("deleted",0);
-//        List<User> userList=userService.list(param);
-//        //System.out.println(userList);
-//        modelAndView.addObject("userList",userList);
-//        modelAndView.setViewName("/sys/employee-list");
-//        return modelAndView;
-//    }
-
-
     @RequestMapping(value = "/addUser",method = RequestMethod.POST)
+    @RequiresPermissions("sys:user:add")
     public String addCustomer(User user){
         userService.save(user);
         return "redirect:/user/userManagement";
@@ -91,6 +83,7 @@ public class UserController {
 
 
     @RequestMapping(value = "/editUser",method = RequestMethod.POST)
+    @RequiresPermissions("sys:user:update")
     public String editUser(User user){
         //String salt=IdUtil.simpleUUID().toUpperCase();
         QueryWrapper<String> pram=new QueryWrapper<>();
@@ -104,6 +97,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/removeUser",method = RequestMethod.POST)
+    @RequiresPermissions("sys:user:delete")
     @ResponseBody
     public R removeUser(Integer userId){
         if (userId==null){
@@ -128,10 +122,10 @@ public class UserController {
      * @return
      */
     @PostMapping("/getRoleList")
+    @RequiresPermissions("sys:user:assign:role")
     @ResponseBody
     public R getRoleList(Integer userId) {
         List<UserRole> userRoleList = userRoleService.getByUserId(userId);
-        System.out.println(userRoleList);
         return R.ok().put("userRoleList",userRoleList).put("userId",userId);
     }
 
@@ -142,11 +136,10 @@ public class UserController {
      * @return
      */
     @PostMapping("/assignRole")
+    @RequiresPermissions("sys:user:assign:role")
     @ResponseBody
     public R assignRole(Integer userId,
             @RequestParam(name = "roleId",required = false) List<Integer> roleIdList) {
-        System.out.println(userId);
-        System.out.println(roleIdList);
         userRoleService.save(userId,roleIdList);
         return R.ok();
     }

@@ -13,6 +13,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,12 +51,14 @@ public class SalesOrderController {
      * @return
      */
     @GetMapping
+    @RequiresPermissions("business:salesOrder:search")
     private String salesOrderList(){
         return "/business/sale-order-list";
     }
 
 
     @RequestMapping(value = "/findAllSalesOrder",method = RequestMethod.POST)
+    @RequiresPermissions("business:salesOrder:search")
     @ResponseBody
     public R findAllSalesOrder(SalesOrder salesOrder,Integer minNumber,Integer maxNumber,String startTime,String endTime,Double minAccount,Double maxAccount){
         QueryWrapper<SalesOrder> queryWrapper=new QueryWrapper<SalesOrder>();
@@ -103,6 +106,7 @@ public class SalesOrderController {
      * @return
      */
     @RequestMapping(value = "/getSalesOrderByOrderId",method = RequestMethod.POST)
+    @RequiresPermissions("business:salesOrder:search")
     @ResponseBody
     public R getSalesOrderByOrderId(Integer orderId){
         List<SalesDetail> salesDetails=salesDetailService.listTargetSalesDetailByOrderId(orderId);
@@ -110,11 +114,13 @@ public class SalesOrderController {
     }
 
     @GetMapping("/saleProduct")
+    @RequiresPermissions("business:saleProduct:menu")
     private String stockProduct(){
         return "/business/product-sale";
     }
 
     @RequestMapping(value = "/addSalesOrder",method = RequestMethod.POST)
+    @RequiresPermissions("business:saleProduct:menu")
     @ResponseBody
     public R addSalesOrder(String salesOrderDetails,Integer customerId,String orderRemark) {
 

@@ -11,6 +11,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,11 +51,13 @@ public class SalesBackOrderController {
      * @return
      */
     @GetMapping
+    @RequiresPermissions("business:salesBackOrder:search")
     private String salesBackOrderList(){
         return "/business/sale_back_order_list";
     }
 
     @RequestMapping(value = "/findAllSalesBackOrder",method = RequestMethod.POST)
+    @RequiresPermissions("business:salesBackOrder:search")
     @ResponseBody
     public R findAllSalesBackOrder(SalesBackOrder salesBackOrder,Integer minNumber,Integer maxNumber,String startTime,String endTime,Double minAccount,Double maxAccount){
         QueryWrapper<SalesBackOrder> queryWrapper=new QueryWrapper<SalesBackOrder>();
@@ -99,6 +102,7 @@ public class SalesBackOrderController {
 
 
     @RequestMapping(value = "/getSalesBackOrderBySboId",method = RequestMethod.POST)
+    @RequiresPermissions("business:salesBackOrder:search")
     @ResponseBody
     public R getSalesBackOrderBySboId(Integer sboId){
         List<SalesBackDetail> salesBackDetails=salesBackDetailService.listTargetSalesBackDetailBySboId(sboId);
@@ -110,11 +114,13 @@ public class SalesBackOrderController {
      * 跳转到销售退货页面
      */
     @GetMapping("/productSalesBack")
+    @RequiresPermissions("business:productSalesBack:menu")
     private String productSalesBack(){
         return "/business/product-sale-back";
     }
 
     @RequestMapping(value = "/addSalesBackOrder")
+    @RequiresPermissions("business:productSalesBack:menu")
     @ResponseBody
     public R addSalesBackOrder(String salesBackDetails,Integer customerId,Integer warehouseId,String sboReason) {
         if (StringUtils.isEmpty(salesBackDetails)) {

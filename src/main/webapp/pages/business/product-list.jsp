@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <html>
 <head>
 
@@ -67,16 +68,20 @@
 </head>
 <body>
 
-
      <div class="row">
          <div class="btn-group-sm" id="toolbar" role="group">
-             <a class="btn btn-success" data-toggle="modal" data-backdrop="false" data-target="#addProductModal" ><i class="fa fa-plus"></i> 新增</a>
-
-             <a href="javascript:void(0)" class="btn btn-primary" onclick="alterProduct()"><i class="fa fa-edit"></i> 修改</a>
-
-             <a href="javascript:void(0)" class="btn btn-danger" onclick="removeProduct()"><i class="fa fa-remove"></i> 删除</a>
+             <shiro:hasPermission name="business:product:add">
+                <a class="btn btn-success" data-toggle="modal" data-backdrop="false" data-target="#addProductModal" ><i class="fa fa-plus"></i> 新增</a>
+             </shiro:hasPermission>
+             <shiro:hasPermission name="business:product:edit">
+                <a href="javascript:void(0)" class="btn btn-primary" onclick="alterProduct()"><i class="fa fa-edit"></i> 修改</a>
+             </shiro:hasPermission>
+             <shiro:hasPermission name="business:product:remove">
+                <a href="javascript:void(0)" class="btn btn-danger" onclick="removeProduct()"><i class="fa fa-remove"></i> 删除</a>
+             </shiro:hasPermission>
          </div>
          <div class="col-md-12 mt">
+             <shiro:hasPermission name="business:product:search">
              <div class="col-sm-12 search-collapse">
                  <form id="complex-form" >
                      <div class="select-list">
@@ -157,7 +162,7 @@
                      </div>
                  </form>
              </div>
-
+             </shiro:hasPermission>
 
              <div class="content-panel" style="height: 460px;overflow: auto;">
                     <table class="table table-hover rowSameHeight"
@@ -169,10 +174,12 @@
                            data-show-fullscreen="true"
                            data-show-columns="true"
                            data-show-columns-toggle-all="true"
-                           data-show-export="true"
                            data-click-to-select="true"
                            data-single-select="true"
-                           data-exportDataType ="basic"
+                            <shiro:hasPermission name="business:product:export">
+                               data-show-export="true"
+                               data-exportDataType ="basic"
+                            </shiro:hasPermission>
                            data-show-pagination-switch="true"style="overflow: auto;">
                     </table>
                     <div style="height: 20px"></div>
@@ -587,10 +594,10 @@
                      title: '状态',
                      formatter: function(value, item, index) {
                          if (value==0){
-                             return '在售';
+                             return "<span class=\"label label-success\">在售</span>";
                          }
                          if (value==1){
-                             return '下架';
+                             return "<span class=\"label label-warning\">下架</span>";
                          }
                      }
                  }, {

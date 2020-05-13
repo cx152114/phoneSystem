@@ -10,6 +10,7 @@ import com.cx.sys.service.ILogLoginService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,13 +39,14 @@ public class LogLoginController {
     private ILogLoginService logLoginService;
 
     @GetMapping
+    @RequiresPermissions("sys:log:list")
     public String loginLogInfo(){
         return "/sys/loginLog";
     }
 
 
-
     @RequestMapping(value = "/loadAllLoginInfo")
+    @RequiresPermissions("sys:log:list")
     @ResponseBody
     public R loadAllLoginInfo(Page<LogLogin> page,LogLogin logLogin,String startTime,String endTime){
         QueryWrapper<LogLogin> queryWrapper=new QueryWrapper<LogLogin>();
@@ -65,6 +67,7 @@ public class LogLoginController {
     }
 
     @RequestMapping(value = "deleteTargetLoginInfo")
+    @RequiresPermissions("sys:log:remove")
     @ResponseBody
     public R deleteTargetLoginInfo(Integer id){
         logLoginService.removeById(id);
@@ -72,6 +75,7 @@ public class LogLoginController {
     }
 
     @RequestMapping(value = "batchDeleteLoginLog")
+    @RequiresPermissions("sys:log:batchRemove")
     @ResponseBody
     public R batchDeleteLoginLog(String ids){
         JSONArray arrIds= JSONArray.fromObject(ids);

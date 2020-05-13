@@ -83,6 +83,10 @@ public class ShiroRealm extends AuthorizingRealm {
         //从数据库获取当前用户的角色 通过用户名查询该用户拥有的角色名称
         Set<String> roleNameSet = userService.selectUserRoleNameSet(user.getUserId());
         info.addRoles(roleNameSet);
+        if (roleNameSet.contains("系统管理员")){
+            info.addStringPermission("*:*");
+            return  info;
+        }
 
         //从数据库获取当前用户的权限 通过用户名查询该用户拥有的权限名称
         Set<String> permissionNameSet = userService.selectUserPermissionNameSet(user.getUserId());

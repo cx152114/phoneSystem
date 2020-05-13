@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <html>
 <head>
     <title>菜单管理</title>
@@ -57,12 +58,15 @@
     <div class="row">
 
         <div class="btn-group-sm" id="toolbar" role="group">
-            <a href="${pageContext.request.contextPath}/sys/resource/add/${parent.resourceId}" class="btn btn-success" data-toggle="modal" data-backdrop="false"><i class="fa fa-plus"></i> 新增菜单</a>
-
-            <a href="javascript:void(0)" class="btn btn-primary" id="editResource"><i class="fa fa-edit"></i> 修改</a>
-
-            <a href="javascript:void(0)" class="btn btn-danger" id="removeResource"><i class="fa fa-remove"></i> 删除</a>
-
+            <shiro:hasPermission name="sys:resource:add">
+                <a href="${pageContext.request.contextPath}/sys/resource/add/${parent.resourceId}" class="btn btn-success" data-toggle="modal" data-backdrop="false"><i class="fa fa-plus"></i> 新增</a>
+            </shiro:hasPermission>
+            <shiro:hasPermission name="sys:resource:update">
+                <a href="javascript:void(0)" class="btn btn-primary" id="editResource"><i class="fa fa-edit"></i> 修改</a>
+            </shiro:hasPermission>
+            <shiro:hasPermission name="sys:resource:delete">
+                <a href="javascript:void(0)" class="btn btn-danger" id="removeResource"><i class="fa fa-remove"></i> 删除</a>
+            </shiro:hasPermission>
 
         </div>
 

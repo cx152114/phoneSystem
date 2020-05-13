@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <html>
 <head>
     <title>客户管理</title>
@@ -37,8 +38,6 @@
 
         td{
             text-align: center;
-            vertical-align: middle;
-            vertical-align: center;
             font-size: 14px;
         }
 
@@ -58,14 +57,19 @@
 
             <div class="row">
                 <div class="btn-group-sm" id="toolbar" role="group">
-                    <a class="btn btn-success" data-toggle="modal" data-backdrop="false" data-target="#addCustomerModal" ><i class="fa fa-plus"></i> 新增</a>
-
-                    <a href="javascript:void(0)" class="btn btn-primary" onclick="alterCustomer()"><i class="fa fa-edit"></i> 修改</a>
-
-                    <a href="javascript:void(0)" class="btn btn-danger" onclick="removeCustomer()"><i class="fa fa-remove"></i> 删除</a>
+                    <shiro:hasPermission name="business:customer:add">
+                        <a class="btn btn-success" data-toggle="modal" data-backdrop="false" data-target="#addCustomerModal" ><i class="fa fa-plus"></i> 新增</a>
+                    </shiro:hasPermission>
+                    <shiro:hasPermission name="business:customer:edit">
+                        <a href="javascript:void(0)" class="btn btn-primary" onclick="alterCustomer()"><i class="fa fa-edit"></i> 修改</a>
+                    </shiro:hasPermission>
+                    <shiro:hasPermission name="business:customer:remove">
+                        <a href="javascript:void(0)" class="btn btn-danger" onclick="removeCustomer()"><i class="fa fa-remove"></i> 删除</a>
+                    </shiro:hasPermission>
                 </div>
                 <!-- /col-md-12 -->
                 <div class="col-md-12 mt">
+                    <shiro:hasPermission name="business:customer:search">
                     <div class="col-sm-12 search-collapse">
                         <p class="select-title"></p>
                         <form id="time-form">
@@ -89,7 +93,7 @@
                             </div>
                         </form>
                     </div>
-
+                    </shiro:hasPermission>
                     <div class="content-panel" style="height: 650px;overflow: auto;" >
                         <table class="table table-hover rowSameHeight"
                                data-toggle="table"
@@ -101,10 +105,12 @@
                                data-show-fullscreen="true"
                                data-show-columns="true"
                                data-show-columns-toggle-all="true"
-                               data-show-export="true"
                                data-click-to-select="true"
                                data-single-select="true"
+                               <shiro:hasPermission name="business:customer:export" >
+                               data-show-export="true"
                                data-exportDataType ="basic"
+                               </shiro:hasPermission>
                                data-show-pagination-switch="true">
                         </table>
                     </div>

@@ -7,6 +7,7 @@ import com.cx.business.beans.vo.StaticStock;
 import com.cx.business.service.IStaticStockService;
 import com.cx.common.model.R;
 import org.apache.commons.lang.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,11 +25,13 @@ public class StaticController {
     private IStaticStockService staticStockService;
 
     @GetMapping
+    @RequiresPermissions("business:staticSalesSort:menu")
     public String list() {
         return "/business/static-list";
     }
 
     @PostMapping("/staticSalesSort")
+    @RequiresPermissions("business:staticSalesSort:menu")
     @ResponseBody
     public R staticSalesSort() {
         List<StaticStock> StaticList=staticStockService.listTargetSalesList();
@@ -36,12 +39,14 @@ public class StaticController {
     }
 
     @GetMapping("/staticStockSort")
+    @RequiresPermissions("business:staticStockSort:menu")
     public String stockList() {
         return "/business/stock_static_list";
     }
 
 
     @PostMapping("/staticStockSort")
+    @RequiresPermissions("business:staticStockSort:menu")
     @ResponseBody
     public R staticStockSort() {
         List<StaticStock> staticStock=staticStockService.listTargetStaticStock();

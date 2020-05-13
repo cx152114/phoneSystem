@@ -13,6 +13,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,6 +50,7 @@ public class PreturnOrderController {
 
 
     @GetMapping
+    @RequiresPermissions("business:preturnOrderList:search")
     public String pReturnOrderList() {
         return "/business/stock_return_order_list";
     }
@@ -59,6 +61,7 @@ public class PreturnOrderController {
      * @return
      */
     @RequestMapping(value = "/findAllPreturnOrder",method = RequestMethod.POST)
+    @RequiresPermissions("business:preturnOrderList:search")
     @ResponseBody
     public R findAllPreturnOrder(PreturnOrder preturnOrder,Integer minNumber,Integer maxNumber,String startTime,String endTime,Double minAccount,Double maxAccount){
         QueryWrapper<PreturnOrder> queryWrapper=new QueryWrapper<PreturnOrder>();
@@ -104,6 +107,7 @@ public class PreturnOrderController {
      * @return
      */
     @RequestMapping(value = "/getPreturnOrderById",method = RequestMethod.POST)
+    @RequiresPermissions("business:preturnOrderList:search")
     @ResponseBody
     public R getPreturnOrderById(Integer proId){
         List<PreturnDetail> orderDetails=preturnDetailService.listTargetPreturnDetailByProId(proId);
@@ -116,12 +120,14 @@ public class PreturnOrderController {
      * @return
      */
     @GetMapping("/stockProductBack")
+    @RequiresPermissions("business:stockProductBack:menu")
     private String stockProductBack(){
         return "/business/product_stock_back";
     }
 
 
     @RequestMapping(value = "/addPreturnOrder")
+    @RequiresPermissions("business:stockProductBack:menu")
     @ResponseBody
     @Transactional(propagation= Propagation.REQUIRED,readOnly=false,rollbackFor= Exception.class)
     public R addPreturnOrder(String pstockOrderDetails,Integer warehouseId,String proReason) {
@@ -129,8 +135,6 @@ public class PreturnOrderController {
             return R.error("请不要提交空白进货退货");
         }
         JSONArray preturnDetails= JSONArray.fromObject(pstockOrderDetails);
-
-
         List<SerialNumber> serialNumbers=new ArrayList<>();
         for (int i = 0; i <preturnDetails.size() ; i++) {
             SerialNumber serialNumber=new SerialNumber();
@@ -151,11 +155,9 @@ public class PreturnOrderController {
             JSONObject object=preturnDetails.getJSONObject(i);
             PreturnDetail preturnDetail=new PreturnDetail();
             preturnDetail.setPhoneId(object.getInt("phoneId"));
-
             preturnDetail.setUnitPrice(BigDecimal.valueOf(object.getDouble("return_unitPrice")));
             preturnOrder.getPreturnDetails().add(preturnDetail);
             totalMoney=totalMoney.add(preturnDetail.getUnitPrice());
-
         }
 
         preturnOrder.setTotalMoney(totalMoney);
@@ -166,9 +168,6 @@ public class PreturnOrderController {
 
 
         preturnOrderService.save(serialNumbers,preturnOrder);
-//
-//        ret.put("type","success");
-//        ret.put("msg", "订单添加成功");
         return R.ok();
 
     }

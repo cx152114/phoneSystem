@@ -11,6 +11,7 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -49,12 +50,14 @@ public class InventoryMovementOrderController {
      * @return
      */
     @GetMapping
+    @RequiresPermissions("business:inventoryMovementOrder:search")
     private String inventoryMovementManagement(){
         return "/business/InventoryMovementOrder_list";
     }
 
 
     @RequestMapping(value = "/findAllInventoryMovementOrder",method = RequestMethod.POST)
+    @RequiresPermissions("business:inventoryMovementOrder:search")
     @ResponseBody
     public R findAllInventoryMovementOrder(InventoryMovementOrder order,Integer minNumber,Integer maxNumber,String startTime,String endTime){
         QueryWrapper<InventoryMovementOrder> queryWrapper=new QueryWrapper<InventoryMovementOrder>();
@@ -94,6 +97,7 @@ public class InventoryMovementOrderController {
      * @return
      */
     @RequestMapping(value = "/getInventoryMovementOrderByBimOrderId",method = RequestMethod.POST)
+    @RequiresPermissions("business:inventoryMovementOrder:search")
     @ResponseBody
     public R getInventoryMovementOrderByBimOrderId(Integer bimOrderId){
        // System.out.println(bimOrderId);
@@ -107,12 +111,14 @@ public class InventoryMovementOrderController {
      * @return
      */
     @GetMapping("/inventoryMovement")
+    @RequiresPermissions("business:inventoryMovement:menu")
     private String stockProductBack(){
         return "/business/inventory_movement";
     }
 
 
     @RequestMapping(value = "/addInventoryMovementOrder")
+    @RequiresPermissions("business:inventoryMovement:menu")
     @ResponseBody
     @Transactional(propagation= Propagation.REQUIRED,readOnly=false,rollbackFor= Exception.class)
     public R addInventoryMovementOrder(String inventoryMovementOrder,Integer warehouseOutId,Integer warehouseInId,String bimoReason) {

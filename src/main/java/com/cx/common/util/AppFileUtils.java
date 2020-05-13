@@ -58,7 +58,6 @@ public class AppFileUtils {
 	public static ResponseEntity<Object> createResponseEntity(String path) {
 		//1,构造文件对象
 		File file=new File(UPLOAD_PATH, path);
-		System.out.println(file.getName());
 		if(file.exists()) {
 			//将下载的文件，封装byte[]
 			byte[] bytes=null;

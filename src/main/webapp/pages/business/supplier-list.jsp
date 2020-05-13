@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <html>
 <head>
     <title>供应商管理</title>
@@ -54,11 +55,15 @@
 
     <div class="row">
         <div class="btn-group-sm" id="toolbar" role="group">
-            <a class="btn btn-success" data-toggle="modal" data-backdrop="false" data-target="#addSupplierModal" ><i class="fa fa-plus"></i> 新增</a>
-
-            <a href="javascript:void(0)" class="btn btn-primary" onclick="alterSupplier()"><i class="fa fa-edit"></i> 修改</a>
-
-            <a href="javascript:void(0)" class="btn btn-danger" onclick="removeSupplier()"><i class="fa fa-remove"></i> 删除</a>
+            <shiro:hasPermission name="business:supplier:add">
+                <a class="btn btn-success" data-toggle="modal" data-backdrop="false" data-target="#addSupplierModal" ><i class="fa fa-plus"></i> 新增</a>
+            </shiro:hasPermission>
+            <shiro:hasPermission name="business:supplier:edit">
+                <a href="javascript:void(0)" class="btn btn-primary" onclick="alterSupplier()"><i class="fa fa-edit"></i> 修改</a>
+            </shiro:hasPermission>
+            <shiro:hasPermission name="business:supplier:remove">
+                <a href="javascript:void(0)" class="btn btn-danger" onclick="removeSupplier()"><i class="fa fa-remove"></i> 删除</a>
+            </shiro:hasPermission>
         </div>
                 <!-- /col-md-12 -->
          <div class="col-md-12 mt">
@@ -73,10 +78,12 @@
                        data-show-fullscreen="true"
                        data-show-columns="true"
                        data-show-columns-toggle-all="true"
-                       data-show-export="true"
                        data-click-to-select="true"
                        data-single-select="true"
-                       data-exportDataType ="basic"
+                       <shiro:hasPermission name="business:supplier:export">
+                           data-show-export="true"
+                           data-exportDataType ="basic"
+                       </shiro:hasPermission>
                        data-show-pagination-switch="true"
                        data-pagination="true"
                        data-page-list="[5,10,25,50,100,all]"
@@ -317,7 +324,7 @@
 
 
     /**
-     * 表单验证
+     * 表单校验
      */
     $(document).ready(function() {
         $('#addSupplierForm').bootstrapValidator({
@@ -458,12 +465,10 @@
                         }else{
                             layer.alert(data.msg, {icon: 5, offset: '0px'});
                         }
-
                     }
                 });
             }
         });
-
     }
 </script>
 </body>

@@ -13,6 +13,7 @@ import com.cx.sys.beans.User;
 import com.cx.sys.service.IRoleResourceService;
 import com.cx.sys.service.IRoleService;
 import org.apache.commons.lang.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,6 +47,7 @@ public class RoleController {
      * @return
      */
     @GetMapping
+    @RequiresPermissions("sys:role:list")
     public String list() {
         return "/sys/role-list";
     }
@@ -54,6 +56,7 @@ public class RoleController {
      * 获取列表数据
      */
     @GetMapping("/data")
+    @RequiresPermissions("sys:role:list")
     @ResponseBody
     public R data(Integer roleId,String roleName,String startTime,String endTime, Page<Role> page) {
         //1.构造查询条件构造器
@@ -78,6 +81,7 @@ public class RoleController {
 
 
     @RequestMapping(value = "/showAllRoles")
+    @RequiresPermissions("sys:role:list")
     public ModelAndView showAllRoles(ModelAndView modelAndView){
         List<Role> roleList=roleService.list();
         modelAndView.addObject("roleList",roleList);
@@ -90,6 +94,7 @@ public class RoleController {
 
 
     @RequestMapping(value = "/addRole",method = RequestMethod.POST)
+    @RequiresPermissions("sys:role:add")
     public String addRole(Role role){
         roleService.save(role);
         return "redirect:/role/showAllRoles";
@@ -97,12 +102,14 @@ public class RoleController {
 
 
     @RequestMapping(value = "/editRole",method = RequestMethod.POST)
+    @RequiresPermissions("sys:role:update")
     public String editRole(Role role){
         roleService.updateById(role);
         return "redirect:/role/showAllRoles";
     }
 
     @RequestMapping(value = "/removeRole",method = RequestMethod.POST)
+    @RequiresPermissions("sys:role:delete")
     @ResponseBody
     public R removeRole(Integer roleId){
         if (roleId==null){
@@ -125,6 +132,7 @@ public class RoleController {
      * @return
      */
     @PostMapping("/assign/resourceTree")
+    @RequiresPermissions("sys:role:assign:resource")
     @ResponseBody
     public R assignResourceTree(Integer roleId) {
         TreeNode treeNode = roleResourceService.getTreeByRoleId(roleId);
@@ -140,16 +148,13 @@ public class RoleController {
      * @return
      */
     @PostMapping("/assign/resource/{roleId}")
+    @RequiresPermissions("sys:role:assign:resource")
     @ResponseBody
     public R assignResource(@PathVariable Integer roleId, @RequestBody List<RoleResource> roleResourceList) {
         System.out.println(roleResourceList);
         roleResourceService.save(roleId, roleResourceList);
         return R.ok();
     }
-
-
-
-
 
 }
 

@@ -5,9 +5,9 @@
   Time: 18:12
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <html>
 <head>
     <title>仓库管理</title>
@@ -34,8 +34,6 @@
 
         td{
             text-align: center;
-            vertical-align: middle;
-            vertical-align: center;
             font-size: 14px;
         }
 
@@ -56,11 +54,15 @@
 
             <div class="row">
                 <div class="btn-group-sm" id="toolbar" role="group">
-                    <a class="btn btn-success" data-toggle="modal" data-backdrop="false" data-target="#addWarehouseModal" ><i class="fa fa-plus"></i> 新增</a>
-
-                    <a href="javascript:void(0)" class="btn btn-primary" onclick="alterWarehouse()"><i class="fa fa-edit"></i> 修改</a>
-
-                    <a href="javascript:void(0)" class="btn btn-danger" onclick="removeWarehouse()"><i class="fa fa-remove"></i> 删除</a>
+                    <shiro:hasPermission name="business:warehouse:add">
+                        <a class="btn btn-success" data-toggle="modal" data-backdrop="false" data-target="#addWarehouseModal" ><i class="fa fa-plus"></i> 新增</a>
+                    </shiro:hasPermission>
+                    <shiro:hasPermission name="business:warehouse:edit">
+                        <a href="javascript:void(0)" class="btn btn-primary" onclick="alterWarehouse()"><i class="fa fa-edit"></i> 修改</a>
+                    </shiro:hasPermission>
+                    <shiro:hasPermission name="business:warehouse:remove">
+                        <a href="javascript:void(0)" class="btn btn-danger" onclick="removeWarehouse()"><i class="fa fa-remove"></i> 删除</a>
+                    </shiro:hasPermission>
                 </div>
                 <!-- /col-md-12 -->
                 <div class="col-md-12 mt">
@@ -75,10 +77,12 @@
                                data-show-fullscreen="true"
                                data-show-columns="true"
                                data-show-columns-toggle-all="true"
-                               data-show-export="true"
                                data-click-to-select="true"
                                data-single-select="true"
-                               data-exportDataType ="basic"
+                                <shiro:hasPermission name="business:warehouse:export">
+                                   data-show-export="true"
+                                   data-exportDataType ="basic"
+                                </shiro:hasPermission>
                                data-show-pagination-switch="true"
                                data-pagination="true"
                                data-page-list="[5,10,25,50,100,all]">
@@ -251,7 +255,7 @@
         url: "/business/warehouse/findTargetWarehouse",                      //  请求后台的URL
         method: "post",                      //  请求方式
         contentType:'application/x-www-form-urlencoded; charset=UTF-8',
-        uniqueId: "customerId",                 //  每一行的唯一标识，一般为主键列
+        uniqueId: "warehouseId",                 //  每一行的唯一标识，一般为主键列
         cache: false,                       //  设置为 false 禁用 AJAX 数据缓存， 默认为true
         pagination: true,                   //  是否显示分页
         sidePagination: "client",           //  分页方式：client客户端分页，server服务端分页

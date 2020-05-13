@@ -60,7 +60,6 @@
 
     <div class="row">
         <div class="btn-group-sm" id="toolbar" role="group">
-
             <shiro:hasPermission name="sys:dept:add">
                 <a class="btn btn-success" data-toggle="modal" data-backdrop="false" data-target="#addDeptModal" ><i class="fa fa-plus"></i> 新增</a>
             </shiro:hasPermission>
@@ -289,12 +288,17 @@
 
 <script>
 
+    /**
+     * 自定义查询条件重置按钮
+     */
     function resetForm(data) {
         $(data)[0].reset();
         refreshTable();
     }
 
-    // 初始化表格数据
+    /**
+     * 初始化表格数据
+     */
     var dataTable = $('#depts').bootstrapTable({
         url: "/dept/showAllDept",                      //  请求后台的URL
         method: "post",                      //  请求方式
@@ -331,7 +335,7 @@
                     if (value==0){
                         return "<span class=\"label label-success\">正常</span>";
                     }else {
-                        return "<span class=\"label label-danger\">停用</span>";
+                        return "<span class=\"label label-warning\">停用</span>";
                     }
                 }
             }, {
@@ -340,13 +344,17 @@
             }]
     });
 
-    // 查询
+    /**
+     * 自定义查询
+     */
     $('#btn-search').bind('click', function () {
         dataTable.bootstrapTable('removeAll');
         refreshTable();
     });
 
-    // 刷新表格
+    /**
+     * 刷新表格
+     */
     function refreshTable() {
         dataTable.bootstrapTable('refresh', {
             url: "/dept/showAllDept",
@@ -354,8 +362,6 @@
             pageNumber: 1
         });
     }
-
-
 
 
     /**
@@ -374,7 +380,7 @@
 
 
     /**
-     * 表单验证
+     * 表单数据校验
      */
     $(document).ready(function() {
         $('#addDeptFrom').bootstrapValidator({
@@ -435,7 +441,6 @@
                 $("#deptId").val(deptId);
                 $("#deptName").val(deptName);
                 $("#deptRemark").val(deptRemark);
-
 
                 if (deptStatus==0){
                     $("#radio1").attr("checked","checked");

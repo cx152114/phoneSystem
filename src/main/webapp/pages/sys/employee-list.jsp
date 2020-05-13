@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <html>
 <head>
     <title>员工管理</title>
@@ -58,16 +59,23 @@
 
             <div class="row">
                 <div class="btn-group-sm" id="toolbar" role="group">
-                    <a class="btn btn-success" data-toggle="modal" data-backdrop="false" data-target="#addUserModal" ><i class="fa fa-plus"></i> 新增</a>
-
-                    <a href="javascript:void(0)" class="btn btn-primary" onclick="alterUser()"><i class="fa fa-edit"></i> 修改</a>
-
-                    <a href="javascript:void(0)" class="btn btn-danger" onclick="removeUser()"><i class="fa fa-remove"></i> 删除</a>
-                    <a href="javascript:void(0)" class="btn btn-info" id="btn-assign-role"><i class="fa fa-chain"></i> 分配角色</a>
+                    <shiro:hasPermission name="sys:user:add">
+                        <a class="btn btn-success" data-toggle="modal" data-backdrop="false" data-target="#addUserModal" ><i class="fa fa-plus"></i> 新增</a>
+                    </shiro:hasPermission>
+                    <shiro:hasPermission name="sys:user:update">
+                        <a href="javascript:void(0)" class="btn btn-primary" onclick="alterUser()"><i class="fa fa-edit"></i> 修改</a>
+                    </shiro:hasPermission>
+                    <shiro:hasPermission name="sys:user:delete">
+                        <a href="javascript:void(0)" class="btn btn-danger" onclick="removeUser()"><i class="fa fa-remove"></i> 删除</a>
+                    </shiro:hasPermission>
+                    <shiro:hasPermission name="sys:user:assign:role">
+                        <a href="javascript:void(0)" class="btn btn-info" id="btn-assign-role"><i class="fa fa-chain"></i> 分配角色</a>
+                    </shiro:hasPermission>
                 </div>
 
                 <!-- /col-md-12 -->
                 <div class="col-md-12 mt">
+                    <shiro:hasPermission name="sys:user:list">
                     <div class="col-sm-12 search-collapse">
                         <form id="complex-form" >
                             <div class="select-list">
@@ -115,7 +123,7 @@
                             </div>
                         </form>
                     </div>
-
+                    </shiro:hasPermission>
 
                     <div class="content-panel" style="height: 650px;overflow: auto;"  >
                         <table class="table table-hover rowSameHeight"
@@ -128,10 +136,12 @@
                                data-show-fullscreen="true"
                                data-show-columns="true"
                                data-show-columns-toggle-all="true"
-                               data-show-export="true"
                                data-click-to-select="true"
                                data-single-select="true"
-                               data-exportDataType ="basic"
+                                <shiro:hasPermission name="sys:user:export">
+                                   data-show-export="true"
+                                   data-exportDataType ="basic"
+                                </shiro:hasPermission>
                                data-show-pagination-switch="true"
                                data-pagination="true"
                                data-page-list="[5,10,25,50,100,all]"
@@ -443,9 +453,6 @@
                 userStatus:$("#userStatus").val(),
                 startTime:$("#startTime").val(),
                 endTime:$("#endTime").val(),
-                // phoneStorage:$("#phoneStorage2").val(),
-                // phoneNetwork:$("#phoneNetwork2").val(),
-                // phoneState:$("#phoneState2").val()
             }
         },
         columns: [
@@ -494,15 +501,6 @@
                     }else{
                         return "锁定";
                     }
-                }
-            },{
-                field: 'action',
-                title: '操作',
-                // formatter: function(value, item, index) {
-                //     return "<button type=\"button\" class=\"btn btn-info btn-rounded btn-xs\" onclick=\"getOrderDetail(this)\">详情</button>";
-                // }
-                formatter: function(value, item, index) {
-                    return "分配角色";
                 }
             }]
     });
@@ -878,7 +876,7 @@
     $('#btn-assign-role').click(function () {
         var rows = $('#users').bootstrapTable('getSelections');
         if (rows.length == 0) {
-            window.parent.layer.msg("请选择数据行!", {icon: 2, time: 1000, offset: 't'})
+            window.parent.layer.msg("请选择要分配角色的用户!", {icon: 2, time: 1000})
         }else{
             $("#allocationRoleModal").modal('show');
         }
