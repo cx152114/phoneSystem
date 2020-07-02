@@ -264,7 +264,7 @@
                              </div>
                              <div>
                                  <div class="form-group" style="float:left;width: 50%;">
-                                     <label class="col-sm-4 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">储存容量：</label>
+                                     <label class="col-sm-4 control-label" style="font-size:16px;margin-bottom: 3px;margin-left: 5px;">网络类型：</label>
                                      <div class="col-sm-4">
                                          <select class="form-control" name="phoneNetwork">
                                              <option value="">所有</option>
@@ -290,7 +290,9 @@
 
                              <div class="form-group" >
                                      <div class="col-sm-7">
-                                         <textarea class="form-control" name="phoneRemark"  placeholder="手机描述" rows="4" data-rule="required" data-msg="手机描述"></textarea>
+                                         <label>
+                                             <textarea class="form-control" name="phoneRemark"  placeholder="手机描述" rows="4" data-rule="required" data-msg="手机描述"></textarea>
+                                         </label>
                                      </div>
                              </div>
 
@@ -430,8 +432,7 @@
 
                                 <div class="form-group">
                                     <div class="file-loading">
-
-                                        <input id="file-6"   type="file" multiple data-preview-file-type="any" data-upload-url="/common/file/uploadFile" data-theme="fas">
+                                        <input id="file-6" name="file"   type="file" multiple data-preview-file-type="any" data-upload-url="/common/file/uploadFile" data-theme="fas">
                                     </div>
 
                                     <input type="text" class="form-control"  id="phoneImage1" name="phoneImage" placeholder="上传图片" style="width: 60%;display: none" >
@@ -691,7 +692,7 @@
             var phone= $table.bootstrapTable('getSelections');
 
             if (JSON.stringify(phone)=="[]"){
-                layer.alert("请先选择要进行修改的记录", {icon: 5});
+                layer.alert("请先选择要进行修改的手机信息", {icon: 5});
             }else{
                     var phoneId=phone[0].phoneId;
                     var phoneName=phone[0].phoneName;
@@ -735,7 +736,7 @@
             var phone= $table.bootstrapTable('getSelections');
 
             if (JSON.stringify(phone)=="[]"){
-                layer.alert("请先选择要删除的记录", {icon: 5});
+                layer.alert("请先选择要删除的手机商品信息", {icon: 5});
             }else{
                 $("#removeProductModal").modal('show');
             }
@@ -792,52 +793,29 @@
 
      <%--    图片上传--%>
     <script>
- // $(function() {
- //     $("#file").fileinput({
- //         uploadUrl: "/common/file/uploadFile", //接受请求地址
- //         //deleteUrl: ctx + "common/delete",
- //         uploadAsync: true, //默认异步上传
- //         showUpload: true, //是否显示上传按钮,跟随文本框的那个
- //         showRemove: true, //显示移除按钮,跟随文本框的那个
- //         showCaption: true,//是否显示标题,就是那个文本框
- //         showPreview: true, //是否显示预览,不写默认为true
- //         dropZoneEnabled: false,//是否显示拖拽区域，默认不写为true，但是会占用很大区域
- //         initialPreviewAsData: true,
- //         //minImageWidth: 50, //图片的最小宽度
- //         //minImageHeight: 50,//图片的最小高度
- //         //maxImageWidth: 1000,//图片的最大宽度
- //         //maxImageHeight: 1000,//图片的最大高度
- //         //maxFileSize: 0,//单位为kb，如果为0表示不限制文件大小
- //         //minFileCount: 0,
- //         maxFileCount: 1, //表示允许同时上传的最大文件个数
- //         enctype: 'multipart/form-data',
- //         validateInitialCount: true,
- //         previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
- //         msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
- //         allowedFileTypes: ['image'],//配置允许文件上传的类型
- //         allowedPreviewTypes: ['image'],//配置所有的被预览文件类型
- //         allowedPreviewMimeTypes: ['jpg', 'png', 'gif'],//控制被预览的所有mime类型
- //         language: 'zh',
- //         // initialPreview: [
- //         //     "/profile/upload/2020/04/16/3f2ec280305390be676fdb815f5468c2.jpg",
- //         // ],
- //     })
- //     //异步上传返回结果处理
- //     $('#file').on('fileerror', function (event, data, msg) {
- //         console.log("fileerror");
- //         alert(data);
- //     });
      //异步上传返回结果处理
-     $("#file").on("fileuploaded", function (event, data) {
+     $("#file-6").on("fileuploaded", function (event, data) {
          //alert(JSON.stringify(data));
          if (data.response.code == 0) {
-             alert(data.response.path);
+
              var path=data.response.path;
-             $('#phoneImage').val(path);
-             alert($('#phoneImage').val());
+             $('#phoneImage1').val(path);
+
          }else{
          }
      });
+
+ //异步上传返回结果处理
+ $("#file").on("fileuploaded", function (event, data) {
+     //alert(JSON.stringify(data));
+     if (data.response.code == 0) {
+
+         var path=data.response.path;
+         $('#phoneImage').val(path);
+
+     }else{
+     }
+ });
  //     //上传前
  //     $('#file').on('filepreupload', function (event, data, previewId, index) {
  //         console.log("filepreupload");

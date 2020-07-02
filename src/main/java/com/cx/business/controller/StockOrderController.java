@@ -163,7 +163,6 @@ public class StockOrderController {
             SerialNumber serialNumber=new SerialNumber();
             serialNumber.setSn(object.getString("SN"));
             serialNumber.setWarehouseId(warehouseId);
-            System.out.println(serialNumber);
             serialNumberList.add(serialNumber);
         }
 

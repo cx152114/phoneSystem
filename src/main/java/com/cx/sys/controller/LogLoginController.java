@@ -62,6 +62,7 @@ public class LogLoginController {
         if (!StringUtils.isEmpty(endTime)){
             queryWrapper.le("login_time",startTime);
         }
+        queryWrapper.orderByDesc("login_time");
         logLoginService.page(page, queryWrapper);
         return R.ok(page);
     }

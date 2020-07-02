@@ -121,7 +121,7 @@
                                             </div>
                                             <div>
                                                 <label class="control-label" style="font-size:19px;margin-left: 5px;">仓库地址</label>
-                                                <input type="text" class="form-control" name="warehouseAddress" placeholder="仓库地址" style="width: 60%">
+                                                <input type="text" class="form-control" ID="warehouseAddress1" name="warehouseAddress" placeholder="仓库地址" style="width: 60%">
                                             </div>
                                             <div>
                                                 <label class="control-label" style="font-size:19px;margin-left: 5px;">备注</label>
@@ -130,7 +130,7 @@
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary">提交</button>
-                                    <button type="reset" class="btn btn-warning">重置</button>
+                                    <button type="reset" id="resetBtn" class="btn btn-warning">重置</button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                                 </form>
                             </div>
@@ -242,9 +242,55 @@
 
 <script src="${pageContext.request.contextPath}/lib/bootstrap-table/js/bootstrap-table-zh-CN.js"></script>
 
+<%--引入bootstrap用于表单验证的插件--%>
+<script src="${pageContext.request.contextPath}/lib/bootstrapValidator/js/bootstrapValidator.js"></script>
+
+
+
 <%--layui插件--%>
 <script src="${pageContext.request.contextPath}/lib/layer/layer.js"></script>
 
+
+<script type="application/javascript">
+    $(document).ready(function() {
+        $('#addWarehouseForm').bootstrapValidator({
+            message: '请填写完整的仓库信息',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                warehouseName: {
+                    message: 'The username is not valid',
+                    validators: {
+                        notEmpty: {
+                            message: '仓库名不能为空 '
+                        }
+                    }
+                },
+                userId: {
+                    validators: {
+                        notEmpty: {
+                            message: '联系人不能为空 '
+                        }
+                    }
+                },
+                warehouseAddress: {
+                    validators: {
+                        notEmpty: {
+                            message: '仓库地址不能为空'
+                        }
+                    }
+                }
+            }
+        });
+
+        $('#resetBtn').click(function() {
+            $('#addWarehouseForm').data('bootstrapValidator').resetForm(true);
+        });
+    });
+</script>
 
 
 <script>
@@ -317,6 +363,11 @@
             document.getElementById("addWarehouseForm").reset();
         });
     });
+
+
+
+
+
 
 
 

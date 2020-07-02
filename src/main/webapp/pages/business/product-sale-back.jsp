@@ -445,7 +445,7 @@
                 },
                 {
                     field: "unitPrice",
-                    title: "进价",
+                    title: "销售价格",
                     formatter:function(value, row, index){
                         return row.salesDetail.unitPrice;
                     }

@@ -277,9 +277,6 @@
 
 
 
-
-
-
     /**
      * 打开取消订单窗口
      */
@@ -358,33 +355,6 @@
          * @param {td 元素} $element
          */
         onClickCell: function(field, value, row, $element) {
-            //var name = $(obj).attr('name');
-            //alert();
-            // if (field=='phoneNumber'){
-            //
-            //     $("#testModal").modal('show');
-            //     $element.attr('contenteditable', true);
-            //     $element.blur(function() {
-            //
-            //
-            //         let index = $element.parent().data('index');
-            //         let tdValue = $element.html();
-            //         tdValue=SNList.length;
-            //         var value = $(this).parent().parent().find("td");
-            //         var phoneId=value.eq(1).text().toString().trim();
-            //         alert(phoneId);
-            //
-            //         //alert("row"+row);
-            //        // alert("row"+row);
-            //         saveData(index, field, tdValue);
-            //
-            //     });
-            //
-            //
-            //
-            //
-            //     //$("#testModal").modal('hide');
-            // }
             if (field=='SN'||field=='unitPrice'){
                 $element.attr('contenteditable', true);
                 $element.blur(function() {
@@ -486,7 +456,7 @@
     function getAllProducts() {
         var supplierId=$('#supplierId').val();
         if (supplierId==null||supplierId==""){
-            layer.alert("请先指定供应商", {icon: 5, offset: '0px'});
+            layer.alert("请先指定供应商", {icon: 5});
             return;
         }
         //根据窗口调整表格高度
@@ -689,6 +659,35 @@
         var warehouseId=$('#warehouseId option:selected').val();
         var payType=$('#payType option:selected').val();
         var stoStatus=$('#stoStatus option:selected').val();
+
+        if (stockOrderDetails==="[]"){
+            layer.alert("还未选择商品，请先选择商品后再提交订单", {icon: 5});
+            return;
+        }
+        if (payType===""){
+            layer.alert("还未选择支付方式", {icon: 5});
+            return;
+        }
+        if (stoStatus==="[]"){
+            layer.alert("还未指定订单状态", {icon: 5});
+            return;
+        }
+
+
+        var orders= $('#phones').bootstrapTable('getData');
+        //alert(orders);
+        var SNs = new Array();
+        for (var i = 0; i <orders.length ; i++) {
+            if (JSON.stringify(orders[i].SN).length<=2){
+                layer.alert("第"+(i+1)+"条订单的手机序列号还未填写，请填写完整", {icon: 5});
+                return;
+            }
+            if (JSON.stringify(orders[i].unitPrice)<=0){
+                layer.alert("第"+(i+1)+"条订单的进货单价还未填写，请填写完整", {icon: 5});
+                return;
+            }
+        }
+
         $.ajax({
             url:'/business/stockOrder/addStockOrder',
             data:{stockOrderDetails:stockOrderDetails,warehouseId:warehouseId,payType:payType,stoStatus:stoStatus},
@@ -697,7 +696,6 @@
             success:function(data){
                 if(data.code==0){
                     layer.msg(data.msg, {icon: 1, time: 1000, offset: '0px'});
-                    //alert("添加订单成功");
                     window.location.reload();
                 }else{
                     layer.alert(data.msg, {icon: 5, offset: '0px'});

@@ -61,9 +61,7 @@ public class ShiroRealm extends AuthorizingRealm {
         }
         System.out.println("认证成功...");
         // 创建简单认证信息对象
-        SimpleAuthenticationInfo info =
-                new SimpleAuthenticationInfo(user, token.getCredentials(), getName());
-        return info;
+        return new SimpleAuthenticationInfo(user, token.getCredentials(), getName());
     }
 
 
@@ -83,6 +81,8 @@ public class ShiroRealm extends AuthorizingRealm {
         //从数据库获取当前用户的角色 通过用户名查询该用户拥有的角色名称
         Set<String> roleNameSet = userService.selectUserRoleNameSet(user.getUserId());
         info.addRoles(roleNameSet);
+
+        //假如用户拥有系统管理员角色，给予所有权限
         if (roleNameSet.contains("系统管理员")){
             info.addStringPermission("*:*");
             return  info;
@@ -99,12 +99,10 @@ public class ShiroRealm extends AuthorizingRealm {
                     }
             }
         }
-        if(null!=permissions&&permissions.size()>0) {
+        if(permissions.size() > 0) {
             info.addStringPermissions(permissions);
         }
         System.out.println("授权完成....");
         return info;
     }
-
-
 }

@@ -85,7 +85,7 @@
                     layer.msg(response.msg, {icon: 1, time: 1000, offset: '0px'});
                     window.location.href = '/login/main';
                 } else {
-                    layer.alert(response.msg, {icon: 5, offset: '0px'});
+                    layer.alert(response.msg, {icon: 5, offset: '400px'});
                 }
             }
         });

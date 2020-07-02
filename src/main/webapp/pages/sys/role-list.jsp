@@ -279,6 +279,7 @@
 <!--script for this page-->
 <!--bootstrap-table-->
 <script src="${pageContext.request.contextPath}/lib/bootstrap-table/js/bootstrap-table.js"></script>
+<script src="${pageContext.request.contextPath}/lib/bootstrap-table/js/bootstrap-table-zh-CN.js"></script>
 
 <%--layui插件--%>
 <script src="${pageContext.request.contextPath}/lib/layer/layer.js"></script>

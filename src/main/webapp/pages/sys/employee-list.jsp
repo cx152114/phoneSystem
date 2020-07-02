@@ -473,6 +473,7 @@
             }, {
                 field: 'deptId',
                 title: '部门编号',
+                visible:false,
                 formatter: function(value, item, index) {
                     if (item.dept!=null){
                         return item.dept.deptId;
@@ -488,20 +489,20 @@
                     //alert(item.dept);
                 }
             }, {
-                field: 'createTime',
-                title: '创建时间'
-            }, {
                 field: 'userStatus',
                 title: '状态',
                 formatter: function(value, item, index) {
                     if (value==0){
-                        return "正常";
+                        return "<span class=\"label label-success\">正常</span>";
                     }else if (value==1){
-                        return "禁用";
+                        return "<span class=\"label label-danger\">禁用</span>";
                     }else{
-                        return "锁定";
+                        return "<span class=\"label label-warning\">锁定</span>";
                     }
                 }
+            }, {
+                field: 'createTime',
+                title: '创建时间'
             }]
     });
 

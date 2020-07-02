@@ -21,7 +21,7 @@ import cn.hutool.core.util.IdUtil;
 public class AppFileUtils {
 
 	//文件上传的保存路径
-	public static  String UPLOAD_PATH="D:\\upload";//默认值
+	public static  String UPLOAD_PATH="D:/upload";//默认值
 	public static  String IMAGES_DEFAULTGOODSIMG_PNG="images/product/oneplus.png";
 
 	

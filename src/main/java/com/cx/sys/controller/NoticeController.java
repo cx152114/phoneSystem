@@ -62,6 +62,7 @@ public class NoticeController {
         if (!StringUtils.isEmpty(endTime)){
             queryWrapper.le("createtime",startTime);
         }
+        queryWrapper.orderByDesc("createtime");
         noticeService.page(page, queryWrapper);
         return R.ok(page);
     }

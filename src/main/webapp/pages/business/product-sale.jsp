@@ -82,8 +82,8 @@
                         </li>
                         <li>
                             状态：<select id="stoStatus" name="stoStatus">
-                            <option value="1">完成</option>
-                            <option value="0">未完成</option>
+                            <option value="0">完成</option>
+                            <option value="1">未完成</option>
                             <option value="2">取消</option>
                         </select>
                         </li>
@@ -520,11 +520,11 @@
 
         var orderRemark=$("#orderRemark").val();
         if(customerId==-1){
-            alert("客户名称为必填项，请选择客户");
+            layer.alert("客户名称为必填项，请选择客户", {icon: 5});
             return;
         }
         if (salesOrderDetails=="[]"){
-            alert("请选择商品");
+            layer.alert("请选择商品", {icon: 5});
             return;
         }
         $.ajax({

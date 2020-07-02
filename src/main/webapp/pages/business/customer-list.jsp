@@ -426,7 +426,7 @@
                 title: '状态',
                 formatter: function(value, item, index) {
                     if (value==0){
-                        return "<span class=\"label label-success\">正常</span>";
+                        return "<span class=\"label label-success\">合作</span>";
                     }else {
                         return "<span class=\"label label-danger\">取消合作</span>";
                     }
@@ -483,7 +483,7 @@
         var customer = $table.bootstrapTable('getSelections');
 
         if (JSON.stringify(customer) == "[]") {
-            layer.alert("请先选择要进行修改的记录", {icon: 5, offset: '0px'});
+            layer.alert("请先选择要进行信息修改的客户", {icon: 5});
         } else {
             var customerId = customer[0].customerId;
             var customerName = customer[0].customerName;
@@ -526,7 +526,7 @@
         var customer= $table.bootstrapTable('getSelections');
 
         if (JSON.stringify(customer)=="[]"){
-            layer.alert("请先选择要删除的记录", {icon: 5, offset: '0px'});
+            layer.alert("请先选择要删除的客户", {icon: 5});
         }else{
             $("#removeCustomerModal").modal('show');
         }

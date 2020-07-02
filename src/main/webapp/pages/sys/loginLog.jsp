@@ -154,10 +154,10 @@
             return {
                 current: param.pageNumber, // 当前页 1
                 size: param.pageSize,      // 一页显示多少天 10
-                loginName:$("#loginName").val(),
+                loginName: $("#loginName").val(),
                 loginIp: $("#loginIp").val(),
-                startTime:$("#startTime").val(),
-                endTime:$("#endTime").val()
+                startTime: $("#startTime").val(),
+                endTime: $("#endTime").val()
             }
         },
         columns: [
@@ -174,12 +174,14 @@
                 title: '登录地址'
             }, {
                 field: 'loginTime',
-                title: '登录时间'
-            },{
-                title:'操作',
+                title: '登录时间',
+            }, {
+                title: '操作',
                 field: 'active',
-                formatter: function(value, item, index) {
-                    return "<shiro:hasPermission name="sys:log:remove"><button type=\"button\" class=\"btn btn-danger btn-rounded btn-xs\" onclick=\"remove(this)\">删除</button></shiro:hasPermission>";
+                formatter: function (value, item, index) {
+                    return "<shiro:hasPermission name="
+                    sys:log:remove
+                    "><button type=\"button\" class=\"btn btn-danger btn-rounded btn-xs\" onclick=\"remove(this)\">删除</button></shiro:hasPermission>";
 
                 }
             }]
@@ -215,7 +217,8 @@
             layer.msg("请选择要删除的日志",{icon:5});
             return;
         }else {
-            layer.confirm('你是否确定要删除该条日志？', {
+            var msg="你是否确定要删除这"+loginLog.length+"条登录日志信息？"
+            layer.confirm(msg, {
                 btn: ['确定','取消'] //按钮
             }, function(){
                     ids=JSON.stringify(ids);

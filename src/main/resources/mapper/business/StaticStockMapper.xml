@@ -76,6 +76,32 @@
 
 
 
+    <select id="staticStockAmountForMonth" resultType="com.cx.business.beans.vo.StaticForMonth" >
+        SELECT
+            MONTH (order_time) month,
+            sum(sto_number) AS number
+        FROM
+            business_stock_order
+        WHERE
+            YEAR (order_time) = YEAR (now())
+        GROUP BY
+            MONTH (order_time);
+    </select>
+
+    <select id="staticSaleAmountForMonth" resultType="com.cx.business.beans.vo.StaticForMonth" >
+        SELECT
+            MONTH (order_time) MONTH,
+            sum(sales_number) AS number
+        FROM
+            business_sales_order
+        WHERE
+            YEAR (order_time) = YEAR (now())
+        GROUP BY
+            MONTH (order_time);
+    </select>
+
+
+
 
 
 </mapper>

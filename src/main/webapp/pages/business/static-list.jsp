@@ -34,24 +34,20 @@
             vertical-align: middle;
             font-size: 15px;
         }
-
         td{
             text-align: center;
             vertical-align: middle;
             vertical-align: center;
             font-size: 14px;
         }
-
         .content-panel{
             padding-left: 15px;
             padding-right: 15px;
         }
-
         .rowSameHeight {
             white-space: nowrap;
             overflow: hidden;
         }
-
     </style>
 </head>
 <body>
@@ -126,7 +122,6 @@
     function resetForm(data) {
         $(data)[0].reset();
     }
-
     // 初始化表格数据
     var dataTable = $('#staticSales').bootstrapTable({
         url: "/business/static/staticSalesSort",                      //  请求后台的URL
@@ -151,7 +146,6 @@
             }, {
                 field: 'phoneId',
                 title: '手机编号',
-
             }, {
                 field: 'phoneName',
                 title: '手机名称',
@@ -187,8 +181,6 @@
                 title: '销售数量'
             }]
     });
-
-
     /**
      * 设置导出文件的属性
      */
@@ -202,11 +194,6 @@
             ignoreColumn: [0]
         }
     });
-
-
-
-
-
 </script>
 </body>
 </html>

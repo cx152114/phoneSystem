@@ -58,7 +58,6 @@ public class SerialNumberController {
     public R getSalesPhoneInfo(Integer customerId){
         QueryWrapper<PhoneInfo> queryWrapper=new QueryWrapper<>();
         List<SerialNumber> salesPhoneInfo =serialNumberService.listSalesPhoneInfo(customerId);
-        System.out.println(salesPhoneInfo);
         return R.ok().put("salesPhoneInfo",salesPhoneInfo);
     }
 

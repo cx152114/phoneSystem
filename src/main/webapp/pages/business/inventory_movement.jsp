@@ -5,7 +5,7 @@
   Time: 14:35
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ page contentType="text/html;charset=UTF-8" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -416,15 +416,15 @@
         var warehouseInId=$('#warehouseInId option:selected').val();
         var bimoReason=$('#bimoReason').val();
 
-        if (inventoryMovementOrder=="[]"){
+        if (inventoryMovementOrder==="[]"){
             layer.alert('请选择要进行调拨的商品', {icon: 0});
             return;
         }
-        if (warehouseOutId==-1||warehouseInId==-1){
+        if (warehouseOutId===""||warehouseInId===""){
             layer.alert('当前仓库与调入仓库为必填项，请先进行选择', {icon: 0});
             return;
         }
-        if (warehouseInId==warehouseOutId){
+        if (warehouseInId===warehouseOutId){
             layer.alert('当前仓库与调入仓库不能为同一个仓库', {icon: 0});
             return;
         }

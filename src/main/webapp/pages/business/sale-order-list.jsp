@@ -346,9 +346,9 @@
                 title: '订单状态',
                 formatter: function(value, item, index) {
                     if(value==0){
-                        return "<span class=\"label label-info\">未完成</span>";
-                    }else if(value==1){
                         return "<span class=\"label label-success\">已完成</span>";
+                    }else if(value==1){
+                        return "<span class=\"label label-info\">未完成</span>";
                     }else if(value==2) {
                         return "<span class=\"label label-warning\">已取消</span>";
                     }
